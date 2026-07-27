@@ -1,0 +1,132 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ------------------------------------------------------
+// 1. Países (Country)
+// Soporta la estrategia multi-país de la Fase 1 y Fase 2
+// ------------------------------------------------------
+model Country {
+  id         String    @id // Código ISO de 2 letras en minúscula, ej: "us", "es", "mx"
+  code       String    @unique // ISO alfa-2 en mayúscula, ej: "US", "ES", "MX"
+  name       String    // Nombre en español, ej: "Estados Unidos", "España"
+  slug       String    @unique // URL slug, ej: "us", "espana"
+  flagEmoji  String    // Emoji de la bandera, ej: "🇺🇸", "🇪🇸"
+  currency   String    // Código ISO de moneda, ej: "USD", "EUR", "MXN"
+  isActive   Boolean   @default(true)
+  
+  lotteries  Lottery[]
+
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@map("countries")
+}
+
+// ------------------------------------------------------
+// 2. Loterías (Lottery)
+// Configuración técnica y metadata de cada lotería
+// ------------------------------------------------------
+model Lottery {
+  id                  String   @id @default(cuid())
+  countryId           String
+  country             Country  @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  
+  name                String   // Ej: "Powerball", "Mega Millions", "Florida Lotto"
+  slug                String   // Ej: "powerball", "mega-millions", "florida-lotto"
+  description         String?  @db.Text
+  logoUrl             String?  
+  primaryColor        String?  // Ej: "#DC2626" (rojo Powerball), "#EAB308" (amarillo Mega Millions)
+  secondaryColor      String?
+  
+  // Reglas del juego
+  drawDays            Json     // Días de sorteo, ej: ["MON", "WED", "SAT"]
+  drawTime            String?  // Hora oficial local, ej: "22:59 EST"
+  totalNumbers        Int      // Cantidad de números principales, ej: 5
+  numberRangeMax      Int      // Máximo número principal, ej: 69
+  totalSpecialBalls   Int      @default(1) // Cantidad de bolas especiales
+  specialBallRangeMax Int      // Máximo bola especial, ej: 26
+  specialBallName     String?  // Nombre de la bola especial: "Powerball", "Mega Ball"
+  hasMultiplier       Boolean  @default(true) // Power Play / Megaplier
+  multiplierName      String?  // "Power Play", "Megaplier"
+  
+  isActive            Boolean  @default(true)
+  
+  draws               Draw[]
+
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@unique([countryId, slug])
+  @@index([countryId])
+  @@map("lotteries")
+}
+
+// ------------------------------------------------------
+// 3. Sorteos / Resultados (Draw)
+// Contiene la combinación ganadora y métricas clave del sorteo
+// ------------------------------------------------------
+enum DrawStatus {
+  SCHEDULED
+  COMPLETED
+  CANCELLED
+}
+
+model Draw {
+  id                   String     @id @default(cuid())
+  lotteryId            String
+  lottery              Lottery    @relation(fields: [lotteryId], references: [id], onDelete: Cascade)
+  
+  drawNumber           String?    // Número identificador de sorteo, ej: "3892"
+  drawDate             DateTime   // Fecha y hora exacta del sorteo
+  
+  // JSON Nativo de MySQL para combinaciones flexibles
+  // Estructura: {"numbers": [10, 15, 23, 45, 67], "specialBall": 12, "multiplier": "3x"}
+  winningCombination   Json       @db.Json 
+  
+  estimatedJackpot     Decimal?   @db.Decimal(15, 2) // En moneda local
+  jackpotFormatted     String?    // Ej: "$340 Millones"
+  hasWinner            Boolean    @default(false)
+  
+  nextDrawDate         DateTime?  // Fecha del próximo sorteo programado
+  nextEstimatedJackpot Decimal?   @db.Decimal(15, 2)
+  nextJackpotFormatted String?    // Ej: "$360 Millones"
+  
+  status               DrawStatus @default(COMPLETED)
+  
+  prizes               PrizeBreakdown[]
+
+  createdAt            DateTime   @default(now())
+  updatedAt            DateTime   @updatedAt
+
+  @@index([lotteryId, drawDate(sort: Desc)])
+  @@index([drawDate(sort: Desc)])
+  @@map("draws")
+}
+
+// ------------------------------------------------------
+// 4. Premios y Desglose (PrizeBreakdown)
+// Tabla detallada de ganadores y montos por categoría
+// ------------------------------------------------------
+model PrizeBreakdown {
+  id                    String   @id @default(cuid())
+  drawId                String
+  draw                  Draw     @relation(fields: [drawId], references: [id], onDelete: Cascade)
+  
+  categoryName          String   // Ej: "5 Aciertos + Powerball", "5 Aciertos", "4 Aciertos + Powerball"
+  winnersCount          Int      @default(0)
+  prizeAmount           Decimal  @db.Decimal(15, 2) // Premio base
+  multiplierPrizeAmount Decimal? @db.Decimal(15, 2) // Premio si compró multiplicador (Power Play / Megaplier)
+
+  createdAt             DateTime @default(now())
+
+  @@index([drawId])
+  @@map("prize_breakdowns")
+}
