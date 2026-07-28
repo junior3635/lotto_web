@@ -1,0 +1,3843 @@
+{
+    "status": "success",
+    "message": "ok",
+    "messageTR": "ok",
+    "systemTime": 1740257086,
+    "endpoint": "lottery-results/game-result",
+    "rowCount": 1,
+    "creditUsed": 1,
+    "data": {
+        "drawNumber": 173134,
+        "drawDate": "2025-02-19",
+        "drawTime": "14:59:00",
+        "drawDateTime": "2025-02-19 14:59:00",
+        "drawTimestamp": 1739995140,
+        "jackpot": "$196 MILLION",
+        "cashPayout": "$90.3 MILLION",
+        "nextDrawDate": "2025-02-22 00:00:00",
+        "nextJackpot": "$215 MILLION",
+        "nextCash": "$98.4 MILLION",
+        "details": "For states except California.",
+        "note": "POWER PLAY: 2",
+        "megaPlierPrizePool": null,
+        "regularPrizePool": null,
+        "totalPrizePool": null,
+        "totalMegaPlierWinners": null,
+        "totalRegularWinners": null,
+        "overallWinners": null,
+        "winningNumbers": [
+            "6",
+            "21",
+            "28",
+            "49",
+            "60"
+        ],
+        "additionalNumbers": [
+            20
+        ],
+        "prize": [
+            {
+                "match": "5 + 1",
+                "prize": "$196 Million",
+                "winner": null
+            },
+            {
+                "match": "5 + 0",
+                "prize": "$1 Million",
+                "winner": null
+            },
+            {
+                "match": "4 + 1",
+                "prize": "$50,000",
+                "winner": null
+            },
+            {
+                "match": "4 + 0",
+                "prize": "$100",
+                "winner": null
+            },
+            {
+                "match": "3 + 1",
+                "prize": "$100",
+                "winner": null
+            },
+            {
+                "match": "3 + 0",
+                "prize": "$7",
+                "winner": null
+            },
+            {
+                "match": "2 + 1",
+                "prize": "$7",
+                "winner": null
+            },
+            {
+                "match": "1 + 1",
+                "prize": "$4",
+                "winner": null
+            },
+            {
+                "match": "0 + 1",
+                "prize": "$4",
+                "winner": null
+            }
+        ],
+        "gameDetails": {
+            "id": 63,
+            "gameName": "Powerball",
+            "logo": "https://nosycdn.com/api/lotto/de-powerball-delaware.svg",
+            "drawTimezone": "America/New_York",
+            "drawTime": "22:59:00",
+            "stopSaleTime": "22:00:00",
+            "claimDeadline": 365,
+            "allowZero": false,
+            "minBall": 1,
+            "maxBall": 69,
+            "drawnNumbers": 5,
+            "selectableBalls": 5,
+            "minimumSelectableBalls": 5,
+            "uniqueMainNumbers": 1,
+            "uniqueExtraNumbers": 0,
+            "allowDuplicates": false,
+            "additionalNumbers": [
+                {
+                    "playerPicked": true,
+                    "name": "powerball",
+                    "minBall": 1,
+                    "maxBall": 26,
+                    "allowZero": false,
+                    "isString": false,
+                    "isMultiplier": false,
+                    "allowedValues": null
+                },
+                {
+                    "playerPicked": false,
+                    "name": "powerplay",
+                    "minBall": 2,
+                    "maxBall": 10,
+                    "allowZero": false,
+                    "isString": false,
+                    "isMultiplier": true,
+                    "allowedValues": [
+                        2,
+                        3,
+                        4,
+                        5,
+                        10
+                    ]
+                }
+            ],
+            "bonusNumbers": [
+                {
+                    "name": "Powerball",
+                    "abbreviation": "PB",
+                    "isMultiplier": false,
+                    "variant": null
+                }
+            ],
+            "prizeMultipliers": [
+                {
+                    "name": "Power Play",
+                    "abbreviation": "PP",
+                    "isMultiplier": true,
+                    "variant": null
+                }
+            ],
+            "mainDrawName": "Main draw",
+            "state": {
+                "state": "Delaware",
+                "stateCode": "DE",
+                "slug": "delaware",
+                "taxRate": "%0.00",
+                "minimumLegalAge": 18
+            },
+            "statesWithMultiDraws": [
+                "CO",
+                "FL",
+                "IN",
+                "MD",
+                "MI",
+                "MO",
+                "NJ",
+                "PA",
+                "PR",
+                "SC",
+                "SD",
+                "TN",
+                "WA",
+                "MT",
+                "NE",
+                "OK",
+                "ID",
+                "IA",
+                "MS",
+                "NM"
+            ],
+            "drawDays": {
+                "Sunday": false,
+                "Monday": true,
+                "Tuesday": false,
+                "Wednesday": true,
+                "Thursday": false,
+                "Friday": false,
+                "Saturday": true
+            }
+        }
+    }
+}
+
+{
+    "status": "success",
+    "message": "ok",
+    "messageTR": "ok",
+    "systemTime": 1717454187,
+    "endpoint": "lottery-results/states",
+    "rowCount": 48,
+    "creditUsed": 1,
+    "data": [
+        {
+            "state": "Alabama",
+            "stateCode": "AL",
+            "slug": "alabama",
+            "taxRate": "%0.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Arizona",
+            "stateCode": "AZ",
+            "slug": "arizona",
+            "taxRate": "%4.80",
+            "minimumLegalAge": 21
+        },
+        {
+            "state": "Arkansas",
+            "stateCode": "AR",
+            "slug": "arkansas",
+            "taxRate": "%4.40",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "California",
+            "stateCode": "CA",
+            "slug": "california",
+            "taxRate": "%0.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Colorado",
+            "stateCode": "CO",
+            "slug": "colorado",
+            "taxRate": "%4.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Connecticut",
+            "stateCode": "CT",
+            "slug": "connecticut",
+            "taxRate": "%6.99",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Delaware",
+            "stateCode": "DE",
+            "slug": "delaware",
+            "taxRate": "%0.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "District of Columbia",
+            "stateCode": "DC",
+            "slug": "district-of-columbia",
+            "taxRate": "%8.50",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Florida",
+            "stateCode": "FL",
+            "slug": "florida",
+            "taxRate": "%0.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Georgia",
+            "stateCode": "GA",
+            "slug": "georgia",
+            "taxRate": "%5.49",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Idaho",
+            "stateCode": "ID",
+            "slug": "idaho",
+            "taxRate": "%6.50",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Illinois",
+            "stateCode": "IL",
+            "slug": "illinois",
+            "taxRate": "%4.95",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Indiana",
+            "stateCode": "IN",
+            "slug": "indiana",
+            "taxRate": "%3.40",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Iowa",
+            "stateCode": "IA",
+            "slug": "iowa",
+            "taxRate": "%5.00",
+            "minimumLegalAge": 21
+        },
+        {
+            "state": "Kansas",
+            "stateCode": "KS",
+            "slug": "kansas",
+            "taxRate": "%5.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Kentucky",
+            "stateCode": "KY",
+            "slug": "kentucky",
+            "taxRate": "%4.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Louisiana",
+            "stateCode": "LA",
+            "slug": "louisiana",
+            "taxRate": "%4.25",
+            "minimumLegalAge": 21
+        },
+        {
+            "state": "Maine",
+            "stateCode": "ME",
+            "slug": "maine",
+            "taxRate": "%7.15",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Maryland",
+            "stateCode": "MD",
+            "slug": "maryland",
+            "taxRate": "%8.95",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Massachusetts",
+            "stateCode": "MA",
+            "slug": "massachusetts",
+            "taxRate": "%5.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Michigan",
+            "stateCode": "MI",
+            "slug": "michigan",
+            "taxRate": "%4.25",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Minnesota",
+            "stateCode": "MN",
+            "slug": "minnesota",
+            "taxRate": "%7.25",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Mississippi",
+            "stateCode": "MS",
+            "slug": "mississippi",
+            "taxRate": "%3.00",
+            "minimumLegalAge": 21
+        },
+        {
+            "state": "Missouri",
+            "stateCode": "MO",
+            "slug": "missouri",
+            "taxRate": "%4.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Montana",
+            "stateCode": "MT",
+            "slug": "montana",
+            "taxRate": "%6.90",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Nebraska",
+            "stateCode": "NE",
+            "slug": "nebraska",
+            "taxRate": "%5.00",
+            "minimumLegalAge": 19
+        },
+        {
+            "state": "New Hampshire",
+            "stateCode": "NH",
+            "slug": "new-hampshire",
+            "taxRate": "%0.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "New Jersey",
+            "stateCode": "NJ",
+            "slug": "new-jersey",
+            "taxRate": "%10.75",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "New Mexico",
+            "stateCode": "NM",
+            "slug": "new-mexico",
+            "taxRate": "%6.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "New York",
+            "stateCode": "NY",
+            "slug": "new-york",
+            "taxRate": "%8.82",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "North Carolina",
+            "stateCode": "NC",
+            "slug": "north-carolina",
+            "taxRate": "%5.25",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "North Dakota",
+            "stateCode": "ND",
+            "slug": "north-dakota",
+            "taxRate": "%2.90",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Ohio",
+            "stateCode": "OH",
+            "slug": "ohio",
+            "taxRate": "%3.99",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Oklahoma",
+            "stateCode": "OK",
+            "slug": "oklahoma",
+            "taxRate": "%4.75",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Oregon",
+            "stateCode": "OR",
+            "slug": "oregon",
+            "taxRate": "%8.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Pennsylvania",
+            "stateCode": "PA",
+            "slug": "pennsylvania",
+            "taxRate": "%3.07",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Puerto Rico",
+            "stateCode": "PR",
+            "slug": "puerto-rico",
+            "taxRate": "%0.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Rhode Island",
+            "stateCode": "RI",
+            "slug": "rhode-island",
+            "taxRate": "%5.99",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "South Carolina",
+            "stateCode": "SC",
+            "slug": "south-carolina",
+            "taxRate": "%7.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "South Dakota",
+            "stateCode": "SD",
+            "slug": "south-dakota",
+            "taxRate": "%0.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Tennessee",
+            "stateCode": "TN",
+            "slug": "tennessee",
+            "taxRate": "%0.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Texas",
+            "stateCode": "TX",
+            "slug": "texas",
+            "taxRate": "%0.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Vermont",
+            "stateCode": "VT",
+            "slug": "vermont",
+            "taxRate": "%6.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Virginia",
+            "stateCode": "VA",
+            "slug": "virginia",
+            "taxRate": "%4.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Washington",
+            "stateCode": "WA",
+            "slug": "washington",
+            "taxRate": "%0.00",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "West Virginia",
+            "stateCode": "WV",
+            "slug": "west-virginia",
+            "taxRate": "%6.50",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Wisconsin",
+            "stateCode": "WI",
+            "slug": "wisconsin",
+            "taxRate": "%7.65",
+            "minimumLegalAge": 18
+        },
+        {
+            "state": "Wyoming",
+            "stateCode": "WY",
+            "slug": "wyoming",
+            "taxRate": "%0.00",
+            "minimumLegalAge": 18
+        }
+    ]
+}
+
+{
+    "status": "success",
+    "message": "ok",
+    "messageTR": "ok",
+    "systemTime": 1717454301,
+    "endpoint": "lottery-results/states/game-list",
+    "rowCount": 8,
+    "creditUsed": 8,
+    "data": [
+        {
+            "id": 162,
+            "gameName": "Pick 3 Midday",
+            "logo": "https://nosycdn.com/api/lotto/ks-pick-3-midday-kansas.svg",
+            "drawTimezone": "America/Chicago",
+            "drawTime": "13:10:00",
+            "stopSaleTime": "12:59:00",
+            "claimDeadline": 365,
+            "allowZero": true,
+            "minBall": 0,
+            "maxBall": 9,
+            "drawnNumbers": 3,
+            "selectableBalls": 3,
+            "minimumSelectableBalls": 3,
+            "uniqueMainNumbers": 0,
+            "uniqueExtraNumbers": null,
+            "allowDuplicates": true,
+            "additionalNumbers": [],
+            "bonusNumbers": [],
+            "prizeMultipliers": [],
+            "mainDrawName": null,
+            "state": {
+                "state": "Kansas",
+                "stateCode": "KS",
+                "slug": "kansas",
+                "taxRate": "%5.00",
+                "minimumLegalAge": 18
+            },
+            "statesWithMultiDraws": null,
+            "drawDays": {
+                "Sunday": true,
+                "Monday": true,
+                "Tuesday": true,
+                "Wednesday": true,
+                "Thursday": true,
+                "Friday": true,
+                "Saturday": true
+            }
+        },
+        {
+            "id": 163,
+            "gameName": "Pick 3 Evening",
+            "logo": "https://nosycdn.com/api/lotto/ks-pick-3-evening-kansas.svg",
+            "drawTimezone": "America/Chicago",
+            "drawTime": "21:10:00",
+            "stopSaleTime": "20:59:00",
+            "claimDeadline": 365,
+            "allowZero": true,
+            "minBall": 0,
+            "maxBall": 9,
+            "drawnNumbers": 3,
+            "selectableBalls": 3,
+            "minimumSelectableBalls": 3,
+            "uniqueMainNumbers": 0,
+            "uniqueExtraNumbers": null,
+            "allowDuplicates": true,
+            "additionalNumbers": [],
+            "bonusNumbers": [],
+            "prizeMultipliers": [],
+            "mainDrawName": null,
+            "state": {
+                "state": "Kansas",
+                "stateCode": "KS",
+                "slug": "kansas",
+                "taxRate": "%5.00",
+                "minimumLegalAge": 18
+            },
+            "statesWithMultiDraws": null,
+            "drawDays": {
+                "Sunday": true,
+                "Monday": true,
+                "Tuesday": true,
+                "Wednesday": true,
+                "Thursday": true,
+                "Friday": true,
+                "Saturday": true
+            }
+        },
+        {
+            "id": 164,
+            "gameName": "Super Kansas Cash",
+            "logo": "https://nosycdn.com/api/lotto/ks-super-kansas-cash-kansas.svg",
+            "drawTimezone": "America/Chicago",
+            "drawTime": "21:10:00",
+            "stopSaleTime": "20:59:00",
+            "claimDeadline": 365,
+            "allowZero": false,
+            "minBall": 1,
+            "maxBall": 32,
+            "drawnNumbers": 5,
+            "selectableBalls": 5,
+            "minimumSelectableBalls": 5,
+            "uniqueMainNumbers": 1,
+            "uniqueExtraNumbers": 1,
+            "allowDuplicates": false,
+            "additionalNumbers": [
+                {
+                    "playerPicked": true,
+                    "name": "cash_ball",
+                    "minBall": 1,
+                    "maxBall": 25,
+                    "allowZero": false,
+                    "isString": false,
+                    "isMultiplier": false,
+                    "allowedValues": null
+                }
+            ],
+            "bonusNumbers": [
+                {
+                    "name": "Cash Ball",
+                    "abbreviation": "CB",
+                    "isMultiplier": false,
+                    "variant": null
+                }
+            ],
+            "prizeMultipliers": [],
+            "mainDrawName": null,
+            "state": {
+                "state": "Kansas",
+                "stateCode": "KS",
+                "slug": "kansas",
+                "taxRate": "%5.00",
+                "minimumLegalAge": 18
+            },
+            "statesWithMultiDraws": null,
+            "drawDays": {
+                "Sunday": false,
+                "Monday": true,
+                "Tuesday": false,
+                "Wednesday": true,
+                "Thursday": false,
+                "Friday": false,
+                "Saturday": true
+            }
+        },
+        {
+            "id": 165,
+            "gameName": "Powerball",
+            "logo": "https://nosycdn.com/api/lotto/ks-powerball-kansas.svg",
+            "drawTimezone": "America/New_York",
+            "drawTime": "22:59:00",
+            "stopSaleTime": "22:00:00",
+            "claimDeadline": 365,
+            "allowZero": false,
+            "minBall": 1,
+            "maxBall": 69,
+            "drawnNumbers": 5,
+            "selectableBalls": 5,
+            "minimumSelectableBalls": 5,
+            "uniqueMainNumbers": 1,
+            "uniqueExtraNumbers": 0,
+            "allowDuplicates": false,
+            "additionalNumbers": [
+                {
+                    "playerPicked": true,
+                    "name": "powerball",
+                    "minBall": 1,
+                    "maxBall": 26,
+                    "allowZero": false,
+                    "isString": false,
+                    "isMultiplier": false,
+                    "allowedValues": null
+                },
+                {
+                    "playerPicked": false,
+                    "name": "powerplay",
+                    "minBall": 2,
+                    "maxBall": 10,
+                    "allowZero": false,
+                    "isString": false,
+                    "isMultiplier": true,
+                    "allowedValues": [
+                        2,
+                        3,
+                        4,
+                        5,
+                        10
+                    ]
+                }
+            ],
+            "bonusNumbers": [
+                {
+                    "name": "Powerball",
+                    "abbreviation": "PB",
+                    "isMultiplier": false,
+                    "variant": null
+                }
+            ],
+            "prizeMultipliers": [
+                {
+                    "name": "Power Play",
+                    "abbreviation": "PP",
+                    "isMultiplier": true,
+                    "variant": null
+                }
+            ],
+            "mainDrawName": "Main draw",
+            "state": {
+                "state": "Kansas",
+                "stateCode": "KS",
+                "slug": "kansas",
+                "taxRate": "%5.00",
+                "minimumLegalAge": 18
+            },
+            "statesWithMultiDraws": [
+                "CO",
+                "FL",
+                "IN",
+                "MD",
+                "MI",
+                "MO",
+                "NJ",
+                "PA",
+                "PR",
+                "SC",
+                "SD",
+                "TN",
+                "WA",
+                "MT",
+                "NE",
+                "OK",
+                "ID",
+                "IA",
+                "MS",
+                "NM"
+            ],
+            "drawDays": {
+                "Sunday": false,
+                "Monday": true,
+                "Tuesday": false,
+                "Wednesday": true,
+                "Thursday": false,
+                "Friday": false,
+                "Saturday": true
+            }
+        },
+        {
+            "id": 166,
+            "gameName": "Mega Millions",
+            "logo": "https://nosycdn.com/api/lotto/ks-mega-millions-kansas.svg",
+            "drawTimezone": "America/Detroit",
+            "drawTime": "23:00:00",
+            "stopSaleTime": "22:45:00",
+            "claimDeadline": 365,
+            "allowZero": false,
+            "minBall": 1,
+            "maxBall": 70,
+            "drawnNumbers": 5,
+            "selectableBalls": 5,
+            "minimumSelectableBalls": 5,
+            "uniqueMainNumbers": 1,
+            "uniqueExtraNumbers": 0,
+            "allowDuplicates": false,
+            "additionalNumbers": [
+                {
+                    "playerPicked": true,
+                    "name": "mega_ball",
+                    "minBall": 1,
+                    "maxBall": 25,
+                    "allowZero": false,
+                    "isString": false,
+                    "isMultiplier": false,
+                    "allowedValues": null
+                },
+                {
+                    "playerPicked": false,
+                    "name": "megaplier",
+                    "minBall": 2,
+                    "maxBall": 5,
+                    "allowZero": false,
+                    "isString": false,
+                    "isMultiplier": true,
+                    "allowedValues": [
+                        2,
+                        3,
+                        4,
+                        5
+                    ]
+                }
+            ],
+            "bonusNumbers": [
+                {
+                    "name": "Mega Ball",
+                    "abbreviation": "MB",
+                    "isMultiplier": false,
+                    "variant": null
+                }
+            ],
+            "prizeMultipliers": [
+                {
+                    "name": "Megaplier",
+                    "abbreviation": "M",
+                    "isMultiplier": true,
+                    "variant": null
+                }
+            ],
+            "mainDrawName": null,
+            "state": {
+                "state": "Kansas",
+                "stateCode": "KS",
+                "slug": "kansas",
+                "taxRate": "%5.00",
+                "minimumLegalAge": 18
+            },
+            "statesWithMultiDraws": [],
+            "drawDays": {
+                "Sunday": false,
+                "Monday": false,
+                "Tuesday": true,
+                "Wednesday": false,
+                "Thursday": false,
+                "Friday": true,
+                "Saturday": false
+            }
+        },
+        {
+            "id": 167,
+            "gameName": "Lotto America",
+            "logo": "https://nosycdn.com/api/lotto/ks-lotto-america-kansas.svg",
+            "drawTimezone": "America/Chicago",
+            "drawTime": "21:15:00",
+            "stopSaleTime": "20:14:00",
+            "claimDeadline": 365,
+            "allowZero": false,
+            "minBall": 1,
+            "maxBall": 52,
+            "drawnNumbers": 5,
+            "selectableBalls": 5,
+            "minimumSelectableBalls": 5,
+            "uniqueMainNumbers": 1,
+            "uniqueExtraNumbers": 0,
+            "allowDuplicates": false,
+            "additionalNumbers": [
+                {
+                    "playerPicked": true,
+                    "name": "star_ball",
+                    "minBall": 1,
+                    "maxBall": 10,
+                    "allowZero": false,
+                    "isString": false,
+                    "isMultiplier": false,
+                    "allowedValues": null
+                },
+                {
+                    "playerPicked": false,
+                    "name": "all_star_bonus",
+                    "minBall": 2,
+                    "maxBall": 5,
+                    "allowZero": false,
+                    "isString": false,
+                    "isMultiplier": true,
+                    "allowedValues": [
+                        2,
+                        3,
+                        4,
+                        5
+                    ]
+                }
+            ],
+            "bonusNumbers": [
+                {
+                    "name": "Star Ball",
+                    "abbreviation": "SB",
+                    "isMultiplier": false,
+                    "variant": null
+                }
+            ],
+            "prizeMultipliers": [
+                {
+                    "name": "All Star Bonus",
+                    "abbreviation": "ASB",
+                    "isMultiplier": true,
+                    "variant": null
+                }
+            ],
+            "mainDrawName": null,
+            "state": {
+                "state": "Kansas",
+                "stateCode": "KS",
+                "slug": "kansas",
+                "taxRate": "%5.00",
+                "minimumLegalAge": 18
+            },
+            "statesWithMultiDraws": [],
+            "drawDays": {
+                "Sunday": false,
+                "Monday": true,
+                "Tuesday": false,
+                "Wednesday": true,
+                "Thursday": false,
+                "Friday": false,
+                "Saturday": true
+            }
+        },
+        {
+            "id": 168,
+            "gameName": "Lucky for Life",
+            "logo": "https://nosycdn.com/api/lotto/ks-lucky-for-life-kansas.svg",
+            "drawTimezone": "America/New_York",
+            "drawTime": "22:38:00",
+            "stopSaleTime": "21:30:00",
+            "claimDeadline": 365,
+            "allowZero": false,
+            "minBall": 1,
+            "maxBall": 48,
+            "drawnNumbers": 5,
+            "selectableBalls": 5,
+            "minimumSelectableBalls": 5,
+            "uniqueMainNumbers": 1,
+            "uniqueExtraNumbers": 1,
+            "allowDuplicates": false,
+            "additionalNumbers": [
+                {
+                    "playerPicked": true,
+                    "name": "lucky_ball",
+                    "minBall": 1,
+                    "maxBall": 18,
+                    "allowZero": false,
+                    "isString": false,
+                    "isMultiplier": false,
+                    "allowedValues": null
+                }
+            ],
+            "bonusNumbers": [
+                {
+                    "name": "Lucky Ball",
+                    "abbreviation": "LB",
+                    "isMultiplier": false,
+                    "variant": null
+                }
+            ],
+            "prizeMultipliers": [],
+            "mainDrawName": null,
+            "state": {
+                "state": "Kansas",
+                "stateCode": "KS",
+                "slug": "kansas",
+                "taxRate": "%5.00",
+                "minimumLegalAge": 18
+            },
+            "statesWithMultiDraws": [],
+            "drawDays": {
+                "Sunday": true,
+                "Monday": true,
+                "Tuesday": true,
+                "Wednesday": true,
+                "Thursday": true,
+                "Friday": true,
+                "Saturday": true
+            }
+        },
+        {
+            "id": 169,
+            "gameName": "2by2",
+            "logo": "https://nosycdn.com/api/lotto/ks-2by2-kansas.svg",
+            "drawTimezone": "America/Chicago",
+            "drawTime": "21:30:00",
+            "stopSaleTime": "20:59:00",
+            "claimDeadline": 365,
+            "allowZero": false,
+            "minBall": 1,
+            "maxBall": 26,
+            "drawnNumbers": 4,
+            "selectableBalls": 4,
+            "minimumSelectableBalls": 4,
+            "uniqueMainNumbers": 0,
+            "uniqueExtraNumbers": null,
+            "allowDuplicates": false,
+            "additionalNumbers": [],
+            "bonusNumbers": [],
+            "prizeMultipliers": [],
+            "mainDrawName": null,
+            "state": {
+                "state": "Kansas",
+                "stateCode": "KS",
+                "slug": "kansas",
+                "taxRate": "%5.00",
+                "minimumLegalAge": 18
+            },
+            "statesWithMultiDraws": [],
+            "drawDays": {
+                "Sunday": true,
+                "Monday": true,
+                "Tuesday": true,
+                "Wednesday": true,
+                "Thursday": true,
+                "Friday": true,
+                "Saturday": true
+            }
+        }
+    ]
+}
+
+{
+    "status": "success",
+    "message": "ok",
+    "messageTR": "ok",
+    "systemTime": 1717454467,
+    "endpoint": "lottery-results/past-draws-dates",
+    "rowCount": 1,
+    "creditUsed": 1,
+    "data": {
+        "gameDetails": {
+            "id": 66,
+            "gameName": "Lucky for Life",
+            "logo": "https://nosycdn.com/api/lotto/de-lucky-for-life-delaware.svg",
+            "drawTimezone": "America/New_York",
+            "drawTime": "22:38:00",
+            "stopSaleTime": "21:30:00",
+            "claimDeadline": 365,
+            "allowZero": false,
+            "minBall": 1,
+            "maxBall": 48,
+            "drawnNumbers": 5,
+            "selectableBalls": 5,
+            "minimumSelectableBalls": 5,
+            "uniqueMainNumbers": 1,
+            "uniqueExtraNumbers": 1,
+            "allowDuplicates": false,
+            "additionalNumbers": [
+                {
+                    "playerPicked": true,
+                    "name": "lucky_ball",
+                    "minBall": 1,
+                    "maxBall": 18,
+                    "allowZero": false,
+                    "isString": false,
+                    "isMultiplier": false,
+                    "allowedValues": null
+                }
+            ],
+            "bonusNumbers": [
+                {
+                    "name": "Lucky Ball",
+                    "abbreviation": "LB",
+                    "isMultiplier": false,
+                    "variant": null
+                }
+            ],
+            "prizeMultipliers": [],
+            "mainDrawName": null,
+            "state": {
+                "state": "Delaware",
+                "stateCode": "DE",
+                "slug": "delaware",
+                "taxRate": "%0.00",
+                "minimumLegalAge": 18
+            },
+            "statesWithMultiDraws": [],
+            "drawDays": {
+                "Sunday": true,
+                "Monday": true,
+                "Tuesday": true,
+                "Wednesday": true,
+                "Thursday": true,
+                "Friday": true,
+                "Saturday": true
+            }
+        },
+        "date": [
+            {
+                "drawID": 98102,
+                "drawNumber": 1724,
+                "drawDate": "2024-06-02",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-06-02 22:38:00"
+            },
+            {
+                "drawID": 97980,
+                "drawNumber": 1723,
+                "drawDate": "2024-06-01",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-06-01 22:38:00"
+            },
+            {
+                "drawID": 97883,
+                "drawNumber": 1722,
+                "drawDate": "2024-05-31",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-31 22:38:00"
+            },
+            {
+                "drawID": 46765,
+                "drawNumber": 1721,
+                "drawDate": "2024-05-30",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-30 22:38:00"
+            },
+            {
+                "drawID": 3140,
+                "drawNumber": 1720,
+                "drawDate": "2024-05-29",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-29 22:38:00"
+            },
+            {
+                "drawID": 3141,
+                "drawNumber": 1719,
+                "drawDate": "2024-05-28",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-28 22:38:00"
+            },
+            {
+                "drawID": 3142,
+                "drawNumber": 1718,
+                "drawDate": "2024-05-27",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-27 22:38:00"
+            },
+            {
+                "drawID": 3143,
+                "drawNumber": 1717,
+                "drawDate": "2024-05-26",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-26 22:38:00"
+            },
+            {
+                "drawID": 3144,
+                "drawNumber": 1716,
+                "drawDate": "2024-05-25",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-25 22:38:00"
+            },
+            {
+                "drawID": 3145,
+                "drawNumber": 1715,
+                "drawDate": "2024-05-24",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-24 22:38:00"
+            },
+            {
+                "drawID": 3146,
+                "drawNumber": 1714,
+                "drawDate": "2024-05-23",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-23 22:38:00"
+            },
+            {
+                "drawID": 3147,
+                "drawNumber": 1713,
+                "drawDate": "2024-05-22",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-22 22:38:00"
+            },
+            {
+                "drawID": 3148,
+                "drawNumber": 1712,
+                "drawDate": "2024-05-21",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-21 22:38:00"
+            },
+            {
+                "drawID": 3149,
+                "drawNumber": 1711,
+                "drawDate": "2024-05-20",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-20 22:38:00"
+            },
+            {
+                "drawID": 3150,
+                "drawNumber": 1710,
+                "drawDate": "2024-05-19",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-19 22:38:00"
+            },
+            {
+                "drawID": 3151,
+                "drawNumber": 1709,
+                "drawDate": "2024-05-18",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-18 22:38:00"
+            },
+            {
+                "drawID": 3152,
+                "drawNumber": 1708,
+                "drawDate": "2024-05-17",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-17 22:38:00"
+            },
+            {
+                "drawID": 3153,
+                "drawNumber": 1707,
+                "drawDate": "2024-05-16",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-16 22:38:00"
+            },
+            {
+                "drawID": 3154,
+                "drawNumber": 1706,
+                "drawDate": "2024-05-15",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-15 22:38:00"
+            },
+            {
+                "drawID": 3155,
+                "drawNumber": 1705,
+                "drawDate": "2024-05-14",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-14 22:38:00"
+            },
+            {
+                "drawID": 3156,
+                "drawNumber": 1704,
+                "drawDate": "2024-05-13",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-13 22:38:00"
+            },
+            {
+                "drawID": 3157,
+                "drawNumber": 1703,
+                "drawDate": "2024-05-12",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-12 22:38:00"
+            },
+            {
+                "drawID": 3158,
+                "drawNumber": 1702,
+                "drawDate": "2024-05-11",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-11 22:38:00"
+            },
+            {
+                "drawID": 3159,
+                "drawNumber": 1701,
+                "drawDate": "2024-05-10",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-10 22:38:00"
+            },
+            {
+                "drawID": 3160,
+                "drawNumber": 1700,
+                "drawDate": "2024-05-09",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-09 22:38:00"
+            },
+            {
+                "drawID": 3161,
+                "drawNumber": 1699,
+                "drawDate": "2024-05-08",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-08 22:38:00"
+            },
+            {
+                "drawID": 3162,
+                "drawNumber": 1698,
+                "drawDate": "2024-05-07",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-07 22:38:00"
+            },
+            {
+                "drawID": 3163,
+                "drawNumber": 1697,
+                "drawDate": "2024-05-06",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-06 22:38:00"
+            },
+            {
+                "drawID": 3164,
+                "drawNumber": 1696,
+                "drawDate": "2024-05-05",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-05 22:38:00"
+            },
+            {
+                "drawID": 3165,
+                "drawNumber": 1695,
+                "drawDate": "2024-05-04",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-04 22:38:00"
+            },
+            {
+                "drawID": 3166,
+                "drawNumber": 1694,
+                "drawDate": "2024-05-03",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-03 22:38:00"
+            },
+            {
+                "drawID": 3167,
+                "drawNumber": 1693,
+                "drawDate": "2024-05-02",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-02 22:38:00"
+            },
+            {
+                "drawID": 3168,
+                "drawNumber": 1692,
+                "drawDate": "2024-05-01",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-05-01 22:38:00"
+            },
+            {
+                "drawID": 3169,
+                "drawNumber": 1691,
+                "drawDate": "2024-04-30",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-30 22:38:00"
+            },
+            {
+                "drawID": 3170,
+                "drawNumber": 1690,
+                "drawDate": "2024-04-29",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-29 22:38:00"
+            },
+            {
+                "drawID": 3171,
+                "drawNumber": 1689,
+                "drawDate": "2024-04-28",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-28 22:38:00"
+            },
+            {
+                "drawID": 3172,
+                "drawNumber": 1688,
+                "drawDate": "2024-04-27",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-27 22:38:00"
+            },
+            {
+                "drawID": 3173,
+                "drawNumber": 1687,
+                "drawDate": "2024-04-26",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-26 22:38:00"
+            },
+            {
+                "drawID": 3174,
+                "drawNumber": 1686,
+                "drawDate": "2024-04-25",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-25 22:38:00"
+            },
+            {
+                "drawID": 3175,
+                "drawNumber": 1685,
+                "drawDate": "2024-04-24",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-24 22:38:00"
+            },
+            {
+                "drawID": 3176,
+                "drawNumber": 1684,
+                "drawDate": "2024-04-23",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-23 22:38:00"
+            },
+            {
+                "drawID": 3177,
+                "drawNumber": 1683,
+                "drawDate": "2024-04-22",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-22 22:38:00"
+            },
+            {
+                "drawID": 3178,
+                "drawNumber": 1682,
+                "drawDate": "2024-04-21",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-21 22:38:00"
+            },
+            {
+                "drawID": 3179,
+                "drawNumber": 1681,
+                "drawDate": "2024-04-20",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-20 22:38:00"
+            },
+            {
+                "drawID": 3180,
+                "drawNumber": 1680,
+                "drawDate": "2024-04-19",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-19 22:38:00"
+            },
+            {
+                "drawID": 3181,
+                "drawNumber": 1679,
+                "drawDate": "2024-04-18",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-18 22:38:00"
+            },
+            {
+                "drawID": 3182,
+                "drawNumber": 1678,
+                "drawDate": "2024-04-17",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-17 22:38:00"
+            },
+            {
+                "drawID": 3183,
+                "drawNumber": 1677,
+                "drawDate": "2024-04-16",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-16 22:38:00"
+            },
+            {
+                "drawID": 3184,
+                "drawNumber": 1676,
+                "drawDate": "2024-04-15",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-15 22:38:00"
+            },
+            {
+                "drawID": 3185,
+                "drawNumber": 1675,
+                "drawDate": "2024-04-14",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-14 22:38:00"
+            },
+            {
+                "drawID": 3186,
+                "drawNumber": 1674,
+                "drawDate": "2024-04-13",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-13 22:38:00"
+            },
+            {
+                "drawID": 3187,
+                "drawNumber": 1673,
+                "drawDate": "2024-04-12",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-12 22:38:00"
+            },
+            {
+                "drawID": 3188,
+                "drawNumber": 1672,
+                "drawDate": "2024-04-11",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-11 22:38:00"
+            },
+            {
+                "drawID": 3189,
+                "drawNumber": 1671,
+                "drawDate": "2024-04-10",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-10 22:38:00"
+            },
+            {
+                "drawID": 3190,
+                "drawNumber": 1670,
+                "drawDate": "2024-04-09",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-09 22:38:00"
+            },
+            {
+                "drawID": 3191,
+                "drawNumber": 1669,
+                "drawDate": "2024-04-08",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-08 22:38:00"
+            },
+            {
+                "drawID": 3192,
+                "drawNumber": 1668,
+                "drawDate": "2024-04-07",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-07 22:38:00"
+            },
+            {
+                "drawID": 3193,
+                "drawNumber": 1667,
+                "drawDate": "2024-04-06",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-06 22:38:00"
+            },
+            {
+                "drawID": 3194,
+                "drawNumber": 1666,
+                "drawDate": "2024-04-05",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-05 22:38:00"
+            },
+            {
+                "drawID": 3195,
+                "drawNumber": 1665,
+                "drawDate": "2024-04-04",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-04 22:38:00"
+            },
+            {
+                "drawID": 3196,
+                "drawNumber": 1664,
+                "drawDate": "2024-04-03",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-03 22:38:00"
+            },
+            {
+                "drawID": 3197,
+                "drawNumber": 1663,
+                "drawDate": "2024-04-02",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-02 22:38:00"
+            },
+            {
+                "drawID": 3198,
+                "drawNumber": 1662,
+                "drawDate": "2024-04-01",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-04-01 22:38:00"
+            },
+            {
+                "drawID": 3199,
+                "drawNumber": 1661,
+                "drawDate": "2024-03-31",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-31 22:38:00"
+            },
+            {
+                "drawID": 3200,
+                "drawNumber": 1660,
+                "drawDate": "2024-03-30",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-30 22:38:00"
+            },
+            {
+                "drawID": 3201,
+                "drawNumber": 1659,
+                "drawDate": "2024-03-29",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-29 22:38:00"
+            },
+            {
+                "drawID": 3202,
+                "drawNumber": 1658,
+                "drawDate": "2024-03-28",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-28 22:38:00"
+            },
+            {
+                "drawID": 3203,
+                "drawNumber": 1657,
+                "drawDate": "2024-03-27",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-27 22:38:00"
+            },
+            {
+                "drawID": 3204,
+                "drawNumber": 1656,
+                "drawDate": "2024-03-26",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-26 22:38:00"
+            },
+            {
+                "drawID": 3205,
+                "drawNumber": 1655,
+                "drawDate": "2024-03-25",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-25 22:38:00"
+            },
+            {
+                "drawID": 3206,
+                "drawNumber": 1654,
+                "drawDate": "2024-03-24",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-24 22:38:00"
+            },
+            {
+                "drawID": 3207,
+                "drawNumber": 1653,
+                "drawDate": "2024-03-23",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-23 22:38:00"
+            },
+            {
+                "drawID": 3208,
+                "drawNumber": 1652,
+                "drawDate": "2024-03-22",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-22 22:38:00"
+            },
+            {
+                "drawID": 3209,
+                "drawNumber": 1651,
+                "drawDate": "2024-03-21",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-21 22:38:00"
+            },
+            {
+                "drawID": 3210,
+                "drawNumber": 1650,
+                "drawDate": "2024-03-20",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-20 22:38:00"
+            },
+            {
+                "drawID": 3211,
+                "drawNumber": 1649,
+                "drawDate": "2024-03-19",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-19 22:38:00"
+            },
+            {
+                "drawID": 3212,
+                "drawNumber": 1648,
+                "drawDate": "2024-03-18",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-18 22:38:00"
+            },
+            {
+                "drawID": 3213,
+                "drawNumber": 1647,
+                "drawDate": "2024-03-17",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-17 22:38:00"
+            },
+            {
+                "drawID": 3214,
+                "drawNumber": 1646,
+                "drawDate": "2024-03-16",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-16 22:38:00"
+            },
+            {
+                "drawID": 3215,
+                "drawNumber": 1645,
+                "drawDate": "2024-03-15",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-15 22:38:00"
+            },
+            {
+                "drawID": 3216,
+                "drawNumber": 1644,
+                "drawDate": "2024-03-14",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-14 22:38:00"
+            },
+            {
+                "drawID": 3217,
+                "drawNumber": 1643,
+                "drawDate": "2024-03-13",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-13 22:38:00"
+            },
+            {
+                "drawID": 3218,
+                "drawNumber": 1642,
+                "drawDate": "2024-03-12",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-12 22:38:00"
+            },
+            {
+                "drawID": 3219,
+                "drawNumber": 1641,
+                "drawDate": "2024-03-11",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-11 22:38:00"
+            },
+            {
+                "drawID": 3220,
+                "drawNumber": 1640,
+                "drawDate": "2024-03-10",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-10 22:38:00"
+            },
+            {
+                "drawID": 3221,
+                "drawNumber": 1639,
+                "drawDate": "2024-03-09",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-09 22:38:00"
+            },
+            {
+                "drawID": 3222,
+                "drawNumber": 1638,
+                "drawDate": "2024-03-08",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-08 22:38:00"
+            },
+            {
+                "drawID": 3223,
+                "drawNumber": 1637,
+                "drawDate": "2024-03-07",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-07 22:38:00"
+            },
+            {
+                "drawID": 3224,
+                "drawNumber": 1636,
+                "drawDate": "2024-03-06",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-06 22:38:00"
+            },
+            {
+                "drawID": 3225,
+                "drawNumber": 1635,
+                "drawDate": "2024-03-05",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-05 22:38:00"
+            },
+            {
+                "drawID": 3226,
+                "drawNumber": 1634,
+                "drawDate": "2024-03-04",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-04 22:38:00"
+            },
+            {
+                "drawID": 3227,
+                "drawNumber": 1633,
+                "drawDate": "2024-03-03",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-03 22:38:00"
+            },
+            {
+                "drawID": 3228,
+                "drawNumber": 1632,
+                "drawDate": "2024-03-02",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-02 22:38:00"
+            },
+            {
+                "drawID": 3229,
+                "drawNumber": 1631,
+                "drawDate": "2024-03-01",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-03-01 22:38:00"
+            },
+            {
+                "drawID": 3230,
+                "drawNumber": 1630,
+                "drawDate": "2024-02-29",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-29 22:38:00"
+            },
+            {
+                "drawID": 3231,
+                "drawNumber": 1629,
+                "drawDate": "2024-02-28",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-28 22:38:00"
+            },
+            {
+                "drawID": 3232,
+                "drawNumber": 1628,
+                "drawDate": "2024-02-27",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-27 22:38:00"
+            },
+            {
+                "drawID": 3233,
+                "drawNumber": 1627,
+                "drawDate": "2024-02-26",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-26 22:38:00"
+            },
+            {
+                "drawID": 3234,
+                "drawNumber": 1626,
+                "drawDate": "2024-02-25",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-25 22:38:00"
+            },
+            {
+                "drawID": 3235,
+                "drawNumber": 1625,
+                "drawDate": "2024-02-24",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-24 22:38:00"
+            },
+            {
+                "drawID": 3236,
+                "drawNumber": 1624,
+                "drawDate": "2024-02-23",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-23 22:38:00"
+            },
+            {
+                "drawID": 3237,
+                "drawNumber": 1623,
+                "drawDate": "2024-02-22",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-22 22:38:00"
+            },
+            {
+                "drawID": 3238,
+                "drawNumber": 1622,
+                "drawDate": "2024-02-21",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-21 22:38:00"
+            },
+            {
+                "drawID": 3239,
+                "drawNumber": 1621,
+                "drawDate": "2024-02-20",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-20 22:38:00"
+            },
+            {
+                "drawID": 3240,
+                "drawNumber": 1620,
+                "drawDate": "2024-02-19",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-19 22:38:00"
+            },
+            {
+                "drawID": 3241,
+                "drawNumber": 1619,
+                "drawDate": "2024-02-18",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-18 22:38:00"
+            },
+            {
+                "drawID": 3242,
+                "drawNumber": 1618,
+                "drawDate": "2024-02-17",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-17 22:38:00"
+            },
+            {
+                "drawID": 3243,
+                "drawNumber": 1617,
+                "drawDate": "2024-02-16",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-16 22:38:00"
+            },
+            {
+                "drawID": 3244,
+                "drawNumber": 1616,
+                "drawDate": "2024-02-15",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-15 22:38:00"
+            },
+            {
+                "drawID": 3245,
+                "drawNumber": 1615,
+                "drawDate": "2024-02-14",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-14 22:38:00"
+            },
+            {
+                "drawID": 3246,
+                "drawNumber": 1614,
+                "drawDate": "2024-02-13",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-13 22:38:00"
+            },
+            {
+                "drawID": 3247,
+                "drawNumber": 1613,
+                "drawDate": "2024-02-12",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-12 22:38:00"
+            },
+            {
+                "drawID": 3248,
+                "drawNumber": 1612,
+                "drawDate": "2024-02-11",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-11 22:38:00"
+            },
+            {
+                "drawID": 3249,
+                "drawNumber": 1611,
+                "drawDate": "2024-02-10",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-10 22:38:00"
+            },
+            {
+                "drawID": 3250,
+                "drawNumber": 1610,
+                "drawDate": "2024-02-09",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-09 22:38:00"
+            },
+            {
+                "drawID": 3251,
+                "drawNumber": 1609,
+                "drawDate": "2024-02-08",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-08 22:38:00"
+            },
+            {
+                "drawID": 3252,
+                "drawNumber": 1608,
+                "drawDate": "2024-02-07",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-07 22:38:00"
+            },
+            {
+                "drawID": 3253,
+                "drawNumber": 1607,
+                "drawDate": "2024-02-06",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-06 22:38:00"
+            },
+            {
+                "drawID": 3254,
+                "drawNumber": 1606,
+                "drawDate": "2024-02-05",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-05 22:38:00"
+            },
+            {
+                "drawID": 3255,
+                "drawNumber": 1605,
+                "drawDate": "2024-02-04",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-04 22:38:00"
+            },
+            {
+                "drawID": 3256,
+                "drawNumber": 1604,
+                "drawDate": "2024-02-03",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-03 22:38:00"
+            },
+            {
+                "drawID": 3257,
+                "drawNumber": 1603,
+                "drawDate": "2024-02-02",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-02 22:38:00"
+            },
+            {
+                "drawID": 3258,
+                "drawNumber": 1602,
+                "drawDate": "2024-02-01",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-02-01 22:38:00"
+            },
+            {
+                "drawID": 3259,
+                "drawNumber": 1601,
+                "drawDate": "2024-01-31",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-31 22:38:00"
+            },
+            {
+                "drawID": 3260,
+                "drawNumber": 1600,
+                "drawDate": "2024-01-30",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-30 22:38:00"
+            },
+            {
+                "drawID": 3261,
+                "drawNumber": 1599,
+                "drawDate": "2024-01-29",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-29 22:38:00"
+            },
+            {
+                "drawID": 3262,
+                "drawNumber": 1598,
+                "drawDate": "2024-01-28",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-28 22:38:00"
+            },
+            {
+                "drawID": 3263,
+                "drawNumber": 1597,
+                "drawDate": "2024-01-27",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-27 22:38:00"
+            },
+            {
+                "drawID": 3264,
+                "drawNumber": 1596,
+                "drawDate": "2024-01-26",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-26 22:38:00"
+            },
+            {
+                "drawID": 3265,
+                "drawNumber": 1595,
+                "drawDate": "2024-01-25",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-25 22:38:00"
+            },
+            {
+                "drawID": 3266,
+                "drawNumber": 1594,
+                "drawDate": "2024-01-24",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-24 22:38:00"
+            },
+            {
+                "drawID": 3267,
+                "drawNumber": 1593,
+                "drawDate": "2024-01-23",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-23 22:38:00"
+            },
+            {
+                "drawID": 3268,
+                "drawNumber": 1592,
+                "drawDate": "2024-01-22",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-22 22:38:00"
+            },
+            {
+                "drawID": 3269,
+                "drawNumber": 1591,
+                "drawDate": "2024-01-21",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-21 22:38:00"
+            },
+            {
+                "drawID": 3270,
+                "drawNumber": 1590,
+                "drawDate": "2024-01-20",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-20 22:38:00"
+            },
+            {
+                "drawID": 3271,
+                "drawNumber": 1589,
+                "drawDate": "2024-01-19",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-19 22:38:00"
+            },
+            {
+                "drawID": 3272,
+                "drawNumber": 1588,
+                "drawDate": "2024-01-18",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-18 22:38:00"
+            },
+            {
+                "drawID": 3273,
+                "drawNumber": 1587,
+                "drawDate": "2024-01-17",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-17 22:38:00"
+            },
+            {
+                "drawID": 3274,
+                "drawNumber": 1586,
+                "drawDate": "2024-01-16",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-16 22:38:00"
+            },
+            {
+                "drawID": 3275,
+                "drawNumber": 1585,
+                "drawDate": "2024-01-15",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-15 22:38:00"
+            },
+            {
+                "drawID": 3276,
+                "drawNumber": 1584,
+                "drawDate": "2024-01-14",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-14 22:38:00"
+            },
+            {
+                "drawID": 3277,
+                "drawNumber": 1583,
+                "drawDate": "2024-01-13",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-13 22:38:00"
+            },
+            {
+                "drawID": 3278,
+                "drawNumber": 1582,
+                "drawDate": "2024-01-12",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-12 22:38:00"
+            },
+            {
+                "drawID": 3279,
+                "drawNumber": 1581,
+                "drawDate": "2024-01-11",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-11 22:38:00"
+            },
+            {
+                "drawID": 3280,
+                "drawNumber": 1580,
+                "drawDate": "2024-01-10",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-10 22:38:00"
+            },
+            {
+                "drawID": 3281,
+                "drawNumber": 1579,
+                "drawDate": "2024-01-09",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-09 22:38:00"
+            },
+            {
+                "drawID": 3282,
+                "drawNumber": 1578,
+                "drawDate": "2024-01-08",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-08 22:38:00"
+            },
+            {
+                "drawID": 3283,
+                "drawNumber": 1577,
+                "drawDate": "2024-01-07",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-07 22:38:00"
+            },
+            {
+                "drawID": 3284,
+                "drawNumber": 1576,
+                "drawDate": "2024-01-06",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-06 22:38:00"
+            },
+            {
+                "drawID": 3285,
+                "drawNumber": 1575,
+                "drawDate": "2024-01-05",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-05 22:38:00"
+            },
+            {
+                "drawID": 3286,
+                "drawNumber": 1574,
+                "drawDate": "2024-01-04",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-04 22:38:00"
+            },
+            {
+                "drawID": 3287,
+                "drawNumber": 1573,
+                "drawDate": "2024-01-03",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-03 22:38:00"
+            },
+            {
+                "drawID": 3288,
+                "drawNumber": 1572,
+                "drawDate": "2024-01-02",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-02 22:38:00"
+            },
+            {
+                "drawID": 3289,
+                "drawNumber": 1571,
+                "drawDate": "2024-01-01",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2024-01-01 22:38:00"
+            },
+            {
+                "drawID": 3290,
+                "drawNumber": 1570,
+                "drawDate": "2023-12-31",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-31 22:38:00"
+            },
+            {
+                "drawID": 3291,
+                "drawNumber": 1569,
+                "drawDate": "2023-12-30",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-30 22:38:00"
+            },
+            {
+                "drawID": 3292,
+                "drawNumber": 1568,
+                "drawDate": "2023-12-29",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-29 22:38:00"
+            },
+            {
+                "drawID": 3293,
+                "drawNumber": 1567,
+                "drawDate": "2023-12-28",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-28 22:38:00"
+            },
+            {
+                "drawID": 3294,
+                "drawNumber": 1566,
+                "drawDate": "2023-12-27",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-27 22:38:00"
+            },
+            {
+                "drawID": 3295,
+                "drawNumber": 1565,
+                "drawDate": "2023-12-26",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-26 22:38:00"
+            },
+            {
+                "drawID": 3296,
+                "drawNumber": 1564,
+                "drawDate": "2023-12-25",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-25 22:38:00"
+            },
+            {
+                "drawID": 3297,
+                "drawNumber": 1563,
+                "drawDate": "2023-12-24",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-24 22:38:00"
+            },
+            {
+                "drawID": 3298,
+                "drawNumber": 1562,
+                "drawDate": "2023-12-23",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-23 22:38:00"
+            },
+            {
+                "drawID": 3299,
+                "drawNumber": 1561,
+                "drawDate": "2023-12-22",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-22 22:38:00"
+            },
+            {
+                "drawID": 3300,
+                "drawNumber": 1560,
+                "drawDate": "2023-12-21",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-21 22:38:00"
+            },
+            {
+                "drawID": 3301,
+                "drawNumber": 1559,
+                "drawDate": "2023-12-20",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-20 22:38:00"
+            },
+            {
+                "drawID": 3302,
+                "drawNumber": 1558,
+                "drawDate": "2023-12-19",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-19 22:38:00"
+            },
+            {
+                "drawID": 3303,
+                "drawNumber": 1557,
+                "drawDate": "2023-12-18",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-18 22:38:00"
+            },
+            {
+                "drawID": 3304,
+                "drawNumber": 1556,
+                "drawDate": "2023-12-17",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-17 22:38:00"
+            },
+            {
+                "drawID": 3305,
+                "drawNumber": 1555,
+                "drawDate": "2023-12-16",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-16 22:38:00"
+            },
+            {
+                "drawID": 3306,
+                "drawNumber": 1554,
+                "drawDate": "2023-12-15",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-15 22:38:00"
+            },
+            {
+                "drawID": 3307,
+                "drawNumber": 1553,
+                "drawDate": "2023-12-14",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-14 22:38:00"
+            },
+            {
+                "drawID": 3308,
+                "drawNumber": 1552,
+                "drawDate": "2023-12-13",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-13 22:38:00"
+            },
+            {
+                "drawID": 3309,
+                "drawNumber": 1551,
+                "drawDate": "2023-12-12",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-12 22:38:00"
+            },
+            {
+                "drawID": 3310,
+                "drawNumber": 1550,
+                "drawDate": "2023-12-11",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-11 22:38:00"
+            },
+            {
+                "drawID": 3311,
+                "drawNumber": 1549,
+                "drawDate": "2023-12-10",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-10 22:38:00"
+            },
+            {
+                "drawID": 3312,
+                "drawNumber": 1548,
+                "drawDate": "2023-12-09",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-09 22:38:00"
+            },
+            {
+                "drawID": 3313,
+                "drawNumber": 1547,
+                "drawDate": "2023-12-08",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-08 22:38:00"
+            },
+            {
+                "drawID": 3314,
+                "drawNumber": 1546,
+                "drawDate": "2023-12-07",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-07 22:38:00"
+            },
+            {
+                "drawID": 3315,
+                "drawNumber": 1545,
+                "drawDate": "2023-12-06",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-06 22:38:00"
+            },
+            {
+                "drawID": 3316,
+                "drawNumber": 1544,
+                "drawDate": "2023-12-05",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-05 22:38:00"
+            },
+            {
+                "drawID": 3317,
+                "drawNumber": 1543,
+                "drawDate": "2023-12-04",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-04 22:38:00"
+            },
+            {
+                "drawID": 3318,
+                "drawNumber": 1542,
+                "drawDate": "2023-12-03",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-03 22:38:00"
+            },
+            {
+                "drawID": 3319,
+                "drawNumber": 1541,
+                "drawDate": "2023-12-02",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-02 22:38:00"
+            },
+            {
+                "drawID": 3320,
+                "drawNumber": 1540,
+                "drawDate": "2023-12-01",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-12-01 22:38:00"
+            },
+            {
+                "drawID": 3321,
+                "drawNumber": 1539,
+                "drawDate": "2023-11-30",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-30 22:38:00"
+            },
+            {
+                "drawID": 3322,
+                "drawNumber": 1538,
+                "drawDate": "2023-11-29",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-29 22:38:00"
+            },
+            {
+                "drawID": 3323,
+                "drawNumber": 1537,
+                "drawDate": "2023-11-28",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-28 22:38:00"
+            },
+            {
+                "drawID": 3324,
+                "drawNumber": 1536,
+                "drawDate": "2023-11-27",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-27 22:38:00"
+            },
+            {
+                "drawID": 3325,
+                "drawNumber": 1535,
+                "drawDate": "2023-11-26",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-26 22:38:00"
+            },
+            {
+                "drawID": 3326,
+                "drawNumber": 1534,
+                "drawDate": "2023-11-25",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-25 22:38:00"
+            },
+            {
+                "drawID": 3327,
+                "drawNumber": 1533,
+                "drawDate": "2023-11-24",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-24 22:38:00"
+            },
+            {
+                "drawID": 3328,
+                "drawNumber": 1532,
+                "drawDate": "2023-11-23",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-23 22:38:00"
+            },
+            {
+                "drawID": 3329,
+                "drawNumber": 1531,
+                "drawDate": "2023-11-22",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-22 22:38:00"
+            },
+            {
+                "drawID": 3330,
+                "drawNumber": 1530,
+                "drawDate": "2023-11-21",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-21 22:38:00"
+            },
+            {
+                "drawID": 3331,
+                "drawNumber": 1529,
+                "drawDate": "2023-11-20",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-20 22:38:00"
+            },
+            {
+                "drawID": 3332,
+                "drawNumber": 1528,
+                "drawDate": "2023-11-19",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-19 22:38:00"
+            },
+            {
+                "drawID": 3333,
+                "drawNumber": 1527,
+                "drawDate": "2023-11-18",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-18 22:38:00"
+            },
+            {
+                "drawID": 3334,
+                "drawNumber": 1526,
+                "drawDate": "2023-11-17",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-17 22:38:00"
+            },
+            {
+                "drawID": 3335,
+                "drawNumber": 1525,
+                "drawDate": "2023-11-16",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-16 22:38:00"
+            },
+            {
+                "drawID": 3336,
+                "drawNumber": 1524,
+                "drawDate": "2023-11-15",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-15 22:38:00"
+            },
+            {
+                "drawID": 3337,
+                "drawNumber": 1523,
+                "drawDate": "2023-11-14",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-14 22:38:00"
+            },
+            {
+                "drawID": 3338,
+                "drawNumber": 1522,
+                "drawDate": "2023-11-13",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-13 22:38:00"
+            },
+            {
+                "drawID": 3339,
+                "drawNumber": 1521,
+                "drawDate": "2023-11-12",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-12 22:38:00"
+            },
+            {
+                "drawID": 3340,
+                "drawNumber": 1520,
+                "drawDate": "2023-11-11",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-11 22:38:00"
+            },
+            {
+                "drawID": 3341,
+                "drawNumber": 1519,
+                "drawDate": "2023-11-10",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-10 22:38:00"
+            },
+            {
+                "drawID": 3342,
+                "drawNumber": 1518,
+                "drawDate": "2023-11-09",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-09 22:38:00"
+            },
+            {
+                "drawID": 3343,
+                "drawNumber": 1517,
+                "drawDate": "2023-11-08",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-08 22:38:00"
+            },
+            {
+                "drawID": 3344,
+                "drawNumber": 1516,
+                "drawDate": "2023-11-07",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-07 22:38:00"
+            },
+            {
+                "drawID": 3345,
+                "drawNumber": 1515,
+                "drawDate": "2023-11-06",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-06 22:38:00"
+            },
+            {
+                "drawID": 3346,
+                "drawNumber": 1514,
+                "drawDate": "2023-11-05",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-05 22:38:00"
+            },
+            {
+                "drawID": 3347,
+                "drawNumber": 1513,
+                "drawDate": "2023-11-04",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-04 22:38:00"
+            },
+            {
+                "drawID": 3348,
+                "drawNumber": 1512,
+                "drawDate": "2023-11-03",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-03 22:38:00"
+            },
+            {
+                "drawID": 3349,
+                "drawNumber": 1511,
+                "drawDate": "2023-11-02",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-02 22:38:00"
+            },
+            {
+                "drawID": 3350,
+                "drawNumber": 1510,
+                "drawDate": "2023-11-01",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-11-01 22:38:00"
+            },
+            {
+                "drawID": 3351,
+                "drawNumber": 1509,
+                "drawDate": "2023-10-31",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-31 22:38:00"
+            },
+            {
+                "drawID": 3352,
+                "drawNumber": 1508,
+                "drawDate": "2023-10-30",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-30 22:38:00"
+            },
+            {
+                "drawID": 3353,
+                "drawNumber": 1507,
+                "drawDate": "2023-10-29",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-29 22:38:00"
+            },
+            {
+                "drawID": 3354,
+                "drawNumber": 1506,
+                "drawDate": "2023-10-28",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-28 22:38:00"
+            },
+            {
+                "drawID": 3355,
+                "drawNumber": 1505,
+                "drawDate": "2023-10-27",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-27 22:38:00"
+            },
+            {
+                "drawID": 3356,
+                "drawNumber": 1504,
+                "drawDate": "2023-10-26",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-26 22:38:00"
+            },
+            {
+                "drawID": 3357,
+                "drawNumber": 1503,
+                "drawDate": "2023-10-25",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-25 22:38:00"
+            },
+            {
+                "drawID": 3358,
+                "drawNumber": 1502,
+                "drawDate": "2023-10-24",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-24 22:38:00"
+            },
+            {
+                "drawID": 3359,
+                "drawNumber": 1501,
+                "drawDate": "2023-10-23",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-23 22:38:00"
+            },
+            {
+                "drawID": 3360,
+                "drawNumber": 1500,
+                "drawDate": "2023-10-22",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-22 22:38:00"
+            },
+            {
+                "drawID": 3361,
+                "drawNumber": 1499,
+                "drawDate": "2023-10-21",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-21 22:38:00"
+            },
+            {
+                "drawID": 3362,
+                "drawNumber": 1498,
+                "drawDate": "2023-10-20",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-20 22:38:00"
+            },
+            {
+                "drawID": 3363,
+                "drawNumber": 1497,
+                "drawDate": "2023-10-19",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-19 22:38:00"
+            },
+            {
+                "drawID": 3364,
+                "drawNumber": 1496,
+                "drawDate": "2023-10-18",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-18 22:38:00"
+            },
+            {
+                "drawID": 3365,
+                "drawNumber": 1495,
+                "drawDate": "2023-10-17",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-17 22:38:00"
+            },
+            {
+                "drawID": 3366,
+                "drawNumber": 1494,
+                "drawDate": "2023-10-16",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-16 22:38:00"
+            },
+            {
+                "drawID": 3367,
+                "drawNumber": 1493,
+                "drawDate": "2023-10-15",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-15 22:38:00"
+            },
+            {
+                "drawID": 3368,
+                "drawNumber": 1492,
+                "drawDate": "2023-10-14",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-14 22:38:00"
+            },
+            {
+                "drawID": 3369,
+                "drawNumber": 1491,
+                "drawDate": "2023-10-13",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-13 22:38:00"
+            },
+            {
+                "drawID": 3370,
+                "drawNumber": 1490,
+                "drawDate": "2023-10-12",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-12 22:38:00"
+            },
+            {
+                "drawID": 3371,
+                "drawNumber": 1489,
+                "drawDate": "2023-10-11",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-11 22:38:00"
+            },
+            {
+                "drawID": 3372,
+                "drawNumber": 1488,
+                "drawDate": "2023-10-10",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-10 22:38:00"
+            },
+            {
+                "drawID": 3373,
+                "drawNumber": 1487,
+                "drawDate": "2023-10-09",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-09 22:38:00"
+            },
+            {
+                "drawID": 3374,
+                "drawNumber": 1486,
+                "drawDate": "2023-10-08",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-08 22:38:00"
+            },
+            {
+                "drawID": 3375,
+                "drawNumber": 1485,
+                "drawDate": "2023-10-07",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-07 22:38:00"
+            },
+            {
+                "drawID": 3376,
+                "drawNumber": 1484,
+                "drawDate": "2023-10-06",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-06 22:38:00"
+            },
+            {
+                "drawID": 3377,
+                "drawNumber": 1483,
+                "drawDate": "2023-10-05",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-05 22:38:00"
+            },
+            {
+                "drawID": 3378,
+                "drawNumber": 1482,
+                "drawDate": "2023-10-04",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-04 22:38:00"
+            },
+            {
+                "drawID": 3379,
+                "drawNumber": 1481,
+                "drawDate": "2023-10-03",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-03 22:38:00"
+            },
+            {
+                "drawID": 3380,
+                "drawNumber": 1480,
+                "drawDate": "2023-10-02",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-02 22:38:00"
+            },
+            {
+                "drawID": 3381,
+                "drawNumber": 1479,
+                "drawDate": "2023-10-01",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-10-01 22:38:00"
+            },
+            {
+                "drawID": 3382,
+                "drawNumber": 1478,
+                "drawDate": "2023-09-30",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-30 22:38:00"
+            },
+            {
+                "drawID": 3383,
+                "drawNumber": 1477,
+                "drawDate": "2023-09-29",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-29 22:38:00"
+            },
+            {
+                "drawID": 3384,
+                "drawNumber": 1476,
+                "drawDate": "2023-09-28",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-28 22:38:00"
+            },
+            {
+                "drawID": 3385,
+                "drawNumber": 1475,
+                "drawDate": "2023-09-27",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-27 22:38:00"
+            },
+            {
+                "drawID": 3386,
+                "drawNumber": 1474,
+                "drawDate": "2023-09-26",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-26 22:38:00"
+            },
+            {
+                "drawID": 3387,
+                "drawNumber": 1473,
+                "drawDate": "2023-09-25",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-25 22:38:00"
+            },
+            {
+                "drawID": 3388,
+                "drawNumber": 1472,
+                "drawDate": "2023-09-24",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-24 22:38:00"
+            },
+            {
+                "drawID": 3389,
+                "drawNumber": 1471,
+                "drawDate": "2023-09-23",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-23 22:38:00"
+            },
+            {
+                "drawID": 3390,
+                "drawNumber": 1470,
+                "drawDate": "2023-09-22",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-22 22:38:00"
+            },
+            {
+                "drawID": 3391,
+                "drawNumber": 1469,
+                "drawDate": "2023-09-21",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-21 22:38:00"
+            },
+            {
+                "drawID": 3392,
+                "drawNumber": 1468,
+                "drawDate": "2023-09-20",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-20 22:38:00"
+            },
+            {
+                "drawID": 3393,
+                "drawNumber": 1467,
+                "drawDate": "2023-09-19",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-19 22:38:00"
+            },
+            {
+                "drawID": 3394,
+                "drawNumber": 1466,
+                "drawDate": "2023-09-18",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-18 22:38:00"
+            },
+            {
+                "drawID": 3395,
+                "drawNumber": 1465,
+                "drawDate": "2023-09-17",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-17 22:38:00"
+            },
+            {
+                "drawID": 3396,
+                "drawNumber": 1464,
+                "drawDate": "2023-09-16",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-16 22:38:00"
+            },
+            {
+                "drawID": 3397,
+                "drawNumber": 1463,
+                "drawDate": "2023-09-15",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-15 22:38:00"
+            },
+            {
+                "drawID": 3398,
+                "drawNumber": 1462,
+                "drawDate": "2023-09-14",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-14 22:38:00"
+            },
+            {
+                "drawID": 3399,
+                "drawNumber": 1461,
+                "drawDate": "2023-09-13",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-13 22:38:00"
+            },
+            {
+                "drawID": 3400,
+                "drawNumber": 1460,
+                "drawDate": "2023-09-12",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-12 22:38:00"
+            },
+            {
+                "drawID": 3401,
+                "drawNumber": 1459,
+                "drawDate": "2023-09-11",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-11 22:38:00"
+            },
+            {
+                "drawID": 3402,
+                "drawNumber": 1458,
+                "drawDate": "2023-09-10",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-10 22:38:00"
+            },
+            {
+                "drawID": 3403,
+                "drawNumber": 1457,
+                "drawDate": "2023-09-09",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-09 22:38:00"
+            },
+            {
+                "drawID": 3404,
+                "drawNumber": 1456,
+                "drawDate": "2023-09-08",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-08 22:38:00"
+            },
+            {
+                "drawID": 3405,
+                "drawNumber": 1455,
+                "drawDate": "2023-09-07",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-07 22:38:00"
+            },
+            {
+                "drawID": 3406,
+                "drawNumber": 1454,
+                "drawDate": "2023-09-06",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-06 22:38:00"
+            },
+            {
+                "drawID": 3407,
+                "drawNumber": 1453,
+                "drawDate": "2023-09-05",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-05 22:38:00"
+            },
+            {
+                "drawID": 3408,
+                "drawNumber": 1452,
+                "drawDate": "2023-09-04",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-04 22:38:00"
+            },
+            {
+                "drawID": 3409,
+                "drawNumber": 1451,
+                "drawDate": "2023-09-03",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-03 22:38:00"
+            },
+            {
+                "drawID": 3410,
+                "drawNumber": 1450,
+                "drawDate": "2023-09-02",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-02 22:38:00"
+            },
+            {
+                "drawID": 3411,
+                "drawNumber": 1449,
+                "drawDate": "2023-09-01",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-09-01 22:38:00"
+            },
+            {
+                "drawID": 3412,
+                "drawNumber": 1448,
+                "drawDate": "2023-08-31",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-31 22:38:00"
+            },
+            {
+                "drawID": 3413,
+                "drawNumber": 1447,
+                "drawDate": "2023-08-30",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-30 22:38:00"
+            },
+            {
+                "drawID": 3414,
+                "drawNumber": 1446,
+                "drawDate": "2023-08-29",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-29 22:38:00"
+            },
+            {
+                "drawID": 3415,
+                "drawNumber": 1445,
+                "drawDate": "2023-08-28",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-28 22:38:00"
+            },
+            {
+                "drawID": 3416,
+                "drawNumber": 1444,
+                "drawDate": "2023-08-27",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-27 22:38:00"
+            },
+            {
+                "drawID": 3417,
+                "drawNumber": 1443,
+                "drawDate": "2023-08-26",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-26 22:38:00"
+            },
+            {
+                "drawID": 3418,
+                "drawNumber": 1442,
+                "drawDate": "2023-08-25",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-25 22:38:00"
+            },
+            {
+                "drawID": 3419,
+                "drawNumber": 1441,
+                "drawDate": "2023-08-24",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-24 22:38:00"
+            },
+            {
+                "drawID": 3420,
+                "drawNumber": 1440,
+                "drawDate": "2023-08-23",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-23 22:38:00"
+            },
+            {
+                "drawID": 3421,
+                "drawNumber": 1439,
+                "drawDate": "2023-08-22",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-22 22:38:00"
+            },
+            {
+                "drawID": 3422,
+                "drawNumber": 1438,
+                "drawDate": "2023-08-21",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-21 22:38:00"
+            },
+            {
+                "drawID": 3423,
+                "drawNumber": 1437,
+                "drawDate": "2023-08-20",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-20 22:38:00"
+            },
+            {
+                "drawID": 3424,
+                "drawNumber": 1436,
+                "drawDate": "2023-08-19",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-19 22:38:00"
+            },
+            {
+                "drawID": 3425,
+                "drawNumber": 1435,
+                "drawDate": "2023-08-18",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-18 22:38:00"
+            },
+            {
+                "drawID": 3426,
+                "drawNumber": 1434,
+                "drawDate": "2023-08-17",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-17 22:38:00"
+            },
+            {
+                "drawID": 3427,
+                "drawNumber": 1433,
+                "drawDate": "2023-08-16",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-16 22:38:00"
+            },
+            {
+                "drawID": 3428,
+                "drawNumber": 1432,
+                "drawDate": "2023-08-15",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-15 22:38:00"
+            },
+            {
+                "drawID": 3429,
+                "drawNumber": 1431,
+                "drawDate": "2023-08-14",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-14 22:38:00"
+            },
+            {
+                "drawID": 3430,
+                "drawNumber": 1430,
+                "drawDate": "2023-08-13",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-13 22:38:00"
+            },
+            {
+                "drawID": 3431,
+                "drawNumber": 1429,
+                "drawDate": "2023-08-12",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-12 22:38:00"
+            },
+            {
+                "drawID": 3432,
+                "drawNumber": 1428,
+                "drawDate": "2023-08-11",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-11 22:38:00"
+            },
+            {
+                "drawID": 3433,
+                "drawNumber": 1427,
+                "drawDate": "2023-08-10",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-10 22:38:00"
+            },
+            {
+                "drawID": 3434,
+                "drawNumber": 1426,
+                "drawDate": "2023-08-09",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-09 22:38:00"
+            },
+            {
+                "drawID": 3435,
+                "drawNumber": 1425,
+                "drawDate": "2023-08-08",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-08 22:38:00"
+            },
+            {
+                "drawID": 3436,
+                "drawNumber": 1424,
+                "drawDate": "2023-08-07",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-07 22:38:00"
+            },
+            {
+                "drawID": 3437,
+                "drawNumber": 1423,
+                "drawDate": "2023-08-06",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-06 22:38:00"
+            },
+            {
+                "drawID": 3438,
+                "drawNumber": 1422,
+                "drawDate": "2023-08-05",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-05 22:38:00"
+            },
+            {
+                "drawID": 3439,
+                "drawNumber": 1421,
+                "drawDate": "2023-08-04",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-04 22:38:00"
+            },
+            {
+                "drawID": 3440,
+                "drawNumber": 1420,
+                "drawDate": "2023-08-03",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-03 22:38:00"
+            },
+            {
+                "drawID": 3441,
+                "drawNumber": 1419,
+                "drawDate": "2023-08-02",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-02 22:38:00"
+            },
+            {
+                "drawID": 3442,
+                "drawNumber": 1418,
+                "drawDate": "2023-08-01",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-08-01 22:38:00"
+            },
+            {
+                "drawID": 3443,
+                "drawNumber": 1417,
+                "drawDate": "2023-07-31",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-31 22:38:00"
+            },
+            {
+                "drawID": 3444,
+                "drawNumber": 1416,
+                "drawDate": "2023-07-30",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-30 22:38:00"
+            },
+            {
+                "drawID": 3445,
+                "drawNumber": 1415,
+                "drawDate": "2023-07-29",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-29 22:38:00"
+            },
+            {
+                "drawID": 3446,
+                "drawNumber": 1414,
+                "drawDate": "2023-07-28",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-28 22:38:00"
+            },
+            {
+                "drawID": 3447,
+                "drawNumber": 1413,
+                "drawDate": "2023-07-27",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-27 22:38:00"
+            },
+            {
+                "drawID": 3448,
+                "drawNumber": 1412,
+                "drawDate": "2023-07-26",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-26 22:38:00"
+            },
+            {
+                "drawID": 3449,
+                "drawNumber": 1411,
+                "drawDate": "2023-07-25",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-25 22:38:00"
+            },
+            {
+                "drawID": 3450,
+                "drawNumber": 1410,
+                "drawDate": "2023-07-24",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-24 22:38:00"
+            },
+            {
+                "drawID": 3451,
+                "drawNumber": 1409,
+                "drawDate": "2023-07-23",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-23 22:38:00"
+            },
+            {
+                "drawID": 3452,
+                "drawNumber": 1408,
+                "drawDate": "2023-07-22",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-22 22:38:00"
+            },
+            {
+                "drawID": 3453,
+                "drawNumber": 1407,
+                "drawDate": "2023-07-21",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-21 22:38:00"
+            },
+            {
+                "drawID": 3454,
+                "drawNumber": 1406,
+                "drawDate": "2023-07-20",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-20 22:38:00"
+            },
+            {
+                "drawID": 3455,
+                "drawNumber": 1405,
+                "drawDate": "2023-07-19",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-19 22:38:00"
+            },
+            {
+                "drawID": 3456,
+                "drawNumber": 1404,
+                "drawDate": "2023-07-18",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-18 22:38:00"
+            },
+            {
+                "drawID": 3457,
+                "drawNumber": 1403,
+                "drawDate": "2023-07-17",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-17 22:38:00"
+            },
+            {
+                "drawID": 3458,
+                "drawNumber": 1402,
+                "drawDate": "2023-07-16",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-16 22:38:00"
+            },
+            {
+                "drawID": 3459,
+                "drawNumber": 1401,
+                "drawDate": "2023-07-15",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-15 22:38:00"
+            },
+            {
+                "drawID": 3460,
+                "drawNumber": 1400,
+                "drawDate": "2023-07-14",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-14 22:38:00"
+            },
+            {
+                "drawID": 3461,
+                "drawNumber": 1399,
+                "drawDate": "2023-07-13",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-13 22:38:00"
+            },
+            {
+                "drawID": 3462,
+                "drawNumber": 1398,
+                "drawDate": "2023-07-12",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-12 22:38:00"
+            },
+            {
+                "drawID": 3463,
+                "drawNumber": 1397,
+                "drawDate": "2023-07-11",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-11 22:38:00"
+            },
+            {
+                "drawID": 3464,
+                "drawNumber": 1396,
+                "drawDate": "2023-07-10",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-10 22:38:00"
+            },
+            {
+                "drawID": 3465,
+                "drawNumber": 1395,
+                "drawDate": "2023-07-09",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-09 22:38:00"
+            },
+            {
+                "drawID": 3466,
+                "drawNumber": 1394,
+                "drawDate": "2023-07-08",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-08 22:38:00"
+            },
+            {
+                "drawID": 3467,
+                "drawNumber": 1393,
+                "drawDate": "2023-07-07",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-07 22:38:00"
+            },
+            {
+                "drawID": 3468,
+                "drawNumber": 1392,
+                "drawDate": "2023-07-06",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-06 22:38:00"
+            },
+            {
+                "drawID": 3469,
+                "drawNumber": 1391,
+                "drawDate": "2023-07-05",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-05 22:38:00"
+            },
+            {
+                "drawID": 3470,
+                "drawNumber": 1390,
+                "drawDate": "2023-07-04",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-04 22:38:00"
+            },
+            {
+                "drawID": 3471,
+                "drawNumber": 1389,
+                "drawDate": "2023-07-03",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-03 22:38:00"
+            },
+            {
+                "drawID": 3472,
+                "drawNumber": 1388,
+                "drawDate": "2023-07-02",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-02 22:38:00"
+            },
+            {
+                "drawID": 3473,
+                "drawNumber": 1387,
+                "drawDate": "2023-07-01",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-07-01 22:38:00"
+            },
+            {
+                "drawID": 3474,
+                "drawNumber": 1386,
+                "drawDate": "2023-06-30",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-30 22:38:00"
+            },
+            {
+                "drawID": 3475,
+                "drawNumber": 1385,
+                "drawDate": "2023-06-29",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-29 22:38:00"
+            },
+            {
+                "drawID": 3476,
+                "drawNumber": 1384,
+                "drawDate": "2023-06-28",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-28 22:38:00"
+            },
+            {
+                "drawID": 3477,
+                "drawNumber": 1383,
+                "drawDate": "2023-06-27",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-27 22:38:00"
+            },
+            {
+                "drawID": 3478,
+                "drawNumber": 1382,
+                "drawDate": "2023-06-26",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-26 22:38:00"
+            },
+            {
+                "drawID": 3479,
+                "drawNumber": 1381,
+                "drawDate": "2023-06-25",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-25 22:38:00"
+            },
+            {
+                "drawID": 3480,
+                "drawNumber": 1380,
+                "drawDate": "2023-06-24",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-24 22:38:00"
+            },
+            {
+                "drawID": 3481,
+                "drawNumber": 1379,
+                "drawDate": "2023-06-23",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-23 22:38:00"
+            },
+            {
+                "drawID": 3482,
+                "drawNumber": 1378,
+                "drawDate": "2023-06-22",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-22 22:38:00"
+            },
+            {
+                "drawID": 3483,
+                "drawNumber": 1377,
+                "drawDate": "2023-06-21",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-21 22:38:00"
+            },
+            {
+                "drawID": 3484,
+                "drawNumber": 1376,
+                "drawDate": "2023-06-20",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-20 22:38:00"
+            },
+            {
+                "drawID": 3485,
+                "drawNumber": 1375,
+                "drawDate": "2023-06-19",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-19 22:38:00"
+            },
+            {
+                "drawID": 3486,
+                "drawNumber": 1374,
+                "drawDate": "2023-06-18",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-18 22:38:00"
+            },
+            {
+                "drawID": 3487,
+                "drawNumber": 1373,
+                "drawDate": "2023-06-17",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-17 22:38:00"
+            },
+            {
+                "drawID": 3488,
+                "drawNumber": 1372,
+                "drawDate": "2023-06-16",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-16 22:38:00"
+            },
+            {
+                "drawID": 3489,
+                "drawNumber": 1371,
+                "drawDate": "2023-06-15",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-15 22:38:00"
+            },
+            {
+                "drawID": 3490,
+                "drawNumber": 1370,
+                "drawDate": "2023-06-14",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-14 22:38:00"
+            },
+            {
+                "drawID": 3491,
+                "drawNumber": 1369,
+                "drawDate": "2023-06-13",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-13 22:38:00"
+            },
+            {
+                "drawID": 3492,
+                "drawNumber": 1368,
+                "drawDate": "2023-06-12",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-12 22:38:00"
+            },
+            {
+                "drawID": 3493,
+                "drawNumber": 1367,
+                "drawDate": "2023-06-11",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-11 22:38:00"
+            },
+            {
+                "drawID": 3494,
+                "drawNumber": 1366,
+                "drawDate": "2023-06-10",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-10 22:38:00"
+            },
+            {
+                "drawID": 3495,
+                "drawNumber": 1365,
+                "drawDate": "2023-06-09",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-09 22:38:00"
+            },
+            {
+                "drawID": 3496,
+                "drawNumber": 1364,
+                "drawDate": "2023-06-08",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-08 22:38:00"
+            },
+            {
+                "drawID": 3497,
+                "drawNumber": 1363,
+                "drawDate": "2023-06-07",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-07 22:38:00"
+            },
+            {
+                "drawID": 3498,
+                "drawNumber": 1362,
+                "drawDate": "2023-06-06",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-06 22:38:00"
+            },
+            {
+                "drawID": 3499,
+                "drawNumber": 1361,
+                "drawDate": "2023-06-05",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-05 22:38:00"
+            },
+            {
+                "drawID": 3500,
+                "drawNumber": 1360,
+                "drawDate": "2023-06-04",
+                "drawTime": "22:38:00",
+                "drawDateTime": "2023-06-04 22:38:00"
+            }
+        ]
+    }
+}
+
+{
+    "status": "success",
+    "message": "ok",
+    "messageTR": "ok",
+    "systemTime": 1717454528,
+    "endpoint": "lottery-results/main-draw",
+    "rowCount": 2,
+    "creditUsed": 1,
+    "data": [
+        {
+            "id": 23,
+            "gameName": "Powerball",
+            "logo": "https://nosycdn.com/api/lotto/az-powerball-arizona.svg",
+            "drawTimezone": "America/New_York",
+            "drawTime": "22:59:00",
+            "stopSaleTime": "22:00:00",
+            "claimDeadline": 365,
+            "allowZero": false,
+            "minBall": 1,
+            "maxBall": 69,
+            "drawnNumbers": 5,
+            "selectableBalls": 5,
+            "minimumSelectableBalls": 5,
+            "uniqueMainNumbers": 1,
+            "uniqueExtraNumbers": 0,
+            "allowDuplicates": false,
+            "additionalNumbers": [
+                {
+                    "playerPicked": true,
+                    "name": "powerball",
+                    "minBall": 1,
+                    "maxBall": 26,
+                    "allowZero": false,
+                    "isString": false,
+                    "isMultiplier": false,
+                    "allowedValues": null
+                },
+                {
+                    "playerPicked": false,
+                    "name": "powerplay",
+                    "minBall": 2,
+                    "maxBall": 10,
+                    "allowZero": false,
+                    "isString": false,
+                    "isMultiplier": true,
+                    "allowedValues": [
+                        2,
+                        3,
+                        4,
+                        5,
+                        10
+                    ]
+                }
+            ],
+            "bonusNumbers": [
+                {
+                    "name": "Powerball",
+                    "abbreviation": "PB",
+                    "isMultiplier": false,
+                    "variant": null
+                }
+            ],
+            "prizeMultipliers": [
+                {
+                    "name": "Power Play",
+                    "abbreviation": "PP",
+                    "isMultiplier": true,
+                    "variant": null
+                }
+            ],
+            "mainDrawName": "Main draw",
+            "state": [],
+            "statesWithMultiDraws": [
+                "CO",
+                "FL",
+                "IN",
+                "MD",
+                "MI",
+                "MO",
+                "NJ",
+                "PA",
+                "PR",
+                "SC",
+                "SD",
+                "TN",
+                "WA",
+                "MT",
+                "NE",
+                "OK",
+                "ID",
+                "IA",
+                "MS",
+                "NM"
+            ],
+            "drawDays": {
+                "Sunday": false,
+                "Monday": true,
+                "Tuesday": false,
+                "Wednesday": true,
+                "Thursday": false,
+                "Friday": false,
+                "Saturday": true
+            }
+        },
+        {
+            "id": 24,
+            "gameName": "Mega Millions",
+            "logo": "https://nosycdn.com/api/lotto/az-mega-millions-arizona.svg",
+            "drawTimezone": "America/Detroit",
+            "drawTime": "23:00:00",
+            "stopSaleTime": "22:45:00",
+            "claimDeadline": 365,
+            "allowZero": false,
+            "minBall": 1,
+            "maxBall": 70,
+            "drawnNumbers": 5,
+            "selectableBalls": 5,
+            "minimumSelectableBalls": 5,
+            "uniqueMainNumbers": 1,
+            "uniqueExtraNumbers": 0,
+            "allowDuplicates": false,
+            "additionalNumbers": [
+                {
+                    "playerPicked": true,
+                    "name": "mega_ball",
+                    "minBall": 1,
+                    "maxBall": 25,
+                    "allowZero": false,
+                    "isString": false,
+                    "isMultiplier": false,
+                    "allowedValues": null
+                },
+                {
+                    "playerPicked": false,
+                    "name": "megaplier",
+                    "minBall": 2,
+                    "maxBall": 5,
+                    "allowZero": false,
+                    "isString": false,
+                    "isMultiplier": true,
+                    "allowedValues": [
+                        2,
+                        3,
+                        4,
+                        5
+                    ]
+                }
+            ],
+            "bonusNumbers": [
+                {
+                    "name": "Mega Ball",
+                    "abbreviation": "MB",
+                    "isMultiplier": false,
+                    "variant": null
+                }
+            ],
+            "prizeMultipliers": [
+                {
+                    "name": "Megaplier",
+                    "abbreviation": "M",
+                    "isMultiplier": true,
+                    "variant": null
+                }
+            ],
+            "mainDrawName": null,
+            "state": [],
+            "statesWithMultiDraws": [],
+            "drawDays": {
+                "Sunday": false,
+                "Monday": false,
+                "Tuesday": true,
+                "Wednesday": false,
+                "Thursday": false,
+                "Friday": true,
+                "Saturday": false
+            }
+        }
+    ]
+}
