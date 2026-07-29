@@ -32,6 +32,8 @@ src/
 │   └── globals.css                   # Estilos Globales
 │
 ├── components/                       # BIBLIOTECA MODULAR 100% REUTILIZABLE
+│   ├── jugada/                       # Módulo de Consulta de Jugadas
+│   │   └── NumberChecker.jsx         # Verificador de números vs historial de sorteos
 │   ├── ui/                           # Componentes Atómicos & Herramientas
 │   │   ├── Ball.jsx                  # Esfera 3D de Número / Bola Especial
 │   │   ├── Badge.jsx                 # Etiquetas de Multiplicador / Jackpot
@@ -56,7 +58,8 @@ src/
 │   └── seo.js                        # Generador de JSON-LD Schema Markup
 │
 └── services/
-    └── lotteryService.js             # Capa de Servicio Genérica (BD + Redis Cache <50ms)
+    ├── lotteryService.js             # Capa de Servicio Genérica (BD + Redis Cache <50ms)
+    └── jugadaService.js              # Servicio de comparación de números vs sorteos
 ```
 
 ---
@@ -103,4 +106,27 @@ src/
 
 ---
 
-*Última actualización: 2026-07-27 — Desarrollado por el equipo Lead Full-Stack Architect.*
+### ✅ FASE 5: Módulo de Consulta de Jugadas (COMPLETADO)
+- [x] **`src/services/jugadaService.js`:** Función `checkUserNumbers(playerNumbers, draw)` que compara números del usuario vs resultados del sorteo. Identifica categorías (MAIN, ADDITIONAL, MULTIPLIER) vía `LotteryBallType`, cuenta aciertos y busca el premio correspondiente en `PrizeBreakdown` por `matchPattern`.
+- [x] **`src/components/jugada/NumberChecker.jsx`:** Componente `'use client'` que renderiza:
+  - Inputs dinámicos adaptados por lotería (`selectableBalls`, `minBall`/`maxBall`, `playerPicked`)
+  - Validación en tiempo real con límite de rango (truncamiento automático al máximo, borde rojo si fuera de rango)
+  - Consulta contra todos los sorteos disponibles (últimos 10) sin selector individual
+  - Resultados por sorteo: bolas verdes/rojas, premio si es ganador, combinación ganadora si no
+- [x] **Modificaciones en `src/services/lotteryService.js`:**
+  - `getLotteryDetailData` ahora expone `configuration`, `ballTypes`, y los draws completos con `numbers`, `rawPrizes` (Decimal convertido a Number) y `lottery` para la comparación
+- [x] **Integración en `src/app/[country]/[lottery]/page.js`:** Nueva sección "🔍 Consulta tus Números" entre QuickPicks y PrizeTable
+
+### ✅ FASE 6: Seed Programático con 20 sorteos por Lotería (COMPLETADO)
+- [x] **Generador `generateDraws()` en `prisma/seed.js`:** Función que crea N draws con números aleatorios, premios proporcionales al jackpot y jackpotHistory secuencial.
+- [x] **Prize templates por lotería:** Constantes `PRIZE_TEMPLATES` con patterns y fracciones de jackpot para cada tipo (Powerball, Mega Millions, Florida Lotto, Lotto Texas, SuperLotto Plus, EuroMillones, La Primitiva, Bonoloto, Melate, Chispazo).
+- [x] **200 sorteos totales (20 × 10 loterías):** Datos realistas con números únicos, fechas secuenciales hacia atrás y jackpots crecientes.
+
+### 🔮 FASE 7: Próximos Pasos (PLANIFICADO)
+- [ ] Ampliar ventana de consulta de 10 sorteos a 1 año
+- [ ] Agregar persistencia opcional de jugadas (modelo `UserPlay` + email)
+- [ ] Vista global `/mis-jugadas` con jugadas de todas las loterías
+
+---
+
+*Última actualización: 2026-07-29 — Desarrollado por el equipo Lead Full-Stack Architect.*

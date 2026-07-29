@@ -12,6 +12,7 @@ import PrizeTable from '../../../components/lottery/PrizeTable';
 import DrawHistory from '../../../components/lottery/DrawHistory';
 import QuickPicks from '../../../components/ui/QuickPicks';
 import FaqAccordion from '../../../components/ui/FaqAccordion';
+import NumberChecker from '../../../components/jugada/NumberChecker';
 import { generateLotteryJsonLd } from '../../../lib/seo';
 import { getLotteryDetailData } from '../../../services/lotteryService';
 
@@ -197,6 +198,17 @@ export default async function GenericLotteryPage({ params }) {
           specialName={lottery.specialBallName || 'Bola Especial'}
           specialColor={specialBallBg}
         />
+
+        {/* Consulta tus Números */}
+        <section className="space-y-4">
+          <h2 className="text-xl font-black text-white tracking-tight">🔍 Consulta tus Números</h2>
+          <NumberChecker
+            lotteryName={lottery.name}
+            ballTypes={lottery.ballTypes}
+            configuration={lottery.configuration}
+            draws={[latestDraw, ...historicalDraws].filter(Boolean)}
+          />
+        </section>
 
         {/* Desglose de Premios */}
         {latestDraw?.prizes?.length > 0 && (

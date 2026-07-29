@@ -191,6 +191,28 @@ export async function getLotteryDetailData(countrySlug, lotterySlug) {
       specialBallName: additionalType?.name || 'Bola Especial',
       hasMultiplier: !!multiplierType,
       multiplierName: multiplierType?.name || null,
+      configuration: lottery.configuration
+        ? {
+            drawnNumbers: lottery.configuration.drawnNumbers,
+            selectableBalls: lottery.configuration.selectableBalls,
+            minBall: lottery.configuration.minBall,
+            maxBall: lottery.configuration.maxBall,
+            allowZero: lottery.configuration.allowZero,
+          }
+        : null,
+      ballTypes: (lottery.ballTypes || []).map((bt) => ({
+        id: bt.id,
+        name: bt.name,
+        abbreviation: bt.abbreviation,
+        category: bt.category,
+        minBall: bt.minBall,
+        maxBall: bt.maxBall,
+        isString: bt.isString,
+        isMultiplier: bt.isMultiplier,
+        playerPicked: bt.playerPicked,
+        allowedValues: bt.allowedValues,
+        sortOrder: bt.sortOrder,
+      })),
       country: {
         name: lottery.state.country.name,
         currency: lottery.state.country.currency,
@@ -211,6 +233,31 @@ export async function getLotteryDetailData(countrySlug, lotterySlug) {
               prizeAmountFormatted: p.prizeAmountRaw || (p.prizeAmount ? formatCurrency(p.prizeAmount, lottery.state.country.currency) : '-'),
               multiplierPrizeAmountFormatted: null,
             })),
+            numbers: latestDraw.numbers || [],
+            rawPrizes: (latestDraw.prizes || []).map((p) => ({
+              ...p,
+              prizeAmount: p.prizeAmount ? Number(p.prizeAmount) : null,
+            })),
+            lottery: {
+              ballTypes: (lottery.ballTypes || []).map((bt) => ({
+                id: bt.id,
+                name: bt.name,
+                abbreviation: bt.abbreviation,
+                category: bt.category,
+                minBall: bt.minBall,
+                maxBall: bt.maxBall,
+                isString: bt.isString,
+                isMultiplier: bt.isMultiplier,
+                playerPicked: bt.playerPicked,
+                allowedValues: bt.allowedValues,
+                sortOrder: bt.sortOrder,
+              })),
+              state: {
+                country: {
+                  currency: lottery.state.country.currency,
+                },
+              },
+            },
           }
         : null,
       historicalDraws: historicalDraws.map((d) => ({
@@ -218,6 +265,31 @@ export async function getLotteryDetailData(countrySlug, lotterySlug) {
         drawNumber: d.drawNumber,
         drawDateFormatted: formatDateSpanish(d.drawDate),
         winningCombination: d.numbers ? buildWinningCombination(d.numbers) : null,
+        numbers: d.numbers || [],
+        rawPrizes: (d.prizes || []).map((p) => ({
+          ...p,
+          prizeAmount: p.prizeAmount ? Number(p.prizeAmount) : null,
+        })),
+        lottery: {
+          ballTypes: (lottery.ballTypes || []).map((bt) => ({
+            id: bt.id,
+            name: bt.name,
+            abbreviation: bt.abbreviation,
+            category: bt.category,
+            minBall: bt.minBall,
+            maxBall: bt.maxBall,
+            isString: bt.isString,
+            isMultiplier: bt.isMultiplier,
+            playerPicked: bt.playerPicked,
+            allowedValues: bt.allowedValues,
+            sortOrder: bt.sortOrder,
+          })),
+          state: {
+            country: {
+              currency: lottery.state.country.currency,
+            },
+          },
+        },
       })),
     };
 
