@@ -1,9 +1,6 @@
-// src/app/[country]/page.js
-// Dashboard Principal — conectado a MySQL via lotteryService + Prisma ORM
-// Los datos MOCK han sido reemplazados por consultas reales a la base de datos
-
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import prisma from '../../lib/prisma';
 import Header from '../../components/layout/Header';
 import Footer from '../../components/layout/Footer';
 import MobileNav from '../../components/layout/MobileNav';
@@ -12,8 +9,17 @@ import LotteryCard from '../../components/lottery/LotteryCard';
 import StateGrid from '../../components/lottery/StateGrid';
 import { getCountryDashboardData } from '../../services/lotteryService';
 
-// Revalidar la página cada 5 minutos (ISR)
 export const revalidate = 300;
+
+const STATE_ICONS = {
+  florida: '🌴',
+  texas: '🤠',
+  california: '🌊',
+  'new-york': '🗽',
+  georgia: '🍑',
+  illinois: '🏙️',
+  alabama: '🌺',
+};
 
 export async function generateMetadata({ params }) {
   const { country: countrySlug } = await params;
@@ -33,30 +39,42 @@ export async function generateMetadata({ params }) {
 export default async function CountryHomePage({ params }) {
   const { country: countrySlug } = await params;
 
-  // ── Obtener datos reales desde MySQL via lotteryService ──
   const data = await getCountryDashboardData(countrySlug);
 
-  // Si el país no existe en la BD, mostrar 404
   if (!data) {
     notFound();
   }
 
   const { country, lotteries } = data;
 
-  // Calcular jackpot combinado (suma de las dos loterías más grandes)
   const topTwo = lotteries.slice(0, 2);
   const totalJackpotLabel = topTwo.length > 0
     ? topTwo.map((l) => l.jackpotFormatted).join(' + ')
     : 'Por confirmar';
 
+  const states = await prisma.state.findMany({
+    where: {
+      country: { slug: countrySlug },
+      isActive: true,
+      code: { not: 'NAT' },
+    },
+    select: { name: true, slug: true },
+    orderBy: { name: 'asc' },
+  });
+
+  const statesWithIcons = states.map((s) => ({
+    name: s.name,
+    slug: s.slug,
+    icon: STATE_ICONS[s.slug] || '🏛️',
+    lotteries: [],
+  }));
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased flex flex-col justify-between pb-16 md:pb-0">
-      {/* Header Global */}
       <Header currentCountry={countrySlug} />
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 space-y-12 w-full">
 
-        {/* Componente Modular 1: JackpotHero */}
         <JackpotHero
           title="Resultados Oficiales de"
           highlightText={`${country.flag} ${country.name}`}
@@ -66,14 +84,12 @@ export default async function CountryHomePage({ params }) {
           badgeText={`${country.flag} LOTTERY LIVE RESULTS`}
         />
 
-        {/* Indicador de fuente de datos */}
         {data._fromCache && (
           <p className="text-[10px] text-slate-600 text-right -mt-8">
             ⚡ Datos desde caché · Actualización cada 5 min
           </p>
         )}
 
-        {/* Componente Modular 2: Loterías activas */}
         {lotteries.length > 0 ? (
           <section className="space-y-5">
             <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
@@ -104,34 +120,13 @@ export default async function CountryHomePage({ params }) {
           </section>
         )}
 
-        {/* Componente Modular 3: StateGrid — solo aplica para US */}
-        {countrySlug === 'us' && (
+        {statesWithIcons.length > 0 && (
           <StateGrid
-            states={[
-              {
-                name: 'Florida',
-                slug: 'florida',
-                icon: '🌴',
-                lotteries: [],
-              },
-              {
-                name: 'Texas',
-                slug: 'texas',
-                icon: '🤠',
-                lotteries: [],
-              },
-              {
-                name: 'California',
-                slug: 'california',
-                icon: '🌊',
-                lotteries: [],
-              },
-            ]}
+            states={statesWithIcons}
             countrySlug={countrySlug}
           />
         )}
 
-        {/* Componente Modular 4: SEO Block */}
         <section className="rounded-2xl bg-slate-900/40 border border-slate-800/60 p-6 sm:p-8 space-y-4 text-xs sm:text-sm text-slate-400 leading-relaxed">
           <h3 className="text-base font-bold text-slate-200">
             ¿Cómo verificar los resultados oficiales de la lotería de {country.name}?
@@ -145,10 +140,7 @@ export default async function CountryHomePage({ params }) {
         </section>
       </main>
 
-      {/* Navegación Flotante Móvil */}
       <MobileNav currentCountry={countrySlug} />
-
-      {/* Footer Global */}
       <Footer currentCountry={countrySlug} />
     </div>
   );

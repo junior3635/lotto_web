@@ -7,101 +7,283 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// ------------------------------------------------------
-// 1. Países (Country)
-// Soporta la estrategia multi-país de la Fase 1 y Fase 2
-// ------------------------------------------------------
-model Country {
-  id        String    @id
-  code      String    @unique
-  name      String
-  slug      String    @unique
-  flagEmoji String
-  currency  String
-  isActive  Boolean   @default(true)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  lotteries Lottery[]
-
-  @@map("countries")
-}
-
-// ------------------------------------------------------
-// 2. Loterías (Lottery)
-// Configuración técnica y metadata de cada lotería
-// ------------------------------------------------------
-model Lottery {
-  id                  String   @id @default(cuid())
-  countryId           String
-  name                String
-  slug                String
-  description         String?  @db.Text
-  logoUrl             String?
-  primaryColor        String?
-  secondaryColor      String?
-  drawDays            String   @db.LongText
-  drawTime            String?
-  totalNumbers        Int
-  numberRangeMax      Int
-  totalSpecialBalls   Int      @default(1)
-  specialBallRangeMax Int
-  specialBallName     String?
-  hasMultiplier       Boolean  @default(true)
-  multiplierName      String?
-  isActive            Boolean  @default(true)
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
-  draws               Draw[]
-  country             Country  @relation(fields: [countryId], references: [id], onDelete: Cascade)
-
-  @@unique([countryId, slug])
-  @@index([countryId])
-  @@map("lotteries")
-}
-
-model Draw {
-  id                   String           @id @default(cuid())
-  lotteryId            String
-  drawNumber           String?
-  drawDate             DateTime
-  winningCombination   String           @db.LongText
-  estimatedJackpot     Decimal?         @db.Decimal(15, 2)
-  jackpotFormatted     String?
-  hasWinner            Boolean          @default(false)
-  nextDrawDate         DateTime?
-  nextEstimatedJackpot Decimal?         @db.Decimal(15, 2)
-  nextJackpotFormatted String?
-  status               DrawStatus       @default(COMPLETED)
-  createdAt            DateTime         @default(now())
-  updatedAt            DateTime         @updatedAt
-  lottery              Lottery          @relation(fields: [lotteryId], references: [id], onDelete: Cascade)
-  prizes               PrizeBreakdown[]
-
-  @@index([lotteryId, drawDate])
-  @@index([drawDate])
-  @@map("draws")
-}
-
-// ------------------------------------------------------
-// 4. Premios y Desglose (PrizeBreakdown)
-// Tabla detallada de ganadores y montos por categoría
-// ------------------------------------------------------
-model PrizeBreakdown {
-  id                    String   @id @default(cuid())
-  drawId                String
-  categoryName          String
-  winnersCount          Int      @default(0)
-  prizeAmount           Decimal  @db.Decimal(15, 2)
-  multiplierPrizeAmount Decimal? @db.Decimal(15, 2)
-  createdAt             DateTime @default(now())
-  draw                  Draw     @relation(fields: [drawId], references: [id], onDelete: Cascade)
-
-  @@index([drawId])
-  @@map("prize_breakdowns")
-}
+// ============================================================
+// ENUMS
+// ============================================================
 
 enum DrawStatus {
   SCHEDULED
   COMPLETED
   CANCELLED
+}
+
+enum DayOfWeek {
+  SUNDAY
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+}
+
+enum BallCategory {
+  MAIN
+  ADDITIONAL
+  MULTIPLIER
+}
+
+// ============================================================
+// 1. Country
+// ============================================================
+model Country {
+  id        String   @id @default(cuid())
+  code      String   @unique
+  name      String
+  slug      String   @unique
+  flagEmoji String
+  currency  String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  states         State[]
+  apiRequestLogs ApiRequestLog[]
+
+  @@map("countries")
+}
+
+// ============================================================
+// 2. State
+// ============================================================
+model State {
+  id              String   @id @default(cuid())
+  countryId       String
+  name            String
+  code            String
+  slug            String
+  taxRate         Decimal  @db.Decimal(5, 2)
+  minimumLegalAge Int      @default(18)
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  country   Country   @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  lotteries Lottery[]
+
+  @@unique([countryId, code])
+  @@unique([countryId, slug])
+  @@index([countryId])
+  @@map("states")
+}
+
+// ============================================================
+// 3. Lottery
+// ============================================================
+model Lottery {
+  id           String   @id @default(cuid())
+  externalId   Int?
+  stateId      String
+  name         String
+  slug         String
+  mainDrawName String?
+  logoUrl      String?
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  state         State                 @relation(fields: [stateId], references: [id], onDelete: Cascade)
+  configuration LotteryConfiguration?
+  ballTypes     LotteryBallType[]
+  drawSchedules LotteryDrawSchedule[]
+  draws         Draw[]
+
+  @@unique([stateId, slug])
+  @@index([stateId])
+  @@index([externalId])
+  @@map("lotteries")
+}
+
+// ============================================================
+// 4. LotteryConfiguration (1:1 con Lottery)
+// ============================================================
+model LotteryConfiguration {
+  id                     String   @id @default(cuid())
+  lotteryId              String   @unique
+  drawTimezone           String?
+  drawTime               String?
+  stopSaleTime           String?
+  claimDeadline          Int?
+  allowZero              Boolean  @default(false)
+  minBall                Int
+  maxBall                Int
+  drawnNumbers           Int
+  selectableBalls        Int
+  minimumSelectableBalls Int
+  uniqueMainNumbers      Int      @default(1)
+  uniqueExtraNumbers     Int?
+  allowDuplicates        Boolean  @default(false)
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  lottery Lottery @relation(fields: [lotteryId], references: [id], onDelete: Cascade)
+
+  @@map("lottery_configurations")
+}
+
+// ============================================================
+// 5. LotteryBallType
+// ============================================================
+model LotteryBallType {
+  id            String       @id @default(cuid())
+  lotteryId     String
+  name          String
+  abbreviation  String?
+  category      BallCategory
+  minBall       Int?
+  maxBall       Int?
+  allowZero     Boolean      @default(false)
+  isString      Boolean      @default(false)
+  isMultiplier  Boolean      @default(false)
+  playerPicked  Boolean      @default(false)
+  allowedValues Json?
+  sortOrder     Int          @default(0)
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  lottery     Lottery      @relation(fields: [lotteryId], references: [id], onDelete: Cascade)
+  drawNumbers DrawNumber[]
+
+  @@unique([lotteryId, name])
+  @@index([lotteryId])
+  @@map("lottery_ball_types")
+}
+
+// ============================================================
+// 6. LotteryDrawSchedule
+// ============================================================
+model LotteryDrawSchedule {
+  id        String    @id @default(cuid())
+  lotteryId String
+  dayOfWeek DayOfWeek
+  isActive  Boolean   @default(true)
+  createdAt DateTime  @default(now())
+
+  lottery Lottery @relation(fields: [lotteryId], references: [id], onDelete: Cascade)
+
+  @@unique([lotteryId, dayOfWeek])
+  @@index([lotteryId])
+  @@map("lottery_draw_schedules")
+}
+
+// ============================================================
+// 7. Draw
+// ============================================================
+model Draw {
+  id             String     @id @default(cuid())
+  lotteryId      String
+  externalDrawId Int?
+  drawNumber     String?
+  drawDate       DateTime   @db.Date
+  drawTime       String?
+  details        String?    @db.Text
+  note           String?    @db.Text
+  hasWinner      Boolean    @default(false)
+  status         DrawStatus @default(SCHEDULED)
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  lottery        Lottery          @relation(fields: [lotteryId], references: [id], onDelete: Cascade)
+  numbers        DrawNumber[]
+  prizes         PrizeBreakdown[]
+  jackpotHistory JackpotHistory[]
+
+  @@unique([lotteryId, externalDrawId])
+  @@index([lotteryId, drawDate])
+  @@index([drawDate])
+  @@map("draws")
+}
+
+// ============================================================
+// 8. DrawNumber
+// ============================================================
+model DrawNumber {
+  id         String       @id @default(cuid())
+  drawId     String
+  ballTypeId String?
+  category   BallCategory @default(MAIN)
+  position   Int
+  value      String
+
+  draw     Draw             @relation(fields: [drawId], references: [id], onDelete: Cascade)
+  ballType LotteryBallType? @relation(fields: [ballTypeId], references: [id], onDelete: SetNull)
+
+  @@unique([drawId, category, position])
+  @@index([drawId])
+  @@index([ballTypeId])
+  @@map("draw_numbers")
+}
+
+// ============================================================
+// 9. PrizeBreakdown
+// ============================================================
+model PrizeBreakdown {
+  id             String   @id @default(cuid())
+  drawId         String
+  matchPattern   String
+  prizeAmountRaw String?
+  prizeAmount    Decimal? @db.Decimal(15, 2)
+  winnersCount   Int?
+  createdAt      DateTime @default(now())
+
+  draw Draw @relation(fields: [drawId], references: [id], onDelete: Cascade)
+
+  @@index([drawId])
+  @@map("prize_breakdowns")
+}
+
+// ============================================================
+// 10. JackpotHistory
+// ============================================================
+model JackpotHistory {
+  id                String    @id @default(cuid())
+  drawId            String
+  jackpotRaw        String?
+  jackpotAmount     Decimal?  @db.Decimal(15, 2)
+  cashPayoutRaw     String?
+  cashPayoutAmount  Decimal?  @db.Decimal(15, 2)
+  nextDrawDate      DateTime?
+  nextJackpotRaw    String?
+  nextJackpotAmount Decimal?  @db.Decimal(15, 2)
+  nextCashRaw       String?
+  nextCashAmount    Decimal?  @db.Decimal(15, 2)
+  totalPrizePool    Decimal?  @db.Decimal(15, 2)
+  overallWinners    Int?
+  recordedAt        DateTime  @default(now())
+
+  draw Draw @relation(fields: [drawId], references: [id], onDelete: Cascade)
+
+  @@index([drawId, recordedAt])
+  @@map("jackpot_history")
+}
+
+// ============================================================
+// 11. ApiRequestLog
+// ============================================================
+model ApiRequestLog {
+  id          String    @id @default(cuid())
+  countryId   String?
+  endpoint    String
+  status      String
+  message     String?
+  rowCount    Int?
+  creditUsed  Int       @default(0)
+  systemTime  DateTime?
+  requestedAt DateTime  @default(now())
+
+  country Country? @relation(fields: [countryId], references: [id], onDelete: SetNull)
+
+  @@index([countryId, requestedAt])
+  @@index([endpoint])
+  @@map("api_request_logs")
 }

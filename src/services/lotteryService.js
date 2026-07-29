@@ -1,38 +1,69 @@
-// src/services/lotteryService.js
-// Capa de Servicio Genérica de Loterías con Integración de Prisma ORM + Redis Cache (Sub-50ms)
-
 import prisma from '../lib/prisma';
 import { getCache, setCache, delCache } from '../lib/redis';
 import { formatJackpot, formatDateSpanish, formatCurrency } from '../lib/formatters';
 
-const CACHE_TTL_SECONDS = 300; // 5 Minutos de caché para máximo rendimiento SEO
+const CACHE_TTL_SECONDS = 300;
 
-/**
- * Obtiene todas las loterías activas y su último resultado para un país específico
- * @param {string} countrySlug - Slug del país ("us", "es", "mx", etc.)
- * @returns {Promise<Object>}
- */
+export function buildWinningCombination(numbers) {
+  const mains = numbers
+    .filter((n) => n.category === 'MAIN')
+    .sort((a, b) => a.position - b.position)
+    .map((n) => parseInt(n.value, 10));
+
+  const additionals = numbers.filter((n) => n.category === 'ADDITIONAL');
+  const multipliers = numbers.filter((n) => n.category === 'MULTIPLIER');
+
+  const result = { numbers: mains };
+
+  if (additionals.length > 0) {
+    result.specialBall = parseInt(additionals[0].value, 10) || additionals[0].value;
+    result.specialBallName = additionals[0].ballType?.name || 'Bola Especial';
+  }
+
+  if (multipliers.length > 0) {
+    result.multiplier = multipliers[0].value;
+    result.multiplierName = multipliers[0].ballType?.name || 'Multiplicador';
+  }
+
+  return result;
+}
+
 export async function getCountryDashboardData(countrySlug = 'us') {
   const cacheKey = `lottery:country:${countrySlug}:dashboard`;
 
-  // 1. Intentar responder desde Redis (Sub-10ms)
   const cachedData = await getCache(cacheKey);
   if (cachedData) {
     return { ...cachedData, _fromCache: true };
   }
 
   try {
-    // 2. Consulta en BD mediante Prisma (Cache Miss)
     const country = await prisma.country.findUnique({
       where: { slug: countrySlug.toLowerCase() },
       include: {
-        lotteries: {
+        states: {
           where: { isActive: true },
           include: {
-            draws: {
-              where: { status: 'COMPLETED' },
-              orderBy: { drawDate: 'desc' },
-              take: 1,
+            lotteries: {
+              where: { isActive: true },
+              include: {
+                configuration: true,
+                ballTypes: true,
+                draws: {
+                  where: { status: 'COMPLETED' },
+                  orderBy: { drawDate: 'desc' },
+                  take: 1,
+                  include: {
+                    numbers: {
+                      include: { ballType: true },
+                      orderBy: [{ category: 'asc' }, { position: 'asc' }],
+                    },
+                    jackpotHistory: {
+                      orderBy: { recordedAt: 'desc' },
+                      take: 1,
+                    },
+                  },
+                },
+              },
             },
           },
         },
@@ -41,34 +72,41 @@ export async function getCountryDashboardData(countrySlug = 'us') {
 
     if (!country) return null;
 
-    // 3. Transformación y formateo de datos genéricos
-    const formattedLotteries = country.lotteries.map((lottery) => {
-      const lastDraw = lottery.draws[0] || null;
+    const lotteries = country.states.flatMap((state) =>
+      state.lotteries.map((lottery) => {
+        const lastDraw = lottery.draws[0] || null;
+        const latestJackpot = lastDraw?.jackpotHistory?.[0] || null;
+        const multiplierType = lottery.ballTypes?.find((bt) => bt.category === 'MULTIPLIER');
+        const additionalType = lottery.ballTypes?.find((bt) => bt.category === 'ADDITIONAL');
 
-      return {
-        id: lottery.id,
-        name: lottery.name,
-        slug: lottery.slug,
-        primaryColor: lottery.primaryColor || '#DC2626',
-        specialBallBg: lottery.specialColor || 'bg-red-600',
-        specialBallName: lottery.specialBallName || 'Bola Especial',
-        hasMultiplier: lottery.hasMultiplier,
-        multiplierName: lottery.multiplierName,
-
-        // Jackpot estimado y fecha
-        jackpotFormatted: lastDraw?.nextJackpotFormatted || 
-                          (lastDraw?.nextEstimatedJackpot ? formatJackpot(lastDraw.nextEstimatedJackpot, country.currency) : '$0'),
-        nextDrawDateFormatted: lastDraw?.nextDrawDate ? formatDateSpanish(lastDraw.nextDrawDate, true) : 'Por confirmar',
-
-        // Datos del último sorteo
-        lastDraw: lastDraw ? {
-          id: lastDraw.id,
-          drawNumber: lastDraw.drawNumber,
-          drawDateFormatted: formatDateSpanish(lastDraw.drawDate),
-          winningCombination: lastDraw.winningCombination, // JSON nativo de MySQL
-        } : null,
-      };
-    });
+        return {
+          id: lottery.id,
+          name: lottery.name,
+          slug: lottery.slug,
+          stateOrRegion: state.name === 'Nacional' ? null : state.name,
+          primaryColor: null,
+          specialBallName: additionalType?.name || null,
+          specialBallBg: additionalType?.name === 'powerball'
+            ? 'bg-gradient-to-br from-red-500 via-red-600 to-red-800 text-white shadow-red-500/30'
+            : additionalType?.name === 'mega_ball'
+            ? 'bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 text-slate-950 font-black shadow-amber-500/30'
+            : 'bg-red-600',
+          hasMultiplier: !!multiplierType,
+          multiplierName: multiplierType?.name || null,
+          jackpotFormatted: latestJackpot?.nextJackpotRaw ||
+                            (latestJackpot?.nextJackpotAmount ? formatJackpot(latestJackpot.nextJackpotAmount, country.currency) : '$0'),
+          nextDrawDateFormatted: latestJackpot?.nextDrawDate ? formatDateSpanish(latestJackpot.nextDrawDate, true) : 'Por confirmar',
+          lastDraw: lastDraw
+            ? {
+                id: lastDraw.id,
+                drawNumber: lastDraw.drawNumber,
+                drawDateFormatted: formatDateSpanish(lastDraw.drawDate),
+                winningCombination: lastDraw.numbers ? buildWinningCombination(lastDraw.numbers) : null,
+              }
+            : null,
+        };
+      })
+    );
 
     const result = {
       country: {
@@ -78,12 +116,10 @@ export async function getCountryDashboardData(countrySlug = 'us') {
         flag: country.flagEmoji,
         currency: country.currency,
       },
-      lotteries: formattedLotteries,
+      lotteries,
     };
 
-    // 4. Guardar en Redis para las próximas peticiones
     await setCache(cacheKey, result, CACHE_TTL_SECONDS);
-
     return { ...result, _fromCache: false };
   } catch (error) {
     console.error(`[LotteryService Error] Error consultando dashboard de ${countrySlug}:`, error);
@@ -91,12 +127,6 @@ export async function getCountryDashboardData(countrySlug = 'us') {
   }
 }
 
-/**
- * Obtiene el detalle de una lotería específica por país y slug de lotería
- * @param {string} countrySlug - "us", "es", etc.
- * @param {string} lotterySlug - "powerball", "mega-millions", "euromillones", etc.
- * @returns {Promise<Object>}
- */
 export async function getLotteryDetailData(countrySlug, lotterySlug) {
   const cacheKey = `lottery:${countrySlug}:${lotterySlug}:detail`;
 
@@ -106,67 +136,92 @@ export async function getLotteryDetailData(countrySlug, lotterySlug) {
   }
 
   try {
-    const lottery = await prisma.lottery.findFirst({
-      where: {
-        slug: lotterySlug.toLowerCase(),
-        country: { slug: countrySlug.toLowerCase() },
-      },
+    const country = await prisma.country.findUnique({
+      where: { slug: countrySlug.toLowerCase() },
       include: {
-        country: true,
-        draws: {
-          orderBy: { drawDate: 'desc' },
-          take: 10, // Obtiene el sorteo actual + 9 históricos para la página de detalle
+        states: {
+          where: { isActive: true },
           include: {
-            prizes: true,
+            lotteries: {
+              where: { slug: lotterySlug.toLowerCase(), isActive: true },
+              include: {
+                configuration: true,
+                ballTypes: true,
+                state: { include: { country: true } },
+                draws: {
+                  orderBy: { drawDate: 'desc' },
+                  take: 10,
+                  include: {
+                    numbers: {
+                      include: { ballType: true },
+                      orderBy: [{ category: 'asc' }, { position: 'asc' }],
+                    },
+                    prizes: true,
+                    jackpotHistory: {
+                      orderBy: { recordedAt: 'desc' },
+                      take: 1,
+                    },
+                  },
+                },
+              },
+            },
           },
         },
       },
     });
 
+    if (!country) return null;
+
+    const allLotteries = country.states.flatMap((s) => s.lotteries);
+    const lottery = allLotteries[0];
     if (!lottery) return null;
 
     const latestDraw = lottery.draws[0] || null;
     const historicalDraws = lottery.draws.slice(1);
+    const latestJackpot = latestDraw?.jackpotHistory?.[0] || null;
+    const multiplierType = lottery.ballTypes?.find((bt) => bt.category === 'MULTIPLIER');
+    const additionalType = lottery.ballTypes?.find((bt) => bt.category === 'ADDITIONAL');
 
     const result = {
       id: lottery.id,
       name: lottery.name,
       slug: lottery.slug,
-      description: lottery.description,
-      primaryColor: lottery.primaryColor,
-      specialBallName: lottery.specialBallName,
-      hasMultiplier: lottery.hasMultiplier,
-      multiplierName: lottery.multiplierName,
+      description: null,
+      primaryColor: null,
+      specialBallName: additionalType?.name || 'Bola Especial',
+      hasMultiplier: !!multiplierType,
+      multiplierName: multiplierType?.name || null,
       country: {
-        name: lottery.country.name,
-        currency: lottery.country.currency,
-        flag: lottery.country.flagEmoji,
+        name: lottery.state.country.name,
+        currency: lottery.state.country.currency,
+        flag: lottery.state.country.flagEmoji,
       },
-      jackpotFormatted: latestDraw?.nextJackpotFormatted || 
-                        (latestDraw?.nextEstimatedJackpot ? formatJackpot(latestDraw.nextEstimatedJackpot, lottery.country.currency) : '$0'),
-      nextDrawDateFormatted: latestDraw?.nextDrawDate ? formatDateSpanish(latestDraw.nextDrawDate, true) : 'Por confirmar',
-      latestDraw: latestDraw ? {
-        id: latestDraw.id,
-        drawNumber: latestDraw.drawNumber,
-        drawDateFormatted: formatDateSpanish(latestDraw.drawDate),
-        winningCombination: latestDraw.winningCombination,
-        prizes: latestDraw.prizes.map((p) => ({
-          categoryName: p.categoryName,
-          winnersCount: p.winnersCount,
-          prizeAmountFormatted: formatCurrency(p.prizeAmount, lottery.country.currency),
-          multiplierPrizeAmountFormatted: p.multiplierPrizeAmount ? formatCurrency(p.multiplierPrizeAmount, lottery.country.currency) : null,
-        })),
-      } : null,
+      jackpotFormatted: latestJackpot?.nextJackpotRaw ||
+                        (latestJackpot?.nextJackpotAmount ? formatJackpot(latestJackpot.nextJackpotAmount, lottery.state.country.currency) : '$0'),
+      nextDrawDateFormatted: latestJackpot?.nextDrawDate ? formatDateSpanish(latestJackpot.nextDrawDate, true) : 'Por confirmar',
+      latestDraw: latestDraw
+        ? {
+            id: latestDraw.id,
+            drawNumber: latestDraw.drawNumber,
+            drawDateFormatted: formatDateSpanish(latestDraw.drawDate),
+            winningCombination: latestDraw.numbers ? buildWinningCombination(latestDraw.numbers) : null,
+            prizes: latestDraw.prizes.map((p) => ({
+              categoryName: p.matchPattern,
+              winnersCount: p.winnersCount || 0,
+              prizeAmountFormatted: p.prizeAmountRaw || (p.prizeAmount ? formatCurrency(p.prizeAmount, lottery.state.country.currency) : '-'),
+              multiplierPrizeAmountFormatted: null,
+            })),
+          }
+        : null,
       historicalDraws: historicalDraws.map((d) => ({
         id: d.id,
         drawNumber: d.drawNumber,
         drawDateFormatted: formatDateSpanish(d.drawDate),
-        winningCombination: d.winningCombination,
+        winningCombination: d.numbers ? buildWinningCombination(d.numbers) : null,
       })),
     };
 
     await setCache(cacheKey, result, CACHE_TTL_SECONDS);
-
     return { ...result, _fromCache: false };
   } catch (error) {
     console.error(`[LotteryService Error] Error consultando detalle de ${lotterySlug}:`, error);
@@ -174,12 +229,158 @@ export async function getLotteryDetailData(countrySlug, lotterySlug) {
   }
 }
 
-/**
- * Invalida la caché de Redis cuando un Webhook/Scraper inserta un nuevo sorteo
- * @param {string} countrySlug
- * @param {string} lotterySlug
- */
 export async function invalidateLotteryCache(countrySlug, lotterySlug) {
   await delCache(`lottery:country:${countrySlug}:dashboard`);
   await delCache(`lottery:${countrySlug}:${lotterySlug}:detail`);
+}
+
+export async function getStateLotteries(countrySlug, stateSlug) {
+  const cacheKey = `lottery:${countrySlug}:state:${stateSlug}`;
+
+  const cachedData = await getCache(cacheKey);
+  if (cachedData) {
+    return { ...cachedData, _fromCache: true };
+  }
+
+  try {
+    const state = await prisma.state.findFirst({
+      where: {
+        slug: stateSlug.toLowerCase(),
+        country: { slug: countrySlug.toLowerCase() },
+      },
+      include: {
+        country: true,
+        lotteries: {
+          where: { isActive: true },
+          include: {
+            draws: {
+              where: { status: 'COMPLETED' },
+              orderBy: { drawDate: 'desc' },
+              take: 1,
+              include: {
+                numbers: {
+                  include: { ballType: true },
+                  orderBy: [{ category: 'asc' }, { position: 'asc' }],
+                },
+                jackpotHistory: {
+                  orderBy: { recordedAt: 'desc' },
+                  take: 1,
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+
+    if (!state) return null;
+
+    const lotteries = state.lotteries.map((lottery) => {
+      const lastDraw = lottery.draws[0] || null;
+      const latestJackpot = lastDraw?.jackpotHistory?.[0] || null;
+
+      return {
+        id: lottery.id,
+        name: lottery.name,
+        slug: lottery.slug,
+        stateOrRegion: state.name === 'Nacional' ? null : `Exclusiva de ${state.name}`,
+        primaryColor: null,
+        specialBallBg: 'bg-red-600',
+        jackpotFormatted: latestJackpot?.nextJackpotRaw ||
+                          (latestJackpot?.nextJackpotAmount ? formatJackpot(latestJackpot.nextJackpotAmount, state.country.currency) : '$0'),
+        nextDrawDateFormatted: latestJackpot?.nextDrawDate ? formatDateSpanish(latestJackpot.nextDrawDate, true) : 'Por confirmar',
+        lastDraw: lastDraw
+          ? {
+              id: lastDraw.id,
+              drawNumber: lastDraw.drawNumber,
+              drawDateFormatted: formatDateSpanish(lastDraw.drawDate),
+              winningCombination: lastDraw.numbers ? buildWinningCombination(lastDraw.numbers) : null,
+            }
+          : null,
+      };
+    });
+
+    const result = {
+      state: {
+        name: state.name,
+        code: state.code,
+        slug: state.slug,
+        icon: null,
+        description: `Resultados oficiales y botes acumulados de las loterías que se juegan en el estado de ${state.name}.`,
+        country: {
+          name: state.country.name,
+          slug: state.country.slug,
+          flag: state.country.flagEmoji,
+        },
+      },
+      lotteries,
+    };
+
+    await setCache(cacheKey, result, CACHE_TTL_SECONDS);
+    return { ...result, _fromCache: false };
+  } catch (error) {
+    console.error(`[LotteryService Error] Error consultando estado ${stateSlug}:`, error);
+    return null;
+  }
+}
+
+export async function getDrawDetail(countrySlug, lotterySlug, drawId) {
+  const cacheKey = `lottery:draw:${drawId}`;
+
+  const cachedData = await getCache(cacheKey);
+  if (cachedData) {
+    return { ...cachedData, _fromCache: true };
+  }
+
+  try {
+    const draw = await prisma.draw.findUnique({
+      where: { id: drawId },
+      include: {
+        lottery: {
+          include: {
+            state: { include: { country: true } },
+            ballTypes: true,
+          },
+        },
+        numbers: {
+          include: { ballType: true },
+          orderBy: [{ category: 'asc' }, { position: 'asc' }],
+        },
+        prizes: true,
+        jackpotHistory: {
+          orderBy: { recordedAt: 'desc' },
+          take: 1,
+        },
+      },
+    });
+
+    if (!draw) return null;
+
+    const jackpot = draw.jackpotHistory?.[0] || null;
+    const multiplierType = draw.lottery.ballTypes?.find((bt) => bt.category === 'MULTIPLIER');
+
+    return {
+      ...draw,
+      _fromCache: false,
+      lotteryName: draw.lottery.name,
+      lotterySlug: draw.lottery.slug,
+      countrySlug: draw.lottery.state.country.slug,
+      countryName: draw.lottery.state.country.name,
+      specialBallBg: 'bg-gradient-to-br from-red-500 via-red-600 to-red-800 text-white shadow-red-500/30',
+      jackpotFormatted: jackpot?.jackpotRaw || (jackpot?.jackpotAmount ? formatJackpot(jackpot.jackpotAmount, draw.lottery.state.country.currency) : '$0'),
+      nextJackpotFormatted: jackpot?.nextJackpotRaw || (jackpot?.nextJackpotAmount ? formatJackpot(jackpot.nextJackpotAmount, draw.lottery.state.country.currency) : '$0'),
+      nextDrawDateFormatted: jackpot?.nextDrawDate ? formatDateSpanish(jackpot.nextDrawDate, true) : 'Por confirmar',
+      drawDateFormatted: formatDateSpanish(draw.drawDate),
+      winningCombination: draw.numbers ? buildWinningCombination(draw.numbers) : null,
+      prizes: draw.prizes.map((p) => ({
+        categoryName: p.matchPattern,
+        winnersCount: p.winnersCount || 0,
+        prizeAmountFormatted: p.prizeAmountRaw || (p.prizeAmount ? formatCurrency(p.prizeAmount, draw.lottery.state.country.currency) : '-'),
+        multiplierPrizeAmountFormatted: null,
+      })),
+    };
+  } catch (error) {
+    console.error(`[LotteryService Error] Error consultando sorteo ${drawId}:`, error);
+    return null;
+  }
 }
