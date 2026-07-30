@@ -13,6 +13,9 @@
 # production
 /build
 
+# JSON ingestion processed file hashes
+.processed_json/
+
 # misc
 .DS_Store
 *.pem

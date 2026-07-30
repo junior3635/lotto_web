@@ -1,0 +1,182 @@
+{
+  "status": "success",
+  "message": "ok",
+  "messageTR": "ok",
+  "systemTime": 1785441777,
+  "endpoint": "lottery-results/main-draw",
+    "params": {
+  },
+  "note": "This endpoint returns a list of main lottery games.",
+  "rowCount": 2,
+  "creditUsed": 0,
+  "data": [
+    {
+      "id": 23,
+      "gameName": "Powerball",
+      "logo": "https://nosycdn.com/api/lotto/az-powerball-arizona.svg",
+      "drawTimezone": "America/New_York",
+      "drawTime": "22:59:00",
+      "stopSaleTime": "22:00:00",
+      "claimDeadline": 365,
+      "allowZero": false,
+      "minBall": 1,
+      "maxBall": 69,
+      "drawnNumbers": 5,
+      "selectableBalls": 5,
+      "minimumSelectableBalls": 5,
+      "uniqueMainNumbers": 1,
+      "uniqueExtraNumbers": 0,
+      "allowDuplicates": false,
+      "additionalNumbers": [
+        {
+          "playerPicked": true,
+          "name": "powerball",
+          "minBall": 1,
+          "maxBall": 26,
+          "allowZero": false,
+          "isString": false,
+          "isMultiplier": false,
+          "allowedValues": null
+        },
+        {
+          "playerPicked": false,
+          "name": "powerplay",
+          "minBall": 2,
+          "maxBall": 10,
+          "allowZero": false,
+          "isString": false,
+          "isMultiplier": true,
+          "allowedValues": [
+            2,
+            3,
+            4,
+            5,
+            10
+          ]
+        }
+      ],
+      "bonusNumbers": [
+        {
+          "name": "Powerball",
+          "abbreviation": "PB",
+          "isMultiplier": false,
+          "variant": null
+        }
+      ],
+      "prizeMultipliers": [
+        {
+          "name": "Power Play",
+          "abbreviation": "PP",
+          "isMultiplier": true,
+          "variant": null
+        }
+      ],
+      "mainDrawName": "Main draw",
+      "state": [],
+      "statesWithMultiDraws": [
+        "CO",
+        "FL",
+        "IN",
+        "MD",
+        "MI",
+        "MO",
+        "NJ",
+        "PA",
+        "PR",
+        "SC",
+        "SD",
+        "TN",
+        "WA",
+        "MT",
+        "NE",
+        "OK",
+        "ID",
+        "IA",
+        "MS",
+        "NM"
+      ],
+      "drawDays": {
+        "Sunday": false,
+        "Monday": true,
+        "Tuesday": false,
+        "Wednesday": true,
+        "Thursday": false,
+        "Friday": false,
+        "Saturday": true
+      }
+    },
+    {
+      "id": 24,
+      "gameName": "Mega Millions",
+      "logo": "https://nosycdn.com/api/lotto/az-mega-millions-arizona.svg",
+      "drawTimezone": "America/Detroit",
+      "drawTime": "23:00:00",
+      "stopSaleTime": "22:45:00",
+      "claimDeadline": 365,
+      "allowZero": false,
+      "minBall": 1,
+      "maxBall": 70,
+      "drawnNumbers": 5,
+      "selectableBalls": 5,
+      "minimumSelectableBalls": 5,
+      "uniqueMainNumbers": 1,
+      "uniqueExtraNumbers": 0,
+      "allowDuplicates": false,
+      "additionalNumbers": [
+        {
+          "playerPicked": true,
+          "name": "mega_ball",
+          "minBall": 1,
+          "maxBall": 25,
+          "allowZero": false,
+          "isString": false,
+          "isMultiplier": false,
+          "allowedValues": null
+        },
+        {
+          "playerPicked": false,
+          "name": "megaplier",
+          "minBall": 2,
+          "maxBall": 5,
+          "allowZero": false,
+          "isString": false,
+          "isMultiplier": true,
+          "allowedValues": [
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "bonusNumbers": [
+        {
+          "name": "Mega Ball",
+          "abbreviation": "MB",
+          "isMultiplier": false,
+          "variant": null
+        }
+      ],
+      "prizeMultipliers": [
+        {
+          "name": "Megaplier",
+          "abbreviation": "M",
+          "isMultiplier": true,
+          "variant": null
+        }
+      ],
+      "mainDrawName": null,
+      "state": [],
+      "statesWithMultiDraws": [],
+      "drawDays": {
+        "Sunday": false,
+        "Monday": false,
+        "Tuesday": true,
+        "Wednesday": false,
+        "Thursday": false,
+        "Friday": true,
+        "Saturday": false
+      }
+    }
+  ]
+}

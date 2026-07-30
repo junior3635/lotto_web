@@ -122,7 +122,24 @@ src/
 - [x] **Prize templates por lotería:** Constantes `PRIZE_TEMPLATES` con patterns y fracciones de jackpot para cada tipo (Powerball, Mega Millions, Florida Lotto, Lotto Texas, SuperLotto Plus, EuroMillones, La Primitiva, Bonoloto, Melate, Chispazo).
 - [x] **200 sorteos totales (20 × 10 loterías):** Datos realistas con números únicos, fechas secuenciales hacia atrás y jackpots crecientes.
 
-### 🔮 FASE 7: Próximos Pasos (PLANIFICADO)
+### ✅ FASE 7: Semilla de Jurisdicciones y Sistema de Ingestión desde PR (COMPLETADO)
+- [x] **`prisma/seed-jurisdiction.js`:** Semilla completa que parsea el archivo `Game Jurisdiction Format Latest draw Pri` (365 loterías) y `lloteryforstate.json` (243 IDs de juego), creando Country → State → Lottery → Configuration → BallType → Schedule en la base de datos.
+- [x] **`src/services/ingestionService.js`:** Servicio de ingesta con funciones `parsePRFile()`, `ingestJurisdictionData()`, `getIngestionStats()` y `clearJurisdictionData()` para captura continua de datos desde archivos PR.
+- [x] **`src/app/api/revalidate/route.js`:** Endpoints ampliados con `action=ingest` (ingestión PR), `action=stats` (estadísticas), `action=clear` (limpiar datos), `action=ingest-json` (ingestión desde JSON) y `action=json-status` (estado de archivos JSON).
+- [x] **`prisma/seed-draws.js`:** Genera 10 sorteos sintéticos por cada lotería jurisdiccional para pruebas funcionales completas (3,630 sorteos).
+- [x] **`src/services/jsonIngestionService.js`:** Servicio de ingesta de archivos JSON (`json_responses/`) con detección inteligente de cambios mediante hashing MD5. Solo procesa archivos modificados. Maneja `main_draw.json`, `states_game_list.json`, `drawing_result.json` y `pass_draw_365days.json`.
+- [x] **`prisma/ingest-json.js`:** Script ejecutable para ingesta JSON standalone (`npm run prisma:ingest-json`).
+- [x] **Archivos fuente parseados:** `Game Jurisdiction Format Latest draw Pri` (365 juegos, 53 jurisdicciones, 3 formatos: Lotto/Pick/Cash Pop) y `lloteryforstate.json` (243 entries mapeadas).
+- [x] **`package.json`:** Scripts `prisma:seed-jurisdiction`, `prisma:seed-draws`, `prisma:ingest-json`.
+- [x] **`.gitignore`:** Excluye `.processed_json/` (hashes de archivos procesados).
+
+### 🔮 FASE 8: Próximos Pasos (PLANIFICADO)
+- [ ] Ampliar ventana de consulta de 10 sorteos a 1 año
+- [ ] Agregar persistencia opcional de jugadas (modelo `UserPlay` + email)
+- [ ] Vista global `/mis-jugadas` con jugadas de todas las loterías
+- [ ] Migrar de archivos JSON a peticiones API en tiempo real para los datos de sorteos
+
+### 🔮 FASE 8: Próximos Pasos (PLANIFICADO)
 - [ ] Ampliar ventana de consulta de 10 sorteos a 1 año
 - [ ] Agregar persistencia opcional de jugadas (modelo `UserPlay` + email)
 - [ ] Vista global `/mis-jugadas` con jugadas de todas las loterías

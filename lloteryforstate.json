@@ -1,0 +1,983 @@
+{
+  "status": "success",
+  "message": "ok",
+  "messageTR": "ok",
+  "systemTime": 1785429911,
+  "endpoint": "lottery-results/old/game-list",
+  "rowCount": 1,
+  "creditUsed": 0,
+  "data": [
+    {
+      "gameID": 7,
+      "name": "2by2"
+    },
+    {
+      "gameID": 8,
+      "name": "Lotto America"
+    },
+    {
+      "gameID": 9,
+      "name": "Powerball"
+    },
+    {
+      "gameID": 10,
+      "name": "Cash 4 Life"
+    },
+    {
+      "gameID": 11,
+      "name": "MegaMillion"
+    },
+    {
+      "gameID": 12,
+      "name": "Gimme 5"
+    },
+    {
+      "gameID": 13,
+      "name": "Lucky For Life"
+    },
+    {
+      "gameID": 14,
+      "name": "Megabucks"
+    },
+    {
+      "gameID": 15,
+      "name": "The Pick"
+    },
+    {
+      "gameID": 16,
+      "name": "Pick 3"
+    },
+    {
+      "gameID": 17,
+      "name": "Fantasy 5"
+    },
+    {
+      "gameID": 18,
+      "name": "Triple Twist"
+    },
+    {
+      "gameID": 19,
+      "name": "Cash 3 Evening"
+    },
+    {
+      "gameID": 20,
+      "name": "Cash 3 Midday"
+    },
+    {
+      "gameID": 21,
+      "name": "Cash 4 Evening"
+    },
+    {
+      "gameID": 22,
+      "name": "Cash 4 Midday"
+    },
+    {
+      "gameID": 23,
+      "name": "Naturel State Jackspot"
+    },
+    {
+      "gameID": 24,
+      "name": "SüperLotto"
+    },
+    {
+      "gameID": 25,
+      "name": "Fantasy 5"
+    },
+    {
+      "gameID": 26,
+      "name": "Daily 4"
+    },
+    {
+      "gameID": 27,
+      "name": "Daily 3 Evening"
+    },
+    {
+      "gameID": 28,
+      "name": "Daily 3 Midday"
+    },
+    {
+      "gameID": 29,
+      "name": "Pick 3 Evening"
+    },
+    {
+      "gameID": 30,
+      "name": "Pick 3 Midday"
+    },
+    {
+      "gameID": 31,
+      "name": "Lotto"
+    },
+    {
+      "gameID": 32,
+      "name": "Cash 5"
+    },
+    {
+      "gameID": 33,
+      "name": "Cash 5"
+    },
+    {
+      "gameID": 34,
+      "name": "Lotto"
+    },
+    {
+      "gameID": 35,
+      "name": "Lucky Link Days"
+    },
+    {
+      "gameID": 36,
+      "name": "Lucky Link Night"
+    },
+    {
+      "gameID": 37,
+      "name": "Play 3 Day"
+    },
+    {
+      "gameID": 38,
+      "name": "Play 3 Night"
+    },
+    {
+      "gameID": 39,
+      "name": "Play 4 Day"
+    },
+    {
+      "gameID": 40,
+      "name": "Play 4 Night"
+    },
+    {
+      "gameID": 41,
+      "name": "Play 3 Day"
+    },
+    {
+      "gameID": 42,
+      "name": "Play 3 Night"
+    },
+    {
+      "gameID": 43,
+      "name": "Play 4 Day"
+    },
+    {
+      "gameID": 44,
+      "name": "Play 4 Night"
+    },
+    {
+      "gameID": 45,
+      "name": "Multi Win Lotto"
+    },
+    {
+      "gameID": 46,
+      "name": "Fantasy 5"
+    },
+    {
+      "gameID": 47,
+      "name": "Jackpot Triple"
+    },
+    {
+      "gameID": 48,
+      "name": "Pick 2 Midday"
+    },
+    {
+      "gameID": 49,
+      "name": "Pick 2 Evening"
+    },
+    {
+      "gameID": 50,
+      "name": "Pick 3 Midday"
+    },
+    {
+      "gameID": 51,
+      "name": "Pick 3 Evening"
+    },
+    {
+      "gameID": 52,
+      "name": "Pick 4 Midday"
+    },
+    {
+      "gameID": 53,
+      "name": "Pick 4 Evening"
+    },
+    {
+      "gameID": 54,
+      "name": "Pick 5 Midday"
+    },
+    {
+      "gameID": 55,
+      "name": "Pick 5 Evening"
+    },
+    {
+      "gameID": 56,
+      "name": "Lotto"
+    },
+    {
+      "gameID": 57,
+      "name": "Cash 3 Midday"
+    },
+    {
+      "gameID": 58,
+      "name": "Cash 3 Evening"
+    },
+    {
+      "gameID": 59,
+      "name": "Cash 3 Night"
+    },
+    {
+      "gameID": 60,
+      "name": "Cash 4 Midday"
+    },
+    {
+      "gameID": 61,
+      "name": "Cash 4 Evening"
+    },
+    {
+      "gameID": 62,
+      "name": "Cash 4 Night"
+    },
+    {
+      "gameID": 63,
+      "name": "Cash 5 Midday"
+    },
+    {
+      "gameID": 64,
+      "name": "Cash 5 Evening"
+    },
+    {
+      "gameID": 65,
+      "name": "Fantasy 5"
+    },
+    {
+      "gameID": 66,
+      "name": "Jumbo Bucks Number"
+    },
+    {
+      "gameID": 67,
+      "name": "5 Star Draw"
+    },
+    {
+      "gameID": 68,
+      "name": "Cash"
+    },
+    {
+      "gameID": 69,
+      "name": "Pick 3 Day"
+    },
+    {
+      "gameID": 70,
+      "name": "Pick 3 Night"
+    },
+    {
+      "gameID": 71,
+      "name": "Weekly Grand"
+    },
+    {
+      "gameID": 72,
+      "name": "Lotto"
+    },
+    {
+      "gameID": 73,
+      "name": "Lucky Midday"
+    },
+    {
+      "gameID": 74,
+      "name": "Lucky Evening"
+    },
+    {
+      "gameID": 75,
+      "name": "Pick 3 Midday"
+    },
+    {
+      "gameID": 76,
+      "name": "Pick 3 Evening"
+    },
+    {
+      "gameID": 77,
+      "name": "Pick 4 Midday"
+    },
+    {
+      "gameID": 78,
+      "name": "Pick 4 Evening"
+    },
+    {
+      "gameID": 79,
+      "name": "Cash 5"
+    },
+    {
+      "gameID": 80,
+      "name": "Daily 3 Evening"
+    },
+    {
+      "gameID": 81,
+      "name": "Daily 3 Midday"
+    },
+    {
+      "gameID": 82,
+      "name": "Daily 4 Evening"
+    },
+    {
+      "gameID": 83,
+      "name": "Daily 4 Midday"
+    },
+    {
+      "gameID": 84,
+      "name": "Hooiser Lotto"
+    },
+    {
+      "gameID": 85,
+      "name": "Hooiser Lotto Plus"
+    },
+    {
+      "gameID": 86,
+      "name": "Pick 3 Evening"
+    },
+    {
+      "gameID": 87,
+      "name": "Pick 3 Midday"
+    },
+    {
+      "gameID": 88,
+      "name": "Pick 4 Evening"
+    },
+    {
+      "gameID": 89,
+      "name": "Pick 4 Midday"
+    },
+    {
+      "gameID": 90,
+      "name": "Pick 3 Evening"
+    },
+    {
+      "gameID": 91,
+      "name": "Pick 3 Midday"
+    },
+    {
+      "gameID": 92,
+      "name": "Super Cansas Cash"
+    },
+    {
+      "gameID": 93,
+      "name": "Pick 3 Evening"
+    },
+    {
+      "gameID": 94,
+      "name": "Pick 3 Midday"
+    },
+    {
+      "gameID": 95,
+      "name": "Pick 4 Evening"
+    },
+    {
+      "gameID": 96,
+      "name": "Pick 4 Midday"
+    },
+    {
+      "gameID": 97,
+      "name": "Cash Ball"
+    },
+    {
+      "gameID": 98,
+      "name": "Quick Bulls"
+    },
+    {
+      "gameID": 99,
+      "name": "Pick 3"
+    },
+    {
+      "gameID": 100,
+      "name": "Pick 4"
+    },
+    {
+      "gameID": 101,
+      "name": "Easy 5"
+    },
+    {
+      "gameID": 102,
+      "name": "Lotto"
+    },
+    {
+      "gameID": 103,
+      "name": "Pick 3 Evening"
+    },
+    {
+      "gameID": 104,
+      "name": "Pick 3 Midday"
+    },
+    {
+      "gameID": 105,
+      "name": "Pick 4 Evening"
+    },
+    {
+      "gameID": 106,
+      "name": "Pick 4 Midday"
+    },
+    {
+      "gameID": 107,
+      "name": "Pick 3 Evening"
+    },
+    {
+      "gameID": 108,
+      "name": "Pick 3 Midday"
+    },
+    {
+      "gameID": 109,
+      "name": "Pick 4 Evening"
+    },
+    {
+      "gameID": 110,
+      "name": "Pick 4 Midday"
+    },
+    {
+      "gameID": 111,
+      "name": "Bonus Match 5"
+    },
+    {
+      "gameID": 112,
+      "name": "Multi Match"
+    },
+    {
+      "gameID": 113,
+      "name": "Mass Cash"
+    },
+    {
+      "gameID": 114,
+      "name": "Megabucks Doubler"
+    },
+    {
+      "gameID": 115,
+      "name": "Numbers 4 Midday"
+    },
+    {
+      "gameID": 116,
+      "name": "Numbers 4 Evening"
+    },
+    {
+      "gameID": 117,
+      "name": "Daily 3 Evening"
+    },
+    {
+      "gameID": 118,
+      "name": "Daily 3 Midday"
+    },
+    {
+      "gameID": 119,
+      "name": "Daily 4 Evening"
+    },
+    {
+      "gameID": 120,
+      "name": "Daily 4 Midday"
+    },
+    {
+      "gameID": 121,
+      "name": "Fantasy 5"
+    },
+    {
+      "gameID": 122,
+      "name": "Lotto 47"
+    },
+    {
+      "gameID": 123,
+      "name": "Daily 3"
+    },
+    {
+      "gameID": 124,
+      "name": "Gopher 5"
+    },
+    {
+      "gameID": 125,
+      "name": "Northstar Cash"
+    },
+    {
+      "gameID": 126,
+      "name": "Pick 3 Evening"
+    },
+    {
+      "gameID": 127,
+      "name": "Pick 3 Midday"
+    },
+    {
+      "gameID": 128,
+      "name": "Pick 4 Evening"
+    },
+    {
+      "gameID": 129,
+      "name": "Pick 4 Midday"
+    },
+    {
+      "gameID": 130,
+      "name": "Lotto"
+    },
+    {
+      "gameID": 131,
+      "name": "Show Me Cash"
+    },
+    {
+      "gameID": 132,
+      "name": "Montana Cash"
+    },
+    {
+      "gameID": 133,
+      "name": "Big Sky Bonus"
+    },
+    {
+      "gameID": 134,
+      "name": "Pick 3"
+    },
+    {
+      "gameID": 135,
+      "name": "Pick 5"
+    },
+    {
+      "gameID": 136,
+      "name": "My Day"
+    },
+    {
+      "gameID": 137,
+      "name": "Pick 3 Evening"
+    },
+    {
+      "gameID": 138,
+      "name": "Pick 3 Midday"
+    },
+    {
+      "gameID": 139,
+      "name": "Pick 4 Evening"
+    },
+    {
+      "gameID": 140,
+      "name": "Pick 4 Midday"
+    },
+    {
+      "gameID": 141,
+      "name": "Pick 3 Midday"
+    },
+    {
+      "gameID": 142,
+      "name": "Pick 3 Evening"
+    },
+    {
+      "gameID": 143,
+      "name": "Pick 4 Evening"
+    },
+    {
+      "gameID": 144,
+      "name": "Pick 4 Midday"
+    },
+    {
+      "gameID": 145,
+      "name": "Pick 6"
+    },
+    {
+      "gameID": 146,
+      "name": "Cash 5"
+    },
+    {
+      "gameID": 147,
+      "name": "Pick 3 Plus Day"
+    },
+    {
+      "gameID": 148,
+      "name": "Pick 3 Plus Evening\r\n"
+    },
+    {
+      "gameID": 149,
+      "name": "Pick 4 Plus Day\r\n"
+    },
+    {
+      "gameID": 150,
+      "name": "Pick 4 Plus Evening\r\n"
+    },
+    {
+      "gameID": 151,
+      "name": "Roadrunner Cash"
+    },
+    {
+      "gameID": 152,
+      "name": "Lotto"
+    },
+    {
+      "gameID": 153,
+      "name": "Number Midday"
+    },
+    {
+      "gameID": 154,
+      "name": "Number Evening"
+    },
+    {
+      "gameID": 155,
+      "name": "Win 4 Midday"
+    },
+    {
+      "gameID": 156,
+      "name": "Win 4 Evening"
+    },
+    {
+      "gameID": 157,
+      "name": "Take 5 Evening"
+    },
+    {
+      "gameID": 158,
+      "name": "Pick 3 Midday"
+    },
+    {
+      "gameID": 159,
+      "name": "Pick 3 Evening"
+    },
+    {
+      "gameID": 160,
+      "name": "Pick 4 Midday"
+    },
+    {
+      "gameID": 161,
+      "name": "Pick 4 Evening"
+    },
+    {
+      "gameID": 162,
+      "name": "Cash 5"
+    },
+    {
+      "gameID": 163,
+      "name": "Pick 3 Midday"
+    },
+    {
+      "gameID": 164,
+      "name": "Pick 3 Evening"
+    },
+    {
+      "gameID": 165,
+      "name": "Pick 4 Midday"
+    },
+    {
+      "gameID": 166,
+      "name": "Pick 4 Evening"
+    },
+    {
+      "gameID": 167,
+      "name": "Pick 5 Midday"
+    },
+    {
+      "gameID": 168,
+      "name": "Pick 5 Evening"
+    },
+    {
+      "gameID": 169,
+      "name": "Roling Cash"
+    },
+    {
+      "gameID": 170,
+      "name": "Lotto"
+    },
+    {
+      "gameID": 171,
+      "name": "Pick 3"
+    },
+    {
+      "gameID": 172,
+      "name": "Cash 5"
+    },
+    {
+      "gameID": 173,
+      "name": "Pick 4 1pm"
+    },
+    {
+      "gameID": 174,
+      "name": "Pick 4 4pm"
+    },
+    {
+      "gameID": 175,
+      "name": "Pick 4 7pm"
+    },
+    {
+      "gameID": 176,
+      "name": "Pick 4 10pm"
+    },
+    {
+      "gameID": 177,
+      "name": "Win For Life"
+    },
+    {
+      "gameID": 178,
+      "name": "Pick 2 Midday"
+    },
+    {
+      "gameID": 179,
+      "name": "Pick 2 Evening"
+    },
+    {
+      "gameID": 180,
+      "name": "Pick 3 Midday"
+    },
+    {
+      "gameID": 181,
+      "name": "Pick 3 Evening"
+    },
+    {
+      "gameID": 182,
+      "name": "Pick 4 Midday"
+    },
+    {
+      "gameID": 183,
+      "name": "Pick 4 Evening"
+    },
+    {
+      "gameID": 184,
+      "name": "Pick 5 Midday"
+    },
+    {
+      "gameID": 185,
+      "name": "Pick 5 Evening"
+    },
+    {
+      "gameID": 186,
+      "name": "Cash 5"
+    },
+    {
+      "gameID": 187,
+      "name": "Match 6 Lotto"
+    },
+    {
+      "gameID": 188,
+      "name": "Treasure"
+    },
+    {
+      "gameID": 189,
+      "name": "The Numbers Evening"
+    },
+    {
+      "gameID": 190,
+      "name": "The Numbers Midday"
+    },
+    {
+      "gameID": 191,
+      "name": "Wild Money"
+    },
+    {
+      "gameID": 192,
+      "name": "Palmetto Cash 5"
+    },
+    {
+      "gameID": 193,
+      "name": "Pick 3 Midday"
+    },
+    {
+      "gameID": 194,
+      "name": "Pick 3 Evening"
+    },
+    {
+      "gameID": 195,
+      "name": "Pick 4 Midday"
+    },
+    {
+      "gameID": 196,
+      "name": "Pick 4 Evening"
+    },
+    {
+      "gameID": 197,
+      "name": "Cash 5"
+    },
+    {
+      "gameID": 198,
+      "name": "Cash 3 Midday"
+    },
+    {
+      "gameID": 199,
+      "name": "Cash 3 Evening"
+    },
+    {
+      "gameID": 200,
+      "name": "Cash 3 Morning"
+    },
+    {
+      "gameID": 201,
+      "name": "Cash 4 Midday"
+    },
+    {
+      "gameID": 202,
+      "name": "Cash 4 Evening"
+    },
+    {
+      "gameID": 203,
+      "name": "Cash 4 Morning"
+    },
+    {
+      "gameID": 204,
+      "name": "Cash 5"
+    },
+    {
+      "gameID": 205,
+      "name": "Cowboy Draw"
+    },
+    {
+      "gameID": 206,
+      "name": "Pick 3 Day"
+    },
+    {
+      "gameID": 207,
+      "name": "Pick 3 Evening"
+    },
+    {
+      "gameID": 208,
+      "name": "Pick 3 Morning"
+    },
+    {
+      "gameID": 209,
+      "name": "Pick 3 Night"
+    },
+    {
+      "gameID": 210,
+      "name": "Daily 4 Day"
+    },
+    {
+      "gameID": 211,
+      "name": "Daily 4 Evening"
+    },
+    {
+      "gameID": 212,
+      "name": "Daily 4 Morning"
+    },
+    {
+      "gameID": 213,
+      "name": "Daily 4 Night"
+    },
+    {
+      "gameID": 214,
+      "name": "Cash Five"
+    },
+    {
+      "gameID": 215,
+      "name": "Two Step"
+    },
+    {
+      "gameID": 216,
+      "name": "Lotto"
+    },
+    {
+      "gameID": 217,
+      "name": "Pick 3 Midday"
+    },
+    {
+      "gameID": 218,
+      "name": "Pick 3 Evening"
+    },
+    {
+      "gameID": 219,
+      "name": "Pick 4 Midday"
+    },
+    {
+      "gameID": 220,
+      "name": "Pick 4 Evening"
+    },
+    {
+      "gameID": 221,
+      "name": "Pick 3 Midday"
+    },
+    {
+      "gameID": 222,
+      "name": "Pick 3 Evening"
+    },
+    {
+      "gameID": 223,
+      "name": "Pick 4 Midday"
+    },
+    {
+      "gameID": 224,
+      "name": "Pick 4 Evening"
+    },
+    {
+      "gameID": 225,
+      "name": "Case 5"
+    },
+    {
+      "gameID": 226,
+      "name": "Case 5 Evening"
+    },
+    {
+      "gameID": 227,
+      "name": "Bank a Million"
+    },
+    {
+      "gameID": 228,
+      "name": "Pick 3 (Daily Game)"
+    },
+    {
+      "gameID": 229,
+      "name": "Match 4"
+    },
+    {
+      "gameID": 230,
+      "name": "Hit 5"
+    },
+    {
+      "gameID": 231,
+      "name": "Lotto"
+    },
+    {
+      "gameID": 232,
+      "name": "DC 2 Midday"
+    },
+    {
+      "gameID": 233,
+      "name": "DC 2 Evening"
+    },
+    {
+      "gameID": 234,
+      "name": "DC 3 Midday"
+    },
+    {
+      "gameID": 235,
+      "name": "DC 3 Evening"
+    },
+    {
+      "gameID": 236,
+      "name": "DC 4 Midday"
+    },
+    {
+      "gameID": 237,
+      "name": "DC 4 Evening"
+    },
+    {
+      "gameID": 238,
+      "name": "DC 5 Midday"
+    },
+    {
+      "gameID": 239,
+      "name": "DC 5 Evening"
+    },
+    {
+      "gameID": 240,
+      "name": "Daily 3"
+    },
+    {
+      "gameID": 241,
+      "name": "Daily 4"
+    },
+    {
+      "gameID": 242,
+      "name": "Cash 25"
+    },
+    {
+      "gameID": 243,
+      "name": "Pick 3 Midday"
+    },
+    {
+      "gameID": 244,
+      "name": "Pick 4 Midday"
+    },
+    {
+      "gameID": 245,
+      "name": "Badger 5"
+    },
+    {
+      "gameID": 246,
+      "name": "Super Cash"
+    },
+    {
+      "gameID": 247,
+      "name": "Pick 3 Evening"
+    },
+    {
+      "gameID": 248,
+      "name": "Pick 4 Evening"
+    },
+    {
+      "gameID": 252,
+      "name": "Take 5 Midday"
+    }
+  ]
+}

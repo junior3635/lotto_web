@@ -1,0 +1,187 @@
+{
+  "status": "success",
+  "message": "ok",
+  "messageTR": "ok",
+  "systemTime": 1785444629,
+  "endpoint": "lottery-results/game-result",
+  "rowCount": 1,
+  "creditUsed": 0,
+  "data": {
+    "drawNumber": 318139,
+    "drawDate": "2026-07-27",
+    "drawTime": "22:59:00",
+    "drawDateTime": "2026-07-27 22:59:00",
+    "drawTimestamp": 1785182340,
+    "jackpot": "$633 MILLION",
+    "cashPayout": "$277.3 MILLION",
+    "nextDrawDate": "2026-07-27 22:59:00",
+    "nextJackpot": "$633 MILLION",
+    "nextCash": "$277.3 MILLION",
+    "details": "For states except California.",
+    "note": "POWER PLAY: 2",
+    "megaPlierPrizePool": null,
+    "regularPrizePool": null,
+    "totalPrizePool": null,
+    "totalMegaPlierWinners": null,
+    "totalRegularWinners": null,
+    "overallWinners": null,
+    "winningNumbers": [
+      "6",
+      "26",
+      "46",
+      "58",
+      "65"
+    ],
+    "additionalNumbers": [
+      25
+    ],
+    "prize": [
+      {
+        "match": "5 + 1",
+        "prize": "$633 Million",
+        "winner": null
+      },
+      {
+        "match": "5 + 0",
+        "prize": "$1 Million",
+        "winner": null
+      },
+      {
+        "match": "4 + 1",
+        "prize": "$50,000",
+        "winner": null
+      },
+      {
+        "match": "4 + 0",
+        "prize": "$100",
+        "winner": null
+      },
+      {
+        "match": "3 + 1",
+        "prize": "$100",
+        "winner": null
+      },
+      {
+        "match": "3 + 0",
+        "prize": "$7",
+        "winner": null
+      },
+      {
+        "match": "2 + 1",
+        "prize": "$7",
+        "winner": null
+      },
+      {
+        "match": "1 + 1",
+        "prize": "$4",
+        "winner": null
+      },
+      {
+        "match": "0 + 1",
+        "prize": "$4",
+        "winner": null
+      }
+    ],
+    "gameDetails": {
+      "id": 23,
+      "gameName": "Powerball",
+      "logo": "https://nosycdn.com/api/lotto/az-powerball-arizona.svg",
+      "drawTimezone": "America/New_York",
+      "drawTime": "22:59:00",
+      "stopSaleTime": "22:00:00",
+      "claimDeadline": 365,
+      "allowZero": false,
+      "minBall": 1,
+      "maxBall": 69,
+      "drawnNumbers": 5,
+      "selectableBalls": 5,
+      "minimumSelectableBalls": 5,
+      "uniqueMainNumbers": 1,
+      "uniqueExtraNumbers": 0,
+      "allowDuplicates": false,
+      "additionalNumbers": [
+        {
+          "playerPicked": true,
+          "name": "powerball",
+          "minBall": 1,
+          "maxBall": 26,
+          "allowZero": false,
+          "isString": false,
+          "isMultiplier": false,
+          "allowedValues": null
+        },
+        {
+          "playerPicked": false,
+          "name": "powerplay",
+          "minBall": 2,
+          "maxBall": 10,
+          "allowZero": false,
+          "isString": false,
+          "isMultiplier": true,
+          "allowedValues": [
+            2,
+            3,
+            4,
+            5,
+            10
+          ]
+        }
+      ],
+      "bonusNumbers": [
+        {
+          "name": "Powerball",
+          "abbreviation": "PB",
+          "isMultiplier": false,
+          "variant": null
+        }
+      ],
+      "prizeMultipliers": [
+        {
+          "name": "Power Play",
+          "abbreviation": "PP",
+          "isMultiplier": true,
+          "variant": null
+        }
+      ],
+      "mainDrawName": "Main draw",
+      "state": {
+        "state": "Arizona",
+        "stateCode": "AZ",
+        "slug": "arizona",
+        "taxRate": "%4.80",
+        "minimumLegalAge": 21
+      },
+      "statesWithMultiDraws": [
+        "CO",
+        "FL",
+        "IN",
+        "MD",
+        "MI",
+        "MO",
+        "NJ",
+        "PA",
+        "PR",
+        "SC",
+        "SD",
+        "TN",
+        "WA",
+        "MT",
+        "NE",
+        "OK",
+        "ID",
+        "IA",
+        "MS",
+        "NM"
+      ],
+      "drawDays": {
+        "Sunday": false,
+        "Monday": true,
+        "Tuesday": false,
+        "Wednesday": true,
+        "Thursday": false,
+        "Friday": false,
+        "Saturday": true
+      }
+    }
+  }
+}
