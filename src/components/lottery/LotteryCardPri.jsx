@@ -1,11 +1,11 @@
-// src/components/lottery/LotteryCard.jsx
+// src/components/lottery/LotteryCardPri.jsx
 // Tarjeta de lotería 100% Responsive Mobile-First con áreas táctiles de 44px y diseño adaptable
 
 import React from 'react';
 import Link from 'next/link';
 import WinningCombination from './WinningCombination';
 
-export default function LotteryCard({ lottery, countrySlug = 'us', stateSlug = null }) {
+export default function LotteryCardPri({ lottery, countrySlug = 'us', stateSlug = null }) {
   const {
     name,
     slug,

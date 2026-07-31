@@ -1,18 +1,18 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import Header from '../../../../../components/layout/Header';
-import Footer from '../../../../../components/layout/Footer';
-import MobileNav from '../../../../../components/layout/MobileNav';
-import WinningCombination from '../../../../../components/lottery/WinningCombination';
-import PrizeTable from '../../../../../components/lottery/PrizeTable';
-import { generateLotteryJsonLd } from '../../../../../lib/seo';
-import { getDrawDetail } from '../../../../../services/lotteryService';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import MobileNav from '@/components/layout/MobileNav';
+import WinningCombination from '@/components/lottery/WinningCombination';
+import PrizeTable from '@/components/lottery/PrizeTable';
+import { generateLotteryJsonLd } from '@/lib/seo';
+import { getDrawDetail } from '@/services/lotteryService';
 
 export const revalidate = 300;
 
 export async function generateMetadata({ params }) {
   const { lottery: lotterySlug, drawId } = await params;
-  const draw = await getDrawDetail(params.country, lotterySlug, drawId);
+  const draw = await getDrawDetail(params.country, lotterySlug, drawId, params.stateSlug);
 
   if (!draw) {
     return { title: 'Sorteo no encontrado | LottoHQ' };
@@ -20,13 +20,13 @@ export async function generateMetadata({ params }) {
 
   return {
     title: `Resultados ${draw.lotteryName} del ${draw.drawDateFormatted} | Sorteo N° ${draw.drawNumber}`,
-    description: `Verifica los números ganadores del sorteo N° ${draw.drawNumber} de ${draw.lotteryName}. Desglose de premios y ganadores.`,
+    description: `Verifica los números ganadores del sorteo N° ${draw.drawNumber} de ${draw.lotteryName} en ${draw.stateName}. Desglose de premios y ganadores.`,
   };
 }
 
-export default async function DrawDetailPage({ params }) {
-  const { country: countrySlug, lottery: lotterySlug, drawId } = await params;
-  const draw = await getDrawDetail(countrySlug, lotterySlug, drawId);
+export default async function StateDrawDetailPage({ params }) {
+  const { country: countrySlug, stateSlug, lottery: lotterySlug, drawId } = await params;
+  const draw = await getDrawDetail(countrySlug, lotterySlug, drawId, stateSlug);
 
   if (!draw) {
     notFound();
@@ -53,25 +53,14 @@ export default async function DrawDetailPage({ params }) {
       <Header currentCountry={countrySlug} />
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 space-y-8 w-full">
-        
         <div className="flex items-center justify-between text-xs text-slate-400">
-          <Link href={`/${countrySlug}/${lotterySlug}`} className="hover:text-white flex items-center gap-1 font-bold">
-            <span>← Volver a todos los resultados de {draw.lotteryName}</span>
+          <Link href={`/${countrySlug}/estado/${stateSlug}/${lotterySlug}`} className="hover:text-white flex items-center gap-1 font-bold">
+            <span>← Volver a {draw.lotteryName}</span>
           </Link>
           <span className="px-2.5 py-0.5 rounded-full bg-slate-900 border border-slate-800 font-mono text-amber-400">
             Sorteo #{draw.drawNumber}
           </span>
         </div>
-        <pre>{draw}</pre>
-        {draw.stateName && (
-          <div className="flex items-center gap-2 text-xs text-slate-500 -mt-4">
-            <Link href={`/${countrySlug}/estado/${draw.stateSlug}`} className="hover:text-white font-bold">
-              {draw.stateName}
-            </Link>
-            <span>→</span>
-            <span className="text-slate-400">{draw.lotteryName}</span>
-          </div>
-        )}
 
         {draw._fromCache && (
           <p className="text-[10px] text-slate-600 text-right -mt-6">
@@ -90,7 +79,7 @@ export default async function DrawDetailPage({ params }) {
                 {draw.lotteryName} — Sorteo N° {draw.drawNumber}
               </h1>
               <p className="text-slate-400 text-xs sm:text-sm font-medium">
-                {draw.drawDateFormatted}
+                {draw.stateName} • {draw.drawDateFormatted}
               </p>
             </div>
 

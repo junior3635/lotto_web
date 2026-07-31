@@ -66,7 +66,7 @@ export default async function StateLotteriesPage({ params }) {
           {lotteries.length > 0 ? (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {lotteries.map((lottery) => (
-                <LotteryCard key={lottery.id} lottery={lottery} countrySlug={countrySlug} />
+                <LotteryCard key={lottery.id} lottery={lottery} countrySlug={countrySlug} stateSlug={stateSlug} />
               ))}
             </div>
           ) : (

@@ -29,6 +29,7 @@ export function buildWinningCombination(numbers) {
 }
 
 export async function getCountryDashboardData(countrySlug = 'us') {
+
   const cacheKey = `lottery:country:${countrySlug}:dashboard`;
 
   const cachedData = await getCache(cacheKey);
@@ -44,7 +45,7 @@ export async function getCountryDashboardData(countrySlug = 'us') {
           where: { isActive: true },
           include: {
             lotteries: {
-              where: { isActive: true },
+              where: { isActive: true, externalId: { in: [23, 24] } },
               include: {
                 configuration: true,
                 ballTypes: true,
@@ -70,6 +71,7 @@ export async function getCountryDashboardData(countrySlug = 'us') {
       },
     });
 
+    console.log(country);
     if (!country) return null;
 
     const lotteries = country.states.flatMap((state) =>
@@ -127,8 +129,108 @@ export async function getCountryDashboardData(countrySlug = 'us') {
   }
 }
 
-export async function getLotteryDetailData(countrySlug, lotterySlug) {
-  const cacheKey = `lottery:${countrySlug}:${lotterySlug}:detail`;
+export async function getLotteryDashboardData(lotteryName) {
+  // const cacheKey = `lottery:name:${lotteryName.toLowerCase()}:dashboard`;
+
+  // const cachedData = await getCache(cacheKey);
+  // if (cachedData) {
+  //   return { ...cachedData, _fromCache: true };
+  // }
+
+  try {
+    const countries = await prisma.country.findMany({
+      where: { isActive: true },
+      include: {
+        states: {
+          where: { isActive: true },
+          include: {
+            lotteries: {
+              where: { isActive: true },
+              include: {
+                configuration: true,
+                ballTypes: true,
+                draws: {
+                  where: { status: 'COMPLETED' },
+                  orderBy: { drawDate: 'desc' },
+                  take: 1,
+                  include: {
+                    numbers: {
+                      include: { ballType: true },
+                      orderBy: [{ category: 'asc' }, { position: 'asc' }],
+                    },
+                    jackpotHistory: {
+                      orderBy: { recordedAt: 'desc' },
+                      take: 1,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+    
+    const lotteries = countries.flatMap((country) =>
+      country.states.flatMap((state) =>
+        state.lotteries
+          .filter((lottery) =>
+            lottery.name.toLowerCase().includes(lotteryName.toLowerCase())
+          )
+          .map((lottery) => {
+
+            const lastDraw = lottery.draws[0] || null;
+            const latestJackpot = lastDraw?.jackpotHistory?.[0] || null;
+            const multiplierType = lottery.ballTypes?.find((bt) => bt.category === 'MULTIPLIER');
+            const additionalType = lottery.ballTypes?.find((bt) => bt.category === 'ADDITIONAL');
+
+            return {
+              id: lottery.id,
+              name: lottery.name,
+              slug: lottery.slug,
+              stateOrRegion: state.name === 'Nacional' ? null : state.name,
+              countryCode: country.code,
+              countryName: country.name,
+              countryFlag: country.flagEmoji,
+              primaryColor: null,
+              specialBallName: additionalType?.name || null,
+              specialBallBg: additionalType?.name === 'powerball'
+                ? 'bg-gradient-to-br from-red-500 via-red-600 to-red-800 text-white shadow-red-500/30'
+                : additionalType?.name === 'mega_ball'
+                ? 'bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 text-slate-950 font-black shadow-amber-500/30'
+                : 'bg-red-600',
+              hasMultiplier: !!multiplierType,
+              multiplierName: multiplierType?.name || null,
+              jackpotFormatted: latestJackpot?.nextJackpotRaw ||
+                (latestJackpot?.nextJackpotAmount ? formatJackpot(latestJackpot.nextJackpotAmount, country.currency) : '$0'),
+              nextDrawDateFormatted: latestJackpot?.nextDrawDate ? formatDateSpanish(latestJackpot.nextDrawDate, true) : 'Por confirmar',
+              lastDraw: lastDraw
+                ? {
+                    id: lastDraw.id,
+                    drawNumber: lastDraw.drawNumber,
+                    drawDateFormatted: formatDateSpanish(lastDraw.drawDate),
+                    winningCombination: lastDraw.numbers ? buildWinningCombination(lastDraw.numbers) : null,
+                  }
+                : null,
+            };
+          })
+      )
+    );
+
+    const result = { lotteries };
+
+    await setCache(cacheKey, result, CACHE_TTL_SECONDS);
+    return { ...result, _fromCache: false };
+  } catch (error) {
+    console.error(`[LotteryService Error] Error consultando lotería ${lotteryName}:`, error);
+    return null;
+  }
+}
+
+export async function getLotteryDetailData(countrySlug, lotterySlug, stateSlug) {
+  const cacheKey = stateSlug
+    ? `lottery:${countrySlug}:${stateSlug}:${lotterySlug}:detail`
+    : `lottery:${countrySlug}:${lotterySlug}:detail`;
 
   const cachedData = await getCache(cacheKey);
   if (cachedData) {
@@ -172,7 +274,20 @@ export async function getLotteryDetailData(countrySlug, lotterySlug) {
 
     if (!country) return null;
 
-    const allLotteries = country.states.flatMap((s) => s.lotteries);
+    let targetState = null;
+    let allLotteries = [];
+
+    if (stateSlug) {
+      targetState = country.states.find(
+        (s) => s.slug.toLowerCase() === stateSlug.toLowerCase()
+      );
+      if (targetState) {
+        allLotteries = targetState.lotteries;
+      }
+    } else {
+      allLotteries = country.states.flatMap((s) => s.lotteries);
+    }
+
     const lottery = allLotteries[0];
     if (!lottery) return null;
 
@@ -301,9 +416,12 @@ export async function getLotteryDetailData(countrySlug, lotterySlug) {
   }
 }
 
-export async function invalidateLotteryCache(countrySlug, lotterySlug) {
+export async function invalidateLotteryCache(countrySlug, lotterySlug, stateSlug) {
   await delCache(`lottery:country:${countrySlug}:dashboard`);
   await delCache(`lottery:${countrySlug}:${lotterySlug}:detail`);
+  if (stateSlug) {
+    await delCache(`lottery:${countrySlug}:${stateSlug}:${lotterySlug}:detail`);
+  }
 }
 
 export async function getStateLotteries(countrySlug, stateSlug) {
@@ -396,8 +514,10 @@ export async function getStateLotteries(countrySlug, stateSlug) {
   }
 }
 
-export async function getDrawDetail(countrySlug, lotterySlug, drawId) {
-  const cacheKey = `lottery:draw:${drawId}`;
+export async function getDrawDetail(countrySlug, lotterySlug, drawId, stateSlug) {
+  const cacheKey = stateSlug
+    ? `lottery:draw:${countrySlug}:${stateSlug}:${lotterySlug}:${drawId}`
+    : `lottery:draw:${drawId}`;
 
   const cachedData = await getCache(cacheKey);
   if (cachedData) {
@@ -428,6 +548,10 @@ export async function getDrawDetail(countrySlug, lotterySlug, drawId) {
 
     if (!draw) return null;
 
+    if (stateSlug && draw.lottery.state.slug.toLowerCase() !== stateSlug.toLowerCase()) {
+      return null;
+    }
+
     const jackpot = draw.jackpotHistory?.[0] || null;
     const multiplierType = draw.lottery.ballTypes?.find((bt) => bt.category === 'MULTIPLIER');
 
@@ -436,6 +560,8 @@ export async function getDrawDetail(countrySlug, lotterySlug, drawId) {
       _fromCache: false,
       lotteryName: draw.lottery.name,
       lotterySlug: draw.lottery.slug,
+      stateName: draw.lottery.state.name,
+      stateSlug: draw.lottery.state.slug,
       countrySlug: draw.lottery.state.country.slug,
       countryName: draw.lottery.state.country.name,
       specialBallBg: 'bg-gradient-to-br from-red-500 via-red-600 to-red-800 text-white shadow-red-500/30',

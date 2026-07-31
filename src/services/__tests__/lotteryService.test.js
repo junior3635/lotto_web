@@ -1,6 +1,7 @@
 import {
   buildWinningCombination,
   getCountryDashboardData,
+  getLotteryDashboardData,
   getLotteryDetailData,
   getStateLotteries,
   getDrawDetail,
@@ -309,6 +310,108 @@ describe('getCountryDashboardData', () => {
   it('returns null when prisma throws', async () => {
     prisma.country.findUnique.mockRejectedValue(new Error('DB error'));
     const result = await getCountryDashboardData('us');
+    expect(result).toBeNull();
+  });
+});
+
+describe('getLotteryDashboardData', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+    __clearCache();
+  });
+
+  it('returns null when no lotteries match the name', async () => {
+    prisma.country.findMany.mockResolvedValue([
+      makeCountry({
+        states: [
+          makeState({
+            lotteries: [
+              makeLottery({ name: 'Florida Lotto', slug: 'florida-lotto' }),
+            ],
+          }),
+        ],
+      }),
+    ]);
+
+    const result = await getLotteryDashboardData('Powerball');
+    expect(result).not.toBeNull();
+    expect(result.lotteries).toHaveLength(0);
+  });
+
+  it('returns matching lotteries across countries', async () => {
+    prisma.country.findMany.mockResolvedValue([
+      makeCountry({
+        code: 'US',
+        name: 'Estados Unidos',
+        slug: 'us',
+        flagEmoji: '🇺🇸',
+        currency: 'USD',
+        states: [
+          makeState({
+            name: 'Nacional',
+            code: 'NAT',
+            slug: 'nacional',
+            lotteries: [
+              makeLottery({
+                id: 'lot-pb',
+                name: 'Powerball',
+                slug: 'powerball',
+                externalId: 1,
+                isActive: true,
+                ballTypes: [makeBallType(), makeMultiplierType()],
+                draws: [
+                  makeDraw({
+                    numbers: [
+                      { category: 'MAIN', position: 0, value: '5', ballType: null },
+                      { category: 'MAIN', position: 1, value: '10', ballType: null },
+                    ],
+                    jackpotHistory: [makeJackpot()],
+                  }),
+                ],
+              }),
+            ],
+          }),
+        ],
+      }),
+    ]);
+
+    const result = await getLotteryDashboardData('Powerball');
+    expect(result).not.toBeNull();
+    expect(result.lotteries).toHaveLength(1);
+    expect(result.lotteries[0].name).toBe('Powerball');
+    expect(result.lotteries[0].hasMultiplier).toBe(true);
+    expect(result._fromCache).toBe(false);
+  });
+
+  it('caches result and returns _fromCache flag on second call', async () => {
+    prisma.country.findMany.mockResolvedValue([
+      makeCountry({
+        states: [
+          makeState({
+            lotteries: [
+              makeLottery({
+                name: 'Powerball',
+                slug: 'powerball',
+                draws: [],
+                ballTypes: [],
+              }),
+            ],
+          }),
+        ],
+      }),
+    ]);
+
+    const first = await getLotteryDashboardData('Powerball');
+    expect(first._fromCache).toBe(false);
+
+    const second = await getLotteryDashboardData('Powerball');
+    expect(second._fromCache).toBe(true);
+    expect(prisma.country.findMany).toHaveBeenCalledTimes(1);
+  });
+
+  it('returns null when prisma throws', async () => {
+    prisma.country.findMany.mockRejectedValue(new Error('DB error'));
+    const result = await getLotteryDashboardData('Powerball');
     expect(result).toBeNull();
   });
 });

@@ -1,25 +1,19 @@
-// src/app/[country]/[lottery]/page.js
-// Página de detalle de lotería — conectada a MySQL via lotteryService + Prisma ORM
-// Incluye historial visual de los últimos 10 sorteos (componente DrawHistory)
-
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import Header from '../../../components/layout/Header';
-import Footer from '../../../components/layout/Footer';
-import MobileNav from '../../../components/layout/MobileNav';
-import WinningCombination from '../../../components/lottery/WinningCombination';
-import PrizeTable from '../../../components/lottery/PrizeTable';
-import DrawHistory from '../../../components/lottery/DrawHistory';
-import QuickPicks from '../../../components/ui/QuickPicks';
-import FaqAccordion from '../../../components/ui/FaqAccordion';
-import NumberChecker from '../../../components/jugada/NumberChecker';
-import { generateLotteryJsonLd } from '../../../lib/seo';
-import { getLotteryDetailData } from '../../../services/lotteryService';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import MobileNav from '@/components/layout/MobileNav';
+import WinningCombination from '@/components/lottery/WinningCombination';
+import PrizeTable from '@/components/lottery/PrizeTable';
+import DrawHistory from '@/components/lottery/DrawHistory';
+import QuickPicks from '@/components/ui/QuickPicks';
+import FaqAccordion from '@/components/ui/FaqAccordion';
+import NumberChecker from '@/components/jugada/NumberChecker';
+import { generateLotteryJsonLd } from '@/lib/seo';
+import { getLotteryDetailData } from '@/services/lotteryService';
 
-// Revalidar la página cada 5 minutos (ISR)
 export const revalidate = 300;
 
-// ─── FAQs genéricas por slugs conocidos ────────────────────────
 const LOTTERY_FAQS = {
   powerball: [
     {
@@ -55,15 +49,14 @@ const LOTTERY_FAQS = {
   ],
 };
 
-// ─── Colores especiales por slug ────────────────────────────────
 const SPECIAL_BALL_STYLES = {
   powerball: 'bg-gradient-to-br from-red-500 via-red-600 to-red-800 text-white shadow-red-500/30',
   'mega-millions': 'bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 text-slate-950 font-black shadow-amber-500/30',
 };
 
 export async function generateMetadata({ params }) {
-  const { country: countrySlug, lottery: lotterySlug } = await params;
-  const data = await getLotteryDetailData(countrySlug, lotterySlug);
+  const { country: countrySlug, stateSlug, lottery: lotterySlug } = await params;
+  const data = await getLotteryDetailData(countrySlug, lotterySlug, stateSlug);
 
   if (!data) {
     return { title: 'Lotería no encontrada | LottoHQ' };
@@ -71,17 +64,15 @@ export async function generateMetadata({ params }) {
 
   return {
     title: `Resultados ${data.name} — Números Ganadores y Bote Acumulado | LottoHQ`,
-    description: `Consulta la combinación ganadora del último sorteo de ${data.name}, el desglose oficial de premios, historial de sorteos y la fecha del próximo jackpot.`,
+    description: `Consulta la combinación ganadora del último sorteo de ${data.name} en ${data.stateName}, el desglose oficial de premios, historial de sorteos y la fecha del próximo jackpot.`,
   };
 }
 
-export default async function GenericLotteryPage({ params }) {
-  const { country: countrySlug, lottery: lotterySlug } = await params;
+export default async function StateLotteryPage({ params }) {
+  const { country: countrySlug, stateSlug, lottery: lotterySlug } = await params;
 
-  // ── Obtener datos reales desde MySQL via lotteryService ──
-  const lottery = await getLotteryDetailData(countrySlug, lotterySlug);
+  const lottery = await getLotteryDetailData(countrySlug, lotterySlug, stateSlug);
 
-  // Si la lotería no existe en la BD, mostrar 404
   if (!lottery) {
     notFound();
   }
@@ -101,7 +92,6 @@ export default async function GenericLotteryPage({ params }) {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased flex flex-col justify-between pb-16 md:pb-0">
-      {/* Schema Structured Data para SEO */}
       {jsonLdData && (
         <script
           type="application/ld+json"
@@ -113,10 +103,9 @@ export default async function GenericLotteryPage({ params }) {
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16 space-y-10 w-full">
 
-        {/* Navigation Breadcrumb */}
         <div className="flex items-center justify-between text-xs text-slate-400">
-          <Link href={`/${countrySlug}`} className="hover:text-white flex items-center gap-1 font-bold">
-            <span>← Volver a Loterías de {lottery.country.name}</span>
+          <Link href={`/${countrySlug}/estado/${stateSlug}`} className="hover:text-white flex items-center gap-1 font-bold">
+            <span>← Volver a {lottery.stateName}</span>
           </Link>
           <span className="px-2.5 py-0.5 rounded-full bg-slate-900 border border-slate-800 font-mono text-amber-400">
             {lottery.country.flag} {lottery.country.name}
@@ -133,21 +122,22 @@ export default async function GenericLotteryPage({ params }) {
           </div>
         )}
 
-        {/* Indicador de fuente de datos */}
         {lottery._fromCache && (
           <p className="text-[10px] text-slate-600 text-right -mt-6">
             ⚡ Datos desde caché · Actualización cada 5 min
           </p>
         )}
 
-        {/* Lottery Hero Banner */}
-        <section className="rounded-3xl bg-slate-900 border border-slate-800 p-6 sm:p-8 shadow-2xl space-y-6">
+        <section className="rounded-3xl bg-slate-900 border border-slate-800 p-6 sm:p-8 space-y-6 shadow-2xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
             <div className="space-y-1">
               <div className="flex items-center gap-2 flex-wrap">
                 <h1 className="text-3xl sm:text-4xl font-black text-white">{lottery.name}</h1>
                 <span className="text-xs px-2.5 py-0.5 rounded-full border border-slate-700 bg-slate-800 text-slate-300 font-bold">
-                  {lottery.country.name}
+                  {lottery.stateName}
+                </span>
+                <span className="text-xs px-2.5 py-0.5 rounded-full border border-slate-700 bg-slate-800 text-slate-300 font-bold">
+                  {lottery.country.flag} {lottery.country.name}
                 </span>
               </div>
               {lottery.description && (
@@ -168,7 +158,6 @@ export default async function GenericLotteryPage({ params }) {
             </div>
           </div>
 
-          {/* Último Sorteo — Combinación Ganadora */}
           {latestDraw ? (
             <div className="space-y-3">
               <div className="flex items-center justify-between text-xs text-slate-400 font-bold uppercase tracking-wider">
@@ -176,7 +165,7 @@ export default async function GenericLotteryPage({ params }) {
                   Sorteo N° {latestDraw.drawNumber} — {latestDraw.drawDateFormatted}
                 </span>
                 <Link
-                  href={lottery.stateName ? `/${countrySlug}/estado/${lottery.state.slug}/${lotterySlug}/sorteo/${latestDraw.id}` : `/${countrySlug}/${lotterySlug}/sorteo/${latestDraw.id}`}
+                  href={`/${countrySlug}/estado/${stateSlug}/${lotterySlug}/sorteo/${latestDraw.id}`}
                   className="text-amber-400 hover:underline font-semibold"
                 >
                   Ver detalle completo →
@@ -198,18 +187,16 @@ export default async function GenericLotteryPage({ params }) {
           )}
         </section>
 
-        {/* QuickPicks Interactivo */}
         <QuickPicks
           lotteryName={lottery.name}
           totalMain={5}
-          maxMain={lottery.slug === 'mega-millions' ? 70 : 69}
+          maxMain={lotterySlug === 'mega-millions' ? 70 : 69}
           totalSpecial={1}
-          maxSpecial={lottery.slug === 'mega-millions' ? 25 : 26}
+          maxSpecial={lotterySlug === 'mega-millions' ? 25 : 26}
           specialName={lottery.specialBallName || 'Bola Especial'}
           specialColor={specialBallBg}
         />
 
-        {/* Consulta tus Números */}
         <section className="space-y-4">
           <h2 className="text-xl font-black text-white tracking-tight">🔍 Consulta tus Números</h2>
           <NumberChecker
@@ -220,7 +207,6 @@ export default async function GenericLotteryPage({ params }) {
           />
         </section>
 
-        {/* Desglose de Premios */}
         {latestDraw?.prizes?.length > 0 && (
           <section className="space-y-4">
             <h2 className="text-xl font-black text-white tracking-tight flex items-center gap-2">
@@ -234,7 +220,6 @@ export default async function GenericLotteryPage({ params }) {
           </section>
         )}
 
-        {/* ── HISTORIAL DE SORTEOS (Sección Nueva) ── */}
         {historicalDraws && historicalDraws.length > 0 && (
           <section className="space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
@@ -255,13 +240,12 @@ export default async function GenericLotteryPage({ params }) {
               draws={historicalDraws}
               countrySlug={countrySlug}
               lotterySlug={lotterySlug}
-              stateSlug={null}
+              stateSlug={stateSlug}
               specialBallBg={specialBallBg}
             />
           </section>
         )}
 
-        {/* FAQs */}
         {faqs.length > 0 && (
           <section className="space-y-4">
             <h2 className="text-xl font-black text-white tracking-tight flex items-center gap-2">

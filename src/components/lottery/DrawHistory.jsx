@@ -29,7 +29,7 @@ function HistoryBall({ number, isSpecial = false, specialBg }) {
 /**
  * Fila de un sorteo histórico
  */
-function DrawRow({ draw, countrySlug, lotterySlug, specialBallBg, index }) {
+function DrawRow({ draw, countrySlug, lotterySlug, stateSlug, specialBallBg, index }) {
   const { numbers = [], specialBall, multiplier } = draw.winningCombination || {};
 
   return (
@@ -40,7 +40,6 @@ function DrawRow({ draw, countrySlug, lotterySlug, specialBallBg, index }) {
           : 'bg-slate-900/50 border-slate-800/60 hover:bg-slate-800/60 hover:border-slate-700/60'
         }`}
     >
-      {/* Info del sorteo */}
       <div className="flex items-center gap-3 shrink-0 min-w-0 sm:w-52">
         {index === 0 && (
           <span className="text-[9px] font-black text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0">
@@ -59,7 +58,6 @@ function DrawRow({ draw, countrySlug, lotterySlug, specialBallBg, index }) {
         </div>
       </div>
 
-      {/* Combinación ganadora compacta */}
       <div className="flex items-center gap-1.5 flex-wrap grow">
         {numbers.map((n, i) => (
           <HistoryBall key={i} number={n} />
@@ -77,9 +75,8 @@ function DrawRow({ draw, countrySlug, lotterySlug, specialBallBg, index }) {
         )}
       </div>
 
-      {/* Link al detalle del sorteo */}
       <Link
-        href={`/${countrySlug}/${lotterySlug}/sorteo/${draw.id}`}
+        href={stateSlug ? `/${countrySlug}/estado/${stateSlug}/${lotterySlug}/sorteo/${draw.id}` : `/${countrySlug}/${lotterySlug}/sorteo/${draw.id}`}
         className="shrink-0 text-[11px] font-bold text-slate-500 group-hover:text-amber-400 transition-colors flex items-center gap-1 hover:underline underline-offset-2"
       >
         Ver detalle
@@ -89,10 +86,7 @@ function DrawRow({ draw, countrySlug, lotterySlug, specialBallBg, index }) {
   );
 }
 
-/**
- * Componente principal: historial de sorteos con paginación interna
- */
-export default function DrawHistory({ draws = [], countrySlug, lotterySlug, specialBallBg }) {
+export default function DrawHistory({ draws = [], countrySlug, lotterySlug, stateSlug, specialBallBg }) {
   const PAGE_SIZE = 5;
   const [showAll, setShowAll] = useState(false);
 
@@ -109,7 +103,6 @@ export default function DrawHistory({ draws = [], countrySlug, lotterySlug, spec
 
   return (
     <div className="space-y-2.5">
-      {/* Header de columnas */}
       <div className="hidden sm:flex items-center gap-4 px-4 pb-1">
         <div className="w-52 text-[10px] font-black text-slate-500 uppercase tracking-wider">
           Fecha / Sorteo
@@ -119,7 +112,6 @@ export default function DrawHistory({ draws = [], countrySlug, lotterySlug, spec
         </div>
       </div>
 
-      {/* Filas de sorteos */}
       <div className="space-y-2">
         {visibleDraws.map((draw, i) => (
           <DrawRow
@@ -127,13 +119,13 @@ export default function DrawHistory({ draws = [], countrySlug, lotterySlug, spec
             draw={draw}
             countrySlug={countrySlug}
             lotterySlug={lotterySlug}
+            stateSlug={stateSlug}
             specialBallBg={specialBallBg}
             index={i}
           />
         ))}
       </div>
 
-      {/* Ver más / menos */}
       {hasMore && (
         <div className="pt-1 text-center">
           <button

@@ -20,6 +20,7 @@ export async function GET(request) {
   const action = searchParams.get('action');
   const country = searchParams.get('country') || 'us';
   const lottery = searchParams.get('lottery');
+  const state = searchParams.get('state');
   const path = searchParams.get('path') || `/${country}`;
 
   // Acción de ingestión desde archivo PR
@@ -151,6 +152,9 @@ export async function GET(request) {
     if (country && lottery) {
       await invalidateLotteryCache(country, lottery);
     }
+    if (country && lottery && state) {
+      await invalidateLotteryCache(country, lottery, state);
+    }
 
     return NextResponse.json({
       revalidated: true,
@@ -173,7 +177,7 @@ export async function POST(request) {
   // Soporte para solicitudes POST desde Webhooks (Payload JSON)
   try {
     const body = await request.json();
-    const { secret, action, country = 'us', lottery, path = `/${country}` } = body;
+    const { secret, action, country = 'us', lottery, state, path = `/${country}` } = body;
 
     const expectedSecret = process.env.REVALIDATE_SECRET || 'dev_secret_revalidate_12345';
     if (secret !== expectedSecret) {
@@ -210,7 +214,16 @@ export async function POST(request) {
     revalidatePath(path);
     if (lottery) {
       revalidatePath(`/${country}/${lottery}`);
+    }
+    if (state && lottery) {
+      revalidatePath(`/${country}/estado/${state}/${lottery}`);
+    }
+
+    if (country && lottery) {
       await invalidateLotteryCache(country, lottery);
+    }
+    if (country && lottery && state) {
+      await invalidateLotteryCache(country, lottery, state);
     }
 
     return NextResponse.json({

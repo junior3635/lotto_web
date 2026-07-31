@@ -5,9 +5,11 @@ import Header from '../../components/layout/Header';
 import Footer from '../../components/layout/Footer';
 import MobileNav from '../../components/layout/MobileNav';
 import JackpotHero from '../../components/lottery/JackpotHero';
-import LotteryCard from '../../components/lottery/LotteryCard';
+import LotteryCardPri from '../../components/lottery/LotteryCardPri';
 import StateGrid from '../../components/lottery/StateGrid';
 import { getCountryDashboardData } from '../../services/lotteryService';
+import { buildWinningCombination } from '../../services/lotteryService';
+import { formatJackpot, formatDateSpanish } from '../../lib/formatters';
 
 export const revalidate = 300;
 
@@ -58,16 +60,73 @@ export default async function CountryHomePage({ params }) {
       isActive: true,
       code: { not: 'NAT' },
     },
-    select: { name: true, slug: true },
+    include: {
+      lotteries: {
+        where: { isActive: true },
+        select: {
+          id: true,
+          name: true,
+          slug: true,
+          externalId: true,
+          ballTypes: { select: { name: true, category: true } },
+          draws: {
+            where: { status: 'COMPLETED' },
+            orderBy: { drawDate: 'desc' },
+            take: 1,
+            include: {
+              numbers: { include: { ballType: true }, orderBy: [{ category: 'asc' }, { position: 'asc' }] },
+              jackpotHistory: { orderBy: { recordedAt: 'desc' }, take: 1 },
+            },
+          },
+        },
+      },
+    },
     orderBy: { name: 'asc' },
   });
 
-  const statesWithIcons = states.map((s) => ({
-    name: s.name,
-    slug: s.slug,
-    icon: STATE_ICONS[s.slug] || '🏛️',
-    lotteries: [],
-  }));
+  const statesWithIcons = states.map((s) => {
+    const lotteries = s.lotteries.map((lottery) => {
+      const lastDraw = lottery.draws[0] || null;
+      const latestJackpot = lastDraw?.jackpotHistory?.[0] || null;
+      const multiplierType = lottery.ballTypes?.find((bt) => bt.category === 'MULTIPLIER');
+      const additionalType = lottery.ballTypes?.find((bt) => bt.category === 'ADDITIONAL');
+
+      return {
+        id: lottery.id,
+        name: lottery.name,
+        slug: lottery.slug,
+        stateOrRegion: s.name === 'Nacional' ? null : `Exclusiva de ${s.name}`,
+        primaryColor: null,
+        specialBallBg: additionalType?.name === 'powerball'
+          ? 'bg-gradient-to-br from-red-500 via-red-600 to-red-800 text-white shadow-red-500/30'
+          : additionalType?.name === 'mega_ball'
+          ? 'bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 text-slate-950 font-black shadow-amber-500/30'
+          : 'bg-red-600',
+        hasMultiplier: !!multiplierType,
+        multiplierName: multiplierType?.name || null,
+        jackpotFormatted: latestJackpot?.nextJackpotRaw ||
+          (latestJackpot?.nextJackpotAmount ? formatJackpot(latestJackpot.nextJackpotAmount, country.currency) : '$0'),
+        nextDrawDateFormatted: latestJackpot?.nextDrawDate
+          ? formatDateSpanish(latestJackpot.nextDrawDate, true)
+          : 'Por confirmar',
+        lastDraw: lastDraw
+          ? {
+              id: lastDraw.id,
+              drawNumber: lastDraw.drawNumber,
+              drawDateFormatted: formatDateSpanish(lastDraw.drawDate),
+              winningCombination: lastDraw.numbers ? buildWinningCombination(lastDraw.numbers) : null,
+            }
+          : null,
+      };
+    });
+
+    return {
+      name: s.name,
+      slug: s.slug,
+      icon: STATE_ICONS[s.slug] || '🏛️',
+      lotteries,
+    };
+  });
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased flex flex-col justify-between pb-16 md:pb-0">
@@ -75,6 +134,7 @@ export default async function CountryHomePage({ params }) {
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 space-y-12 w-full">
 
+        
         <JackpotHero
           title="Resultados Oficiales de"
           highlightText={`${country.flag} ${country.name}`}
@@ -95,7 +155,7 @@ export default async function CountryHomePage({ params }) {
             <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
               <div>
                 <h2 className="text-2xl font-black text-white tracking-tight flex items-center gap-2">
-                  🔥 Loterías Disponibles
+                  🔥 Loterías Principales
                 </h2>
                 <p className="text-xs text-slate-400 mt-0.5">
                   Resultados oficiales actualizados en tiempo real
@@ -108,14 +168,14 @@ export default async function CountryHomePage({ params }) {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {lotteries.map((lottery) => (
-                <LotteryCard key={lottery.id} lottery={lottery} countrySlug={countrySlug} />
+                <LotteryCardPri key={lottery.id} lottery={lottery} countrySlug={countrySlug} />
               ))}
             </div>
           </section>
         ) : (
           <section className="rounded-2xl bg-slate-900/40 border border-slate-800 p-12 text-center">
             <p className="text-slate-400 text-sm">
-              No hay loterías activas disponibles para {country.name} en este momento.
+              No hay loterías principales configuradas para {country.name} en este momento.
             </p>
           </section>
         )}

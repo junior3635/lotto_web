@@ -379,46 +379,75 @@ export async function ingestPastDraws() {
   const gameName = gameDetails.gameName;
   const slug = slugify(gameName);
   const externalId = gameDetails.id;
+  const statesWithMultiDraws = gameDetails.statesWithMultiDraws || [];
 
-  const lottery = await prisma.lottery.findFirst({
-    where: { slug },
+  const lotteries = await prisma.lottery.findMany({
+    where: {
+      OR: [{ slug }, { externalId }],
+    },
+    include: { state: true },
   });
 
-  if (!lottery) {
-    results.errors.push({ game: gameName, error: 'Lottery not found' });
+  if (lotteries.length === 0) {
+    results.errors.push({ game: gameName, error: 'No lotteries found for this game' });
     return results;
   }
 
+  const multiStateLotteries = lotteries.filter(
+    (l) => l.state && statesWithMultiDraws.includes(l.state.code)
+  );
+  const nationalLotteries = lotteries.filter(
+    (l) => !l.state || l.state.code === 'NAT'
+  );
+  const allTargetLotteries = [...nationalLotteries, ...multiStateLotteries];
+
   const existingDraws = await prisma.draw.findMany({
-    where: { lotteryId: lottery.id },
-    select: { externalDrawId: true },
+    where: {
+      lotteryId: { in: allTargetLotteries.map((l) => l.id) },
+    },
+    select: { lotteryId: true, externalDrawId: true },
   });
-  const existingDrawIds = new Set(existingDraws.map((d) => String(d.externalDrawId)));
+  const existingDrawKeys = new Set(
+    existingDraws.map((d) => `${d.lotteryId}:${d.externalDrawId}`)
+  );
 
   for (const dateEntry of data.data.date) {
-    const drawId = String(dateEntry.drawID);
-    if (existingDrawIds.has(drawId)) {
-      results.skipped++;
-      continue;
-    }
+    const drawNumber = String(dateEntry.drawNumber);
 
-    try {
-      await prisma.draw.upsert({
-        where: { lotteryId_externalDrawId: { lotteryId: lottery.id, externalDrawId: dateEntry.drawNumber } },
-        update: {},
-        create: {
+    for (const lottery of allTargetLotteries) {
+      const cacheKey = `${lottery.id}:${drawNumber}`;
+      if (existingDrawKeys.has(cacheKey)) {
+        results.skipped++;
+        continue;
+      }
+
+      try {
+        await prisma.draw.upsert({
+          where: {
+            lotteryId_externalDrawId: {
+              lotteryId: lottery.id,
+              externalDrawId: dateEntry.drawNumber,
+            },
+          },
+          update: {},
+          create: {
+            lotteryId: lottery.id,
+            externalDrawId: dateEntry.drawNumber,
+            drawNumber,
+            drawDate: new Date(dateEntry.drawDate),
+            drawTime: dateEntry.drawTime || null,
+            status: DrawStatus.COMPLETED,
+            hasWinner: false,
+          },
+        });
+        results.processed++;
+      } catch (error) {
+        results.errors.push({
+          drawId: drawNumber,
           lotteryId: lottery.id,
-          externalDrawId: dateEntry.drawNumber,
-          drawNumber: String(dateEntry.drawNumber),
-          drawDate: new Date(dateEntry.drawDate),
-          drawTime: dateEntry.drawTime || null,
-          status: DrawStatus.COMPLETED,
-          hasWinner: false,
-        },
-      });
-      results.processed++;
-    } catch (error) {
-      results.errors.push({ drawId, error: error.message });
+          error: error.message,
+        });
+      }
     }
   }
 
