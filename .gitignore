@@ -42,3 +42,16 @@ next.config.js
 Dockerfile
 docker-compose.yml
 .dockerignore
+.agents/skills/frontend-design/LICENSE.txt
+.agents/skills/frontend-design/SKILL.md
+.agents/skills/prisma-database-setup/SKILL.md
+.agents/skills/prisma-database-setup/references/cockroachdb.md
+.agents/skills/prisma-database-setup/references/mongodb.md
+.agents/skills/prisma-database-setup/references/mysql.md
+.agents/skills/prisma-database-setup/references/postgresql.md
+.agents/skills/prisma-database-setup/references/prisma-client-setup.md
+.agents/skills/prisma-database-setup/references/prisma-postgres.md
+.agents/skills/prisma-database-setup/references/sqlite.md
+.agents/skills/prisma-database-setup/references/sqlserver.md
+skills-lock.json
+opencode.json

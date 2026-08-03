@@ -460,7 +460,7 @@ export async function ingestDrawingResult() {
     return { processed: 0, skipped: 0, errors: [] };
   }
 
-  const results = { processed: 0, errors: [] };
+  const results = { processed: 0, skipped: 0, errors: [] };
   const drawData = data.data;
   const gameDetails = drawData.gameDetails;
 
@@ -472,118 +472,135 @@ export async function ingestDrawingResult() {
   const slug = slugify(gameName);
   const externalId = gameDetails.id;
 
-  const lottery = await prisma.lottery.findFirst({
-    where: { OR: [{ externalId }, { slug }] },
-    include: { configuration: true, ballTypes: true },
+  const lotteries = await prisma.lottery.findMany({
+    where: { slug },
+    include: { configuration: true, ballTypes: true, state: true },
   });
 
-  if (!lottery) {
-    results.errors.push({ game: gameName, error: 'Lottery not found' });
+  if (lotteries.length === 0) {
+    results.errors.push({ game: gameName, error: 'No lotteries found for this game' });
     return results;
   }
 
-  const existingDraw = await prisma.draw.findFirst({
-    where: { lotteryId: lottery.id, externalDrawId: drawData.drawNumber },
-  });
-
-  const winningNumbers = [];
-  for (const winNum of (drawData.winningNumbers || [])) {
-    winningNumbers.push({
-      value: String(winNum).padStart(2, '0'),
-      category: BallCategory.MAIN,
-      position: winningNumbers.length + 1,
+  for (const lottery of lotteries) {
+    const existingDraw = await prisma.draw.findFirst({
+      where: { lotteryId: lottery.id, externalDrawId: drawData.drawNumber },
     });
-  }
 
-  for (const addNum of (drawData.additionalNumbers || [])) {
-    const ballType = lottery.ballTypes.find(
-      (bt) => bt.category === BallCategory.ADDITIONAL && bt.playerPicked
-    );
-    winningNumbers.push({
-      value: String(addNum).padStart(2, '0'),
-      category: BallCategory.ADDITIONAL,
-      position: winningNumbers.filter((n) => n.category === BallCategory.ADDITIONAL).length + 1,
-      ballTypeId: ballType?.id || null,
-    });
-  }
+    if (existingDraw) {
+      results.skipped++;
+      continue;
+    }
 
-  const prizes = (drawData.prize || []).map((p) => ({
-    matchPattern: p.match,
-    prizeAmountRaw: p.prize,
-    prizeAmount: parsePrizeAmount(p.prize),
-    winnersCount: p.winner || 0,
-  }));
+    const winningNumbers = [];
+    for (const winNum of (drawData.winningNumbers || [])) {
+      winningNumbers.push({
+        value: String(winNum).padStart(2, '0'),
+        category: BallCategory.MAIN,
+        position: winningNumbers.length + 1,
+      });
+    }
 
-  let jackpotAmount = null;
-  if (drawData.jackpot) {
-    jackpotAmount = parseAmount(drawData.jackpot);
-  }
+    for (const addNum of (drawData.additionalNumbers || [])) {
+      const ballType = lottery.ballTypes.find(
+        (bt) => bt.category === BallCategory.ADDITIONAL && bt.playerPicked
+      );
+      winningNumbers.push({
+        value: String(addNum).padStart(2, '0'),
+        category: BallCategory.ADDITIONAL,
+        position: winningNumbers.filter((n) => n.category === BallCategory.ADDITIONAL).length + 1,
+        ballTypeId: ballType?.id || null,
+      });
+    }
 
-  const draw = await prisma.draw.upsert({
-    where: {
-      lotteryId_externalDrawId: {
+    const prizes = (drawData.prize || []).map((p) => ({
+      matchPattern: p.match,
+      prizeAmountRaw: p.prize,
+      prizeAmount: parsePrizeAmount(p.prize),
+      winnersCount: p.winner || 0,
+    }));
+
+    let jackpotAmount = null;
+    if (drawData.jackpot) {
+      jackpotAmount = parseAmount(drawData.jackpot);
+    }
+
+    try {
+      const draw = await prisma.draw.upsert({
+        where: {
+          lotteryId_externalDrawId: {
+            lotteryId: lottery.id,
+            externalDrawId: drawData.drawNumber,
+          },
+        },
+        update: {
+          drawDate: new Date(drawData.drawDate),
+          drawTime: drawData.drawTime,
+          status: DrawStatus.COMPLETED,
+          hasWinner: prizes.some((p) => p.winnersCount > 0),
+          numbers: {
+            deleteMany: {},
+            create: winningNumbers,
+          },
+          prizes: {
+            deleteMany: {},
+            create: prizes,
+          },
+        },
+        create: {
+          lotteryId: lottery.id,
+          externalDrawId: drawData.drawNumber,
+          drawNumber: String(drawData.drawNumber),
+          drawDate: new Date(drawData.drawDate),
+          drawTime: drawData.drawTime,
+          details: drawData.details || null,
+          note: drawData.note || null,
+          status: DrawStatus.COMPLETED,
+          hasWinner: prizes.some((p) => p.winnersCount > 0),
+          numbers: { create: winningNumbers },
+          prizes: { create: prizes },
+          jackpotHistory: jackpotAmount
+            ? {
+                create: {
+                  jackpotRaw: drawData.jackpot,
+                  jackpotAmount,
+                  nextJackpotRaw: drawData.nextJackpot || null,
+                  nextJackpotAmount: drawData.nextJackpot ? parseAmount(drawData.nextJackpot) : null,
+                  nextDrawDate: drawData.nextDrawDate ? new Date(drawData.nextDrawDate) : null,
+                },
+              }
+            : undefined,
+        },
+      });
+
+      await prisma.jackpotHistory.deleteMany({
+        where: { drawId: draw.id },
+      });
+
+      if (drawData.jackpot && jackpotAmount) {
+        await prisma.jackpotHistory.create({
+          data: {
+            drawId: draw.id,
+            jackpotRaw: drawData.jackpot,
+            jackpotAmount,
+            nextJackpotRaw: drawData.nextJackpot || null,
+            nextJackpotAmount: drawData.nextJackpot ? parseAmount(drawData.nextJackpot) : null,
+            nextDrawDate: drawData.nextDrawDate ? new Date(drawData.nextDrawDate) : null,
+          },
+        });
+      }
+
+      results.processed++;
+    } catch (error) {
+      results.errors.push({
+        game: gameName,
         lotteryId: lottery.id,
-        externalDrawId: drawData.drawNumber,
-      },
-    },
-    update: {
-      drawDate: new Date(drawData.drawDate),
-      drawTime: drawData.drawTime,
-      status: DrawStatus.COMPLETED,
-      hasWinner: prizes.some((p) => p.winnersCount > 0),
-      numbers: {
-        deleteMany: {},
-        create: winningNumbers,
-      },
-      prizes: {
-        deleteMany: {},
-        create: prizes,
-      },
-    },
-    create: {
-      lotteryId: lottery.id,
-      externalDrawId: drawData.drawNumber,
-      drawNumber: String(drawData.drawNumber),
-      drawDate: new Date(drawData.drawDate),
-      drawTime: drawData.drawTime,
-      details: drawData.details || null,
-      note: drawData.note || null,
-      status: DrawStatus.COMPLETED,
-      hasWinner: prizes.some((p) => p.winnersCount > 0),
-      numbers: { create: winningNumbers },
-      prizes: { create: prizes },
-      jackpotHistory: jackpotAmount
-        ? {
-            create: {
-              jackpotRaw: drawData.jackpot,
-              jackpotAmount,
-              nextJackpotRaw: drawData.nextJackpot || null,
-              nextJackpotAmount: drawData.nextJackpot ? parseAmount(drawData.nextJackpot) : null,
-              nextDrawDate: drawData.nextDrawDate ? new Date(drawData.nextDrawDate) : null,
-            },
-          }
-        : undefined,
-    },
-  });
-
-  await prisma.jackpotHistory.deleteMany({
-    where: { drawId: draw.id },
-  });
-
-  if (drawData.jackpot && jackpotAmount) {
-    await prisma.jackpotHistory.create({
-      data: {
-        drawId: draw.id,
-        jackpotRaw: drawData.jackpot,
-        jackpotAmount,
-        nextJackpotRaw: drawData.nextJackpot || null,
-        nextJackpotAmount: drawData.nextJackpot ? parseAmount(drawData.nextJackpot) : null,
-        nextDrawDate: drawData.nextDrawDate ? new Date(drawData.nextDrawDate) : null,
-      },
-    });
+        externalId: lottery.externalId,
+        error: error.message,
+      });
+    }
   }
 
-  results.processed++;
   return results;
 }
 
