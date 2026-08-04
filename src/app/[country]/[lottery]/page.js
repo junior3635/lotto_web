@@ -157,7 +157,7 @@ export default async function GenericLotteryPage({ params }) {
 
             <div className="bg-slate-950/80 p-4 rounded-2xl border border-slate-800 text-left sm:text-right shrink-0">
               <span className="text-[10px] text-slate-400 uppercase font-black tracking-wider block">
-                BOTE ESTIMADO
+                Est. jackpot 
               </span>
               <span className="text-2xl sm:text-3xl font-black text-amber-400 tracking-tight">
                 {lottery.jackpotFormatted}

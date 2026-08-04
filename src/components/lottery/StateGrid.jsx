@@ -29,7 +29,7 @@ export default function StateGrid({ states = [], countrySlug = 'us' }) {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4 hidden" >
         {states.map((state) => (
           <div key={state.slug} id={`estado-${state.slug}`} className="space-y-4 scroll-mt-24">
             <div className="rounded-2xl bg-slate-900/60 border border-slate-800 p-4 space-y-3">

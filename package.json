@@ -13,7 +13,8 @@
     "prisma:seed": "node prisma/seed.js",
     "prisma:seed-jurisdiction": "node prisma/seed-jurisdiction.js",
     "prisma:seed-draws": "node prisma/seed-draws.js",
-    "prisma:ingest-json": "node prisma/ingest-json.js"
+    "prisma:ingest-json": "node prisma/ingest-json.js",
+    "prisma:seed-drawanalytics": "node prisma/seed-drawanalytics.js"
   },
   "dependencies": {
     "@prisma/client": "^5.18.0",

@@ -46,7 +46,7 @@ export default function LotteryCardPri({ lottery, countrySlug = 'us', stateSlug 
 
           <div className="text-left sm:text-right shrink-0 bg-slate-950/80 px-3 py-2 sm:px-3.5 sm:py-2 rounded-xl border border-slate-800">
             <span className="text-[9px] sm:text-[10px] text-slate-400 uppercase font-black tracking-widest block">
-              BOTE ESTIMADO
+              Est. jackpot 
             </span>
             <span className="text-lg sm:text-2xl font-black text-amber-400 tracking-tight">
               {jackpotFormatted}

@@ -7,6 +7,7 @@ import { revalidatePath } from 'next/cache';
 import { invalidateLotteryCache } from '../../../services/lotteryService';
 import { ingestJurisdictionData, getIngestionStats, clearJurisdictionData } from '../../../services/ingestionService';
 import { ingestAllJsonFiles, getIngestionStatus as getJsonStatus } from '../../../services/jsonIngestionService';
+import { ingestDrawAnalyticsData } from '../../../services/drawAnalyticsService';
 
 /**
  * Endpoint para invalidar la caché de páginas e In-Memory/Redis cuando se registra un nuevo sorteo.
@@ -130,6 +131,33 @@ export async function GET(request) {
     }
   }
 
+  // Acción de ingestión desde DrawAnalytics API
+  if (action === 'ingest-drawanalytics') {
+    const expectedSecret = process.env.REVALIDATE_SECRET || 'dev_secret_revalidate_12345';
+    if (secret !== expectedSecret) {
+      return NextResponse.json(
+        { message: 'Token de revalidación inválido o no provisto' },
+        { status: 401 }
+      );
+    }
+
+    try {
+      const results = await ingestDrawAnalyticsData(state || null, lottery || null);
+      return NextResponse.json({
+        ingested: true,
+        action: 'ingest-drawanalytics',
+        results,
+        now: Date.now(),
+      });
+    } catch (error) {
+      console.error('[DrawAnalytics Ingest Error] Error ingiriendo datos de DrawAnalytics:', error);
+      return NextResponse.json(
+        { message: 'Error interno ingiriendo datos de DrawAnalytics', error: error.message },
+        { status: 500 }
+      );
+    }
+  }
+
   // 1. Verificación de Seguridad (Token Secreto)
   const expectedSecret = process.env.REVALIDATE_SECRET || 'dev_secret_revalidate_12345';
   if (secret !== expectedSecret) {
@@ -209,6 +237,12 @@ export async function POST(request) {
     if (action === 'json-status') {
       const status = await getJsonStatus();
       return NextResponse.json({ jsonStatus: status, timestamp: Date.now() });
+    }
+
+    // Acción de ingestión desde DrawAnalytics API
+    if (action === 'ingest-drawanalytics') {
+      const results = await ingestDrawAnalyticsData(state || null, lottery || null);
+      return NextResponse.json({ ingested: true, action: 'ingest-drawanalytics', results, timestamp: Date.now() });
     }
 
     revalidatePath(path);

@@ -1,0 +1,522 @@
+{
+  "status": "success",
+  "message": "ok",
+  "messageTR": "ok",
+  "systemTime": 1785855985,
+  "endpoint": "lottery-results/states/game-list",
+  "rowCount": 9,
+  "creditUsed": 0,
+  "data": [
+    {
+      "id": 58,
+      "gameName": "Play 3 Day",
+      "logo": "https://nosycdn.com/api/lotto/de-play-3-day-delaware.svg",
+      "drawTimezone": "America/New_York",
+      "drawTime": "13:58:00",
+      "stopSaleTime": "13:40:00",
+      "claimDeadline": 365,
+      "allowZero": true,
+      "minBall": 0,
+      "maxBall": 9,
+      "drawnNumbers": 3,
+      "selectableBalls": 3,
+      "minimumSelectableBalls": 3,
+      "uniqueMainNumbers": 0,
+      "uniqueExtraNumbers": null,
+      "allowDuplicates": true,
+      "additionalNumbers": [],
+      "bonusNumbers": [],
+      "prizeMultipliers": [],
+      "mainDrawName": null,
+      "state": {
+        "state": "Delaware",
+        "stateCode": "DE",
+        "slug": "delaware",
+        "taxRate": "%0.00",
+        "minimumLegalAge": 18
+      },
+      "statesWithMultiDraws": null,
+      "drawDays": {
+        "Sunday": true,
+        "Monday": true,
+        "Tuesday": true,
+        "Wednesday": true,
+        "Thursday": true,
+        "Friday": true,
+        "Saturday": true
+      }
+    },
+    {
+      "id": 59,
+      "gameName": "Play 3 Night",
+      "logo": "https://nosycdn.com/api/lotto/de-play-3-night-delaware.svg",
+      "drawTimezone": "America/New_York",
+      "drawTime": "19:57:00",
+      "stopSaleTime": "19:30:00",
+      "claimDeadline": 365,
+      "allowZero": true,
+      "minBall": 0,
+      "maxBall": 9,
+      "drawnNumbers": 3,
+      "selectableBalls": 3,
+      "minimumSelectableBalls": 3,
+      "uniqueMainNumbers": 0,
+      "uniqueExtraNumbers": null,
+      "allowDuplicates": true,
+      "additionalNumbers": [],
+      "bonusNumbers": [],
+      "prizeMultipliers": [],
+      "mainDrawName": null,
+      "state": {
+        "state": "Delaware",
+        "stateCode": "DE",
+        "slug": "delaware",
+        "taxRate": "%0.00",
+        "minimumLegalAge": 18
+      },
+      "statesWithMultiDraws": null,
+      "drawDays": {
+        "Sunday": true,
+        "Monday": true,
+        "Tuesday": true,
+        "Wednesday": true,
+        "Thursday": true,
+        "Friday": true,
+        "Saturday": true
+      }
+    },
+    {
+      "id": 60,
+      "gameName": "Play 4 Day",
+      "logo": "https://nosycdn.com/api/lotto/de-play-4-day-delaware.svg",
+      "drawTimezone": "America/New_York",
+      "drawTime": "13:58:00",
+      "stopSaleTime": "13:40:00",
+      "claimDeadline": 365,
+      "allowZero": true,
+      "minBall": 0,
+      "maxBall": 9,
+      "drawnNumbers": 4,
+      "selectableBalls": 4,
+      "minimumSelectableBalls": 4,
+      "uniqueMainNumbers": 0,
+      "uniqueExtraNumbers": null,
+      "allowDuplicates": true,
+      "additionalNumbers": [],
+      "bonusNumbers": [],
+      "prizeMultipliers": [],
+      "mainDrawName": null,
+      "state": {
+        "state": "Delaware",
+        "stateCode": "DE",
+        "slug": "delaware",
+        "taxRate": "%0.00",
+        "minimumLegalAge": 18
+      },
+      "statesWithMultiDraws": null,
+      "drawDays": {
+        "Sunday": true,
+        "Monday": true,
+        "Tuesday": true,
+        "Wednesday": true,
+        "Thursday": true,
+        "Friday": true,
+        "Saturday": true
+      }
+    },
+    {
+      "id": 61,
+      "gameName": "Play 4 Night",
+      "logo": "https://nosycdn.com/api/lotto/de-play-4-night-delaware.svg",
+      "drawTimezone": "America/New_York",
+      "drawTime": "19:57:00",
+      "stopSaleTime": "19:30:00",
+      "claimDeadline": 365,
+      "allowZero": true,
+      "minBall": 0,
+      "maxBall": 9,
+      "drawnNumbers": 4,
+      "selectableBalls": 4,
+      "minimumSelectableBalls": 4,
+      "uniqueMainNumbers": 0,
+      "uniqueExtraNumbers": null,
+      "allowDuplicates": true,
+      "additionalNumbers": [],
+      "bonusNumbers": [],
+      "prizeMultipliers": [],
+      "mainDrawName": null,
+      "state": {
+        "state": "Delaware",
+        "stateCode": "DE",
+        "slug": "delaware",
+        "taxRate": "%0.00",
+        "minimumLegalAge": 18
+      },
+      "statesWithMultiDraws": null,
+      "drawDays": {
+        "Sunday": true,
+        "Monday": true,
+        "Tuesday": true,
+        "Wednesday": true,
+        "Thursday": true,
+        "Friday": true,
+        "Saturday": true
+      }
+    },
+    {
+      "id": 62,
+      "gameName": "Multi-Win Lotto",
+      "logo": "https://nosycdn.com/api/lotto/de-multi-win-lotto-delaware.svg",
+      "drawTimezone": "America/New_York",
+      "drawTime": "19:57:00",
+      "stopSaleTime": "19:30:00",
+      "claimDeadline": 365,
+      "allowZero": false,
+      "minBall": 1,
+      "maxBall": 35,
+      "drawnNumbers": 6,
+      "selectableBalls": 6,
+      "minimumSelectableBalls": 6,
+      "uniqueMainNumbers": 1,
+      "uniqueExtraNumbers": null,
+      "allowDuplicates": false,
+      "additionalNumbers": [],
+      "bonusNumbers": [],
+      "prizeMultipliers": [],
+      "mainDrawName": null,
+      "state": {
+        "state": "Delaware",
+        "stateCode": "DE",
+        "slug": "delaware",
+        "taxRate": "%0.00",
+        "minimumLegalAge": 18
+      },
+      "statesWithMultiDraws": null,
+      "drawDays": {
+        "Sunday": true,
+        "Monday": true,
+        "Tuesday": true,
+        "Wednesday": true,
+        "Thursday": true,
+        "Friday": true,
+        "Saturday": true
+      }
+    },
+    {
+      "id": 63,
+      "gameName": "Powerball",
+      "logo": "https://nosycdn.com/api/lotto/de-powerball-delaware.svg",
+      "drawTimezone": "America/New_York",
+      "drawTime": "22:59:00",
+      "stopSaleTime": "22:00:00",
+      "claimDeadline": 365,
+      "allowZero": false,
+      "minBall": 1,
+      "maxBall": 69,
+      "drawnNumbers": 5,
+      "selectableBalls": 5,
+      "minimumSelectableBalls": 5,
+      "uniqueMainNumbers": 1,
+      "uniqueExtraNumbers": 0,
+      "allowDuplicates": false,
+      "additionalNumbers": [
+        {
+          "playerPicked": true,
+          "name": "powerball",
+          "minBall": 1,
+          "maxBall": 26,
+          "allowZero": false,
+          "isString": false,
+          "isMultiplier": false,
+          "allowedValues": null
+        },
+        {
+          "playerPicked": false,
+          "name": "powerplay",
+          "minBall": 2,
+          "maxBall": 10,
+          "allowZero": false,
+          "isString": false,
+          "isMultiplier": true,
+          "allowedValues": [
+            2,
+            3,
+            4,
+            5,
+            10
+          ]
+        }
+      ],
+      "bonusNumbers": [
+        {
+          "name": "Powerball",
+          "abbreviation": "PB",
+          "isMultiplier": false,
+          "variant": null
+        }
+      ],
+      "prizeMultipliers": [
+        {
+          "name": "Power Play",
+          "abbreviation": "PP",
+          "isMultiplier": true,
+          "variant": null
+        }
+      ],
+      "mainDrawName": "Main draw",
+      "state": {
+        "state": "Delaware",
+        "stateCode": "DE",
+        "slug": "delaware",
+        "taxRate": "%0.00",
+        "minimumLegalAge": 18
+      },
+      "statesWithMultiDraws": [
+        "CO",
+        "FL",
+        "IN",
+        "MD",
+        "MI",
+        "MO",
+        "NJ",
+        "PA",
+        "PR",
+        "SC",
+        "SD",
+        "TN",
+        "WA",
+        "MT",
+        "NE",
+        "OK",
+        "ID",
+        "IA",
+        "MS",
+        "NM"
+      ],
+      "drawDays": {
+        "Sunday": false,
+        "Monday": true,
+        "Tuesday": false,
+        "Wednesday": true,
+        "Thursday": false,
+        "Friday": false,
+        "Saturday": true
+      }
+    },
+    {
+      "id": 64,
+      "gameName": "Mega Millions",
+      "logo": "https://nosycdn.com/api/lotto/de-mega-millions-delaware.svg",
+      "drawTimezone": "America/Detroit",
+      "drawTime": "23:00:00",
+      "stopSaleTime": "22:45:00",
+      "claimDeadline": 365,
+      "allowZero": false,
+      "minBall": 1,
+      "maxBall": 70,
+      "drawnNumbers": 5,
+      "selectableBalls": 5,
+      "minimumSelectableBalls": 5,
+      "uniqueMainNumbers": 1,
+      "uniqueExtraNumbers": 0,
+      "allowDuplicates": false,
+      "additionalNumbers": [
+        {
+          "playerPicked": true,
+          "name": "mega_ball",
+          "minBall": 1,
+          "maxBall": 25,
+          "allowZero": false,
+          "isString": false,
+          "isMultiplier": false,
+          "allowedValues": null
+        },
+        {
+          "playerPicked": false,
+          "name": "megaplier",
+          "minBall": 2,
+          "maxBall": 5,
+          "allowZero": false,
+          "isString": false,
+          "isMultiplier": true,
+          "allowedValues": [
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "bonusNumbers": [
+        {
+          "name": "Mega Ball",
+          "abbreviation": "MB",
+          "isMultiplier": false,
+          "variant": null
+        }
+      ],
+      "prizeMultipliers": [
+        {
+          "name": "Megaplier",
+          "abbreviation": "M",
+          "isMultiplier": true,
+          "variant": null
+        }
+      ],
+      "mainDrawName": null,
+      "state": {
+        "state": "Delaware",
+        "stateCode": "DE",
+        "slug": "delaware",
+        "taxRate": "%0.00",
+        "minimumLegalAge": 18
+      },
+      "statesWithMultiDraws": [],
+      "drawDays": {
+        "Sunday": false,
+        "Monday": false,
+        "Tuesday": true,
+        "Wednesday": false,
+        "Thursday": false,
+        "Friday": true,
+        "Saturday": false
+      }
+    },
+    {
+      "id": 65,
+      "gameName": "Lotto America",
+      "logo": "https://nosycdn.com/api/lotto/de-lotto-america-delaware.svg",
+      "drawTimezone": "America/Chicago",
+      "drawTime": "21:15:00",
+      "stopSaleTime": "20:14:00",
+      "claimDeadline": 365,
+      "allowZero": false,
+      "minBall": 1,
+      "maxBall": 52,
+      "drawnNumbers": 5,
+      "selectableBalls": 5,
+      "minimumSelectableBalls": 5,
+      "uniqueMainNumbers": 1,
+      "uniqueExtraNumbers": 0,
+      "allowDuplicates": false,
+      "additionalNumbers": [
+        {
+          "playerPicked": true,
+          "name": "star_ball",
+          "minBall": 1,
+          "maxBall": 10,
+          "allowZero": false,
+          "isString": false,
+          "isMultiplier": false,
+          "allowedValues": null
+        },
+        {
+          "playerPicked": false,
+          "name": "all_star_bonus",
+          "minBall": 2,
+          "maxBall": 5,
+          "allowZero": false,
+          "isString": false,
+          "isMultiplier": true,
+          "allowedValues": [
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "bonusNumbers": [
+        {
+          "name": "Star Ball",
+          "abbreviation": "SB",
+          "isMultiplier": false,
+          "variant": null
+        }
+      ],
+      "prizeMultipliers": [
+        {
+          "name": "All Star Bonus",
+          "abbreviation": "ASB",
+          "isMultiplier": true,
+          "variant": null
+        }
+      ],
+      "mainDrawName": null,
+      "state": {
+        "state": "Delaware",
+        "stateCode": "DE",
+        "slug": "delaware",
+        "taxRate": "%0.00",
+        "minimumLegalAge": 18
+      },
+      "statesWithMultiDraws": [],
+      "drawDays": {
+        "Sunday": false,
+        "Monday": true,
+        "Tuesday": false,
+        "Wednesday": true,
+        "Thursday": false,
+        "Friday": false,
+        "Saturday": true
+      }
+    },
+    {
+      "id": 66,
+      "gameName": "Lucky for Life (Retired)",
+      "logo": "https://nosycdn.com/api/lotto/de-lucky-for-life-delaware.svg",
+      "drawTimezone": "America/New_York",
+      "drawTime": "22:38:00",
+      "stopSaleTime": "21:30:00",
+      "claimDeadline": 365,
+      "allowZero": false,
+      "minBall": 1,
+      "maxBall": 48,
+      "drawnNumbers": 5,
+      "selectableBalls": 5,
+      "minimumSelectableBalls": 5,
+      "uniqueMainNumbers": 1,
+      "uniqueExtraNumbers": 1,
+      "allowDuplicates": false,
+      "additionalNumbers": [
+        {
+          "playerPicked": true,
+          "name": "lucky_ball",
+          "minBall": 1,
+          "maxBall": 18,
+          "allowZero": false,
+          "isString": false,
+          "isMultiplier": false,
+          "allowedValues": null
+        }
+      ],
+      "bonusNumbers": [
+        {
+          "name": "Lucky Ball",
+          "abbreviation": "LB",
+          "isMultiplier": false,
+          "variant": null
+        }
+      ],
+      "prizeMultipliers": [],
+      "mainDrawName": null,
+      "state": {
+        "state": "Delaware",
+        "stateCode": "DE",
+        "slug": "delaware",
+        "taxRate": "%0.00",
+        "minimumLegalAge": 18
+      },
+      "statesWithMultiDraws": [],
+      "drawDays": {
+        "Sunday": true,
+        "Monday": true,
+        "Tuesday": true,
+        "Wednesday": true,
+        "Thursday": true,
+        "Friday": true,
+        "Saturday": true
+      }
+    }
+  ]
+}

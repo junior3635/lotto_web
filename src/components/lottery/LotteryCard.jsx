@@ -5,6 +5,35 @@ import React from 'react';
 import Link from 'next/link';
 import WinningCombination from './WinningCombination';
 
+function formatJackpotRaw(val) {
+  if (val == null) return null;
+  const str = String(val).trim();
+
+  // 1. Si ya incluye letras (como "million", "m", etc.), no se modifica
+  if (/[a-z]/i.test(str)) {
+    return str;
+  }
+
+  // 2. Limpiamos símbolos de moneda, espacios y normalizamos comas decimales
+  // Si viene en formato europeo "700000000,00", reemplazamos la última coma por punto
+  const cleaned = str.replace(/[$\s]/g, '').replace('.', '').replace(',', '.');
+  const num = parseFloat(cleaned);
+
+  if (isNaN(num)) return str;
+
+  // 3. Convertimos a Millones si supera 1,000,000
+  if (num >= 1_000_000) {
+    const millions = num / 1_000_000;
+    // Si es entero (ej: 700) no lleva decimales, si no, lleva máximo 2 decimales
+    const formatted = millions % 1 === 0 ? millions : millions.toFixed(2);
+    return `$${formatted} Million`;
+  }else{
+    return `$${num}`;
+  }
+
+  return str;
+}
+
 export default function LotteryCard({ lottery, countrySlug = 'us', stateSlug = null }) {
   const {
     name,
@@ -32,7 +61,7 @@ export default function LotteryCard({ lottery, countrySlug = 'us', stateSlug = n
                 {name}
               </h3>
               {stateOrRegion && (
-                <span className="text-[10px] sm:text-xs px-2 sm:px-2.5 py-0.5 rounded-md bg-slate-800 border border-slate-700/80 text-slate-300 font-bold tracking-wide">
+                <span className="text-[10px] sm:text-xs px-2 sm:px-2.5 py-0.5 rounded-md bg-slate-800 border border-slate-700/80 text-slate-300 font-bold tracking-wide hidden">
                   {stateOrRegion}
                 </span>
               )}
@@ -46,10 +75,10 @@ export default function LotteryCard({ lottery, countrySlug = 'us', stateSlug = n
 
           <div className="text-left sm:text-right shrink-0 bg-slate-950/80 px-3 py-2 sm:px-3.5 sm:py-2 rounded-xl border border-slate-800">
             <span className="text-[9px] sm:text-[10px] text-slate-400 uppercase font-black tracking-widest block">
-              BOTE ESTIMADO
+              Est. jackpot 
             </span>
             <span className="text-lg sm:text-2xl font-black text-amber-400 tracking-tight">
-              {jackpotFormatted}
+              {formatJackpotRaw(jackpotFormatted)}
             </span>
           </div>
         </div>
