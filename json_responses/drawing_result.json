@@ -2,23 +2,23 @@
   "status": "success",
   "message": "ok",
   "messageTR": "ok",
-  "systemTime": 1785525368,
+  "systemTime": 1785940302,
   "endpoint": "lottery-results/game-result",
   "rowCount": 1,
   "creditUsed": 0,
   "data": {
-    "drawNumber": 318414,
-    "drawDate": "2026-07-28",
-    "drawTime": "23:00:00",
-    "drawDateTime": "2026-07-28 23:00:00",
-    "drawTimestamp": 1785268800,
-    "jackpot": "$800 MILLION",
-    "cashPayout": "$344.2 MILLION",
-    "nextDrawDate": "2026-07-28 23:00:00",
-    "nextJackpot": "$800 MILLION",
-    "nextCash": "$344.2 MILLION",
-    "details": "Payout is base prize times multiplier number on ticket except for jackpot.",
-    "note": "",
+    "drawNumber": 320058,
+    "drawDate": "2026-08-03",
+    "drawTime": "22:59:00",
+    "drawDateTime": "2026-08-03 22:59:00",
+    "drawTimestamp": 1785787140,
+    "jackpot": "$748 MILLION",
+    "cashPayout": "$325.1 MILLION",
+    "nextDrawDate": "2026-08-03 22:59:00",
+    "nextJackpot": "$748 MILLION",
+    "nextCash": "$325.1 MILLION",
+    "details": "For states except California.",
+    "note": "POWER PLAY: 2",
     "megaPlierPrizePool": null,
     "regularPrizePool": null,
     "totalPrizePool": null,
@@ -26,73 +26,73 @@
     "totalRegularWinners": null,
     "overallWinners": null,
     "winningNumbers": [
-      "34",
+      "8",
+      "30",
+      "41",
       "48",
-      "49",
-      "59",
-      "70"
+      "54"
     ],
     "additionalNumbers": [
-      12
+      4
     ],
     "prize": [
       {
-        "match": "5 + MB",
-        "prize": "$800M",
+        "match": "5 + 1",
+        "prize": "$748 Million",
         "winner": null
       },
       {
-        "match": "5",
-        "prize": "$2M",
+        "match": "5 + 0",
+        "prize": "$1 Million",
         "winner": null
       },
       {
-        "match": "4 + MB",
-        "prize": "$20K",
+        "match": "4 + 1",
+        "prize": "$50,000",
         "winner": null
       },
       {
-        "match": "4",
-        "prize": "$1K",
+        "match": "4 + 0",
+        "prize": "$100",
         "winner": null
       },
       {
-        "match": "3 + MB",
-        "prize": "$400",
+        "match": "3 + 1",
+        "prize": "$100",
         "winner": null
       },
       {
-        "match": "3",
-        "prize": "$20",
+        "match": "3 + 0",
+        "prize": "$7",
         "winner": null
       },
       {
-        "match": "2 + MB",
-        "prize": "$20",
+        "match": "2 + 1",
+        "prize": "$7",
         "winner": null
       },
       {
-        "match": "1 + MB",
-        "prize": "$14",
+        "match": "1 + 1",
+        "prize": "$4",
         "winner": null
       },
       {
-        "match": "MB",
-        "prize": "$10",
+        "match": "0 + 1",
+        "prize": "$4",
         "winner": null
       }
     ],
     "gameDetails": {
-      "id": 24,
-      "gameName": "Mega Millions",
-      "logo": "https://nosycdn.com/api/lotto/az-mega-millions-arizona.svg",
-      "drawTimezone": "America/Detroit",
-      "drawTime": "23:00:00",
-      "stopSaleTime": "22:45:00",
+      "id": 308,
+      "gameName": "Powerball",
+      "logo": "https://nosycdn.com/api/lotto/ny-powerball-new-york.svg",
+      "drawTimezone": "America/New_York",
+      "drawTime": "22:59:00",
+      "stopSaleTime": "22:00:00",
       "claimDeadline": 365,
       "allowZero": false,
       "minBall": 1,
-      "maxBall": 70,
+      "maxBall": 69,
       "drawnNumbers": 5,
       "selectableBalls": 5,
       "minimumSelectableBalls": 5,
@@ -102,9 +102,9 @@
       "additionalNumbers": [
         {
           "playerPicked": true,
-          "name": "mega_ball",
+          "name": "powerball",
           "minBall": 1,
-          "maxBall": 25,
+          "maxBall": 26,
           "allowZero": false,
           "isString": false,
           "isMultiplier": false,
@@ -112,9 +112,9 @@
         },
         {
           "playerPicked": false,
-          "name": "megaplier",
+          "name": "powerplay",
           "minBall": 2,
-          "maxBall": 5,
+          "maxBall": 10,
           "allowZero": false,
           "isString": false,
           "isMultiplier": true,
@@ -122,43 +122,65 @@
             2,
             3,
             4,
-            5
+            5,
+            10
           ]
         }
       ],
       "bonusNumbers": [
         {
-          "name": "Mega Ball",
-          "abbreviation": "MB",
+          "name": "Powerball",
+          "abbreviation": "PB",
           "isMultiplier": false,
           "variant": null
         }
       ],
       "prizeMultipliers": [
         {
-          "name": "Megaplier",
-          "abbreviation": "M",
+          "name": "Power Play",
+          "abbreviation": "PP",
           "isMultiplier": true,
           "variant": null
         }
       ],
-      "mainDrawName": null,
+      "mainDrawName": "Main draw",
       "state": {
-        "state": "Arizona",
-        "stateCode": "AZ",
-        "slug": "arizona",
-        "taxRate": "%4.80",
-        "minimumLegalAge": 21
+        "state": "New York",
+        "stateCode": "NY",
+        "slug": "new-york",
+        "taxRate": "%8.82",
+        "minimumLegalAge": 18
       },
-      "statesWithMultiDraws": [],
+      "statesWithMultiDraws": [
+        "CO",
+        "FL",
+        "IN",
+        "MD",
+        "MI",
+        "MO",
+        "NJ",
+        "PA",
+        "PR",
+        "SC",
+        "SD",
+        "TN",
+        "WA",
+        "MT",
+        "NE",
+        "OK",
+        "ID",
+        "IA",
+        "MS",
+        "NM"
+      ],
       "drawDays": {
         "Sunday": false,
-        "Monday": false,
-        "Tuesday": true,
-        "Wednesday": false,
+        "Monday": true,
+        "Tuesday": false,
+        "Wednesday": true,
         "Thursday": false,
-        "Friday": true,
-        "Saturday": false
+        "Friday": false,
+        "Saturday": true
       }
     }
   }
